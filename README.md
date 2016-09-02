@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Example of using linkparser gem:
 
-Things you may want to cover:
+```dict = LinkParser::Dictionary.new
+=> #<LinkParser::Dictionary:0x007f9a5b117220>
 
-* Ruby version
+sent = dict.parse( "People use Ruby for all kinds of nifty things." )
+=> #<LinkParser::Sentence:0x1fe69761a146 "LEFT-WALL people.p use.v Ruby.f
+    for.p all.a kinds.n of   nifty.a things.n . RIGHT-WALL"/15
+    linkages/0 nulls>
 
-* System dependencies
+sent.subject
+=> "people"
 
-* Configuration
+sent.verb
+=> "use"
 
-* Database creation
+sent.object
+=> "Ruby.f"```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+(from https://github.com/ged/linkparser)
