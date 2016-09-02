@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: grammar_nextGen_production
-  username: grammar_nextGen
+  username: dbc09
   password: <%= ENV['GRAMMAR_NEXTGEN_DATABASE_PASSWORD'] %>
