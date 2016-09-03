@@ -11,7 +11,7 @@ class StudentDashboard extends React.Component {
       <div className="container">
         <h1> Welcome! </h1>
           { assignmentTablesVisible ?
-            <div className="past-due-assignments"
+            <div className="past-due-assignments">
               <h2> Past-Due Assignments </h2>
               <table className="table table-hover table-responsive">
                 <thead className="thead-inverse">
