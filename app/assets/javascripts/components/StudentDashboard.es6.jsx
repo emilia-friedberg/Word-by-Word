@@ -11,45 +11,48 @@ class StudentDashboard extends React.Component {
       <div className="container">
         <h1> Welcome! </h1>
           { assignmentTablesVisible ?
-            <div className="past-due-assignments">
-              <h2> Past-Due Assignments </h2>
-              <table className="table table-hover table-responsive">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th>Date Assigned</th>
-                    <th>Unit</th>
-                    <th>Lesson</th>
-                    <th>Due Date</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-            <div className="active-assignments">
-            <h2> Active Assignments </h2>
-              <table className="table table-hover table-responsive">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th>Date Assigned</th>
-                    <th>Unit</th>
-                    <th>Lesson</th>
-                    <th>Due Date</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-            <div className="completed-assignments">
-              <h2> Completed Assignments </h2>
-              <table className="table table-hover table-responsive">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th> Date Assigned </th>
-                    <th> Unit </th>
-                    <th> Lesson </th>
-                    <th> Score </th>
-                    <th> Completion Date </th>
-                  </tr>
-                </thead>
-              </table>
+            // The div tag that follows is to correct the error: adjacent JSX elements must be wrapped in an enclosing tag
+            <div>
+              <div className="past-due-assignments">
+                <h2> Past-Due Assignments </h2>
+                <table className="table table-hover table-responsive">
+                  <thead className="thead-inverse">
+                    <tr>
+                      <th>Date Assigned</th>
+                      <th>Unit</th>
+                      <th>Lesson</th>
+                      <th>Due Date</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div className="active-assignments">
+              <h2> Active Assignments </h2>
+                <table className="table table-hover table-responsive">
+                  <thead className="thead-inverse">
+                    <tr>
+                      <th>Date Assigned</th>
+                      <th>Unit</th>
+                      <th>Lesson</th>
+                      <th>Due Date</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div className="completed-assignments">
+                <h2> Completed Assignments </h2>
+                <table className="table table-hover table-responsive">
+                  <thead className="thead-inverse">
+                    <tr>
+                      <th> Date Assigned </th>
+                      <th> Unit </th>
+                      <th> Lesson </th>
+                      <th> Score </th>
+                      <th> Completion Date </th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
             </div>
             : <br /> }
           <div className="past-practice-lessons">
