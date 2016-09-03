@@ -3,7 +3,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        this is home app component
+        <NavBar currentUser = {this.props.currentUser}/>
+        <p>this is home app component</p>
       </div>
     )
   }
