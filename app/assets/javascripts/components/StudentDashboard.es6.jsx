@@ -1,4 +1,4 @@
-class StudentDashboard extends React.Component
+class StudentDashboard extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -7,7 +7,7 @@ class StudentDashboard extends React.Component
     }
   }
   render() {
-    return() {
+    return(
       <div className="container">
         <h1> Welcome! </h1>
           { assignmentTablesVisible ?
@@ -53,7 +53,7 @@ class StudentDashboard extends React.Component
             </div>
             : <br /> }
           <div className="past-practice-lessons">
-            <h2> Past Practice Lessons <h2>
+            <h2> Past Practice Lessons </h2>
             <table className="table table-hover table-responsive">
               <thead className="thead-inverse">
                 <tr>
@@ -76,6 +76,6 @@ class StudentDashboard extends React.Component
             </table>
           </div>
       </div>
-    }
+    )
   }
-end
+}
