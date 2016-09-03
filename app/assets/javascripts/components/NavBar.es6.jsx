@@ -5,7 +5,7 @@ class NavBar extends React.Component{
     return(
       <nav className="navbar navbar-default navbar-fixed-top">
           { this.props.currentUser ?
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
               <li className="active"><a href="/"><span className="sr-only">Home</span></a></li>
               <li><a href='/about'>About</a></li>
@@ -18,7 +18,7 @@ class NavBar extends React.Component{
             </ul>
           </div>
           :
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
            <ul className="nav navbar-nav navbar-right">
               <li className="active"><a href='/'><span className="sr-only">Home</span></a></li>
               <li><a href='/about'>About</a></li>
