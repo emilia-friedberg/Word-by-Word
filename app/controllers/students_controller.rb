@@ -16,22 +16,16 @@ class StudentsController < ApplicationController
       pending_assignments = []
       past_due_assignments = []
       completed_assignments = []
+      assigned_lessons = []
+      attempted_lessons = []
 
-      # cohorts.each do |cohort|
-      #   cohort.assignments.each do |assignment|
-      #     attempted_prompts = []
-      #     assignment.prompts.each do |prompt|
-      #       attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
-      #     end
-      #     if attempted_prompts.length === assignment.prompts.length
-      #       completed_assignments << assignment
-      #     end
-      #   end
-      # end
-
+      student.attempts.each do |attempt|
+        attempted_lessons << attempt.prompt.sentence.lesson
+      end
 
       cohorts.each do |cohort|
         cohort.assignments.each do |assignment|
+          assigned_lessons << assignment.lesson
           if assignment.completed?(student)
             completed_assignments << assignment
           else
@@ -49,6 +43,7 @@ class StudentsController < ApplicationController
         {
           created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
           lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
           cohort_id:  assignment.cohort_id,
           unit_id: assignment.lesson.unit.id,
           due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p'),
@@ -61,6 +56,7 @@ class StudentsController < ApplicationController
         {
           created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
           lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
           cohort_id:  assignment.cohort_id,
           unit_id: assignment.lesson.unit.id,
           due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
@@ -71,13 +67,24 @@ class StudentsController < ApplicationController
         {
           created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
           lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
           cohort_id:  assignment.cohort_id,
           unit_id: assignment.lesson.unit.id,
           due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
         }
       end
 
-      student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts, pendingAssignments: pending_assignments, pastDueAssignments: past_due_assignments, completedAssignments: completed_assignments}
+      attempted_lessons = attempted_lessons.uniq - (attempted_lessons & assigned_lessons)
+      attempted_lessons.map do |lesson|
+
+        {
+          lesson_id: lesson.id,
+          lesson_name: lesson.name,
+          unit_id: lesson.unit.id
+        }
+      end
+
+      student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts, pendingAssignments: pending_assignments, pastDueAssignments: past_due_assignments, completedAssignments: completed_assignments, attemptedLessons: attempted_lessons}
       render json: student_hash.to_json
   end
 end

@@ -7,7 +7,8 @@ class StudentDashboard extends React.Component {
       studentCohorts: [],
       pendingAssignments: [],
       pastDueAssignments: [],
-      completedAssignments: []
+      completedAssignments: [],
+      attemptedLessons: []
     }
   }
 
@@ -22,7 +23,8 @@ class StudentDashboard extends React.Component {
         studentCohorts: response.studentCohorts,
         pendingAssignments: response.pendingAssignments,
         pastDueAssignments: response.pastDueAssignments,
-        completedAssignments: response.completedAssignments
+        completedAssignments: response.completedAssignments,
+        attemptedLessons: response.attemptedLessons
       })
     }.bind(this))
   }
@@ -52,7 +54,7 @@ class StudentDashboard extends React.Component {
                       <tr>
                         <td> {assignment.created_at}</td>
                         <td> {assignment.unit_id} </td>
-                        <td> {assignment.lesson_id} </td>
+                        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>
                         <td> {assignment.due_date} </td>
                       </tr>
                     )
@@ -81,8 +83,7 @@ class StudentDashboard extends React.Component {
                       <tr>
                         <td> {assignment.created_at}</td>
                         <td> {assignment.unit_id} </td>
-                        <td> {assignment.lesson_id} </td>
-                        <td> {assignment.due_date} </td>
+                        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>                        <td> {assignment.due_date} </td>
                       </tr>
                     )
                   })}
@@ -108,8 +109,7 @@ class StudentDashboard extends React.Component {
                       <tr>
                         <td> {assignment.created_at}</td>
                         <td> {assignment.unit_id} </td>
-                        <td> {assignment.lesson_id} </td>
-                        <td> {assignment.score} </td>
+                        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>                        <td> {assignment.score} </td>
                       </tr>
                     )
                   })}
@@ -120,6 +120,9 @@ class StudentDashboard extends React.Component {
             : <br /> }
           <div className="past-practice-lessons">
             <h2> Past Practice Lessons </h2>
+            { this.state.attemptedLessons.length < 1 ?
+              <p> You have no past practice lessons. </p>
+              :
             <table className="table table-hover table-responsive">
               <thead className="thead-inverse">
                 <tr>
@@ -128,6 +131,7 @@ class StudentDashboard extends React.Component {
                 </tr>
               </thead>
             </table>
+            }
           </div>
           <div className="mastered-topics">
             <h2> Mastered Topics </h2>

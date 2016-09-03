@@ -16,3 +16,45 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .navbar ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   background-color: #333;
+   overflow: hidden;
+ }
+
+ .navbar li {
+   display: inline-block;
+   float: left;
+   font-family: "Times New Roman";
+ }
+
+ .navbar li a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 16px;
+   font-size: 16px;
+   text-decoration: none;
+ }
+
+ .navbar li a:hover {
+   background-color: #808080;
+ }
+
+ #logoutButton {
+   font-family: "Times New Roman";
+   font-size: 16px;
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 16px;
+   background: none;
+   border: none;
+ }
+
+ #logoutButton:hover {
+   background-color: #808080;
+ }
