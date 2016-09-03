@@ -4,7 +4,7 @@ before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-    '/users/sign_up'
+    super
   end
 
   # POST /resource

@@ -14,7 +14,7 @@ class NavBar extends React.Component{
                     <input id="logoutButton" type="Submit" value="Log Out"/>
                     <input type="hidden" name="_method" value="Delete"/>
                   </form>
-              </li>  
+              </li>
             </ul>
           </div>
           :
