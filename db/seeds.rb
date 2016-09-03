@@ -32,6 +32,7 @@ puts "students created"
               first_name: Faker::Name.first_name,
               last_name: Faker::Name.last_name,
               display_name: Faker::Superhero.name)
+
 end
 
 15.times do
@@ -66,4 +67,5 @@ end
 
 1000.times do
   Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: UnitOneSentence.all.sample.id, scholar_id: Student.all.sample.id, scholar_type: 'Student')
+
 end
