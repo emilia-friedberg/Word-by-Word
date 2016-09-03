@@ -6,9 +6,21 @@
   overflow: hidden;
 }
 
+.navbar-left {
+  float: left;
+  display: inline-block;
+  font-family: "Times New Roman";
+}
+
+.navbar-right {
+  float: right;
+  display: inline-block;
+  font-family: "Times New Roman";
+}
+
+
 .navbar li {
   display: inline-block;
-  float: right;
   font-family: "Times New Roman";
 }
 
