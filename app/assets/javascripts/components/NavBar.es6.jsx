@@ -12,12 +12,14 @@ class NavBar extends React.Component{
                 <input type="hidden" name="_method" value="Delete"/>
               </form>
           </li>
+          <li><a href='/about'>About</a></li>
           <li><a href='/'>Home</a></li>
         </ul>
         :
         <ul>
           <li><a href='/users/sign_in'>Sign In</a></li>
           <li><a href='/users/sign_up'>Register</a></li>
+          <li><a href='/about'>About</a></li>
           <li><a href='/'>Home</a></li>
         </ul>
       }
