@@ -3,7 +3,7 @@ class CreateChildren < ActiveRecord::Migration[5.0]
     create_table :children do |t|
       t.integer :teacher_id, null: false
       t.integer :cohort_id
-      t.integer :access_code, null:false 
+      t.integer :access_code, null:false
 
       t.timestamps
     end
