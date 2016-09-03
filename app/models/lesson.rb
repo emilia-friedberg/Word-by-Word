@@ -6,6 +6,6 @@ class Lesson < ApplicationRecord
   validates :unit_id, presence: true
 
   def sentences
-    UnitOneSentence.all
+    UnitOneSentence.where(lesson_id: id)
   end
 end

@@ -51,7 +51,7 @@ Unit.create(name: 'test development unit', description: "this unit is for testin
 end
 
 50.times do
-  Assignment.create(cohort_id: Cohort.all.sample.id, lesson_id: Lesson.all.sample.id, due_date: Faker::Date.between(2.days.from_now, 10.days.from_now))
+  Assignment.create!(cohort_id: Cohort.all.sample.id, lesson_id: Lesson.all.sample.id, due_date: Faker::Date.between(2.days.from_now, 10.days.from_now))
 end
 
 30.times do
