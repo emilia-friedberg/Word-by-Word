@@ -18,6 +18,7 @@ class StudentsController < ApplicationController
       completed_assignments = []
       assigned_lessons = []
       attempted_lessons = []
+      mastered_lessons = []
 
       student.attempts.each do |attempt|
         attempted_lessons << attempt.prompt.sentence.lesson
@@ -76,7 +77,6 @@ class StudentsController < ApplicationController
 
       attempted_lessons = attempted_lessons.uniq - (attempted_lessons & assigned_lessons)
       attempted_lessons.map do |lesson|
-
         {
           lesson_id: lesson.id,
           lesson_name: lesson.name,

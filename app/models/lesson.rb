@@ -8,4 +8,47 @@ class Lesson < ApplicationRecord
   def sentences
     UnitOneSentence.where(lesson_id: id)
   end
+
+  def prompts
+    all_prompts = []
+
+    self.sentences.each do |sentence|
+      sentence.prompts.each do |prompt|
+        all_prompts << prompt
+      end
+    end
+    all_prompts
+  end
+
+  def attempts
+    all_attempts = []
+
+    self.prompts.each do |prompt|
+      prompt.attempts.each do |attempt|
+        all_attempts << attempt
+      end
+    end
+    all_attempts
+  end
+
+  def completed?(student)
+    attempted_prompts = []
+    self.prompts.each do |prompt|
+      attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
+    end
+    return true if attempted_prompts.length === self.prompts.length
+    return false
+  end
+
+  def score(student)
+    score = self.prompts.map { |prompt| student.attempts.find_by(prompt_id: prompt.id).correct? }.length
+  end
+
+  def mastered?(student)
+    self.attempts.select { |attempt| attempt[:scholar_id] = student.id}.last(10).all? { |attempt| attempt.correct? }
+
+    # self.sentences.prompts.each do |prompt|
+    #   correctly_attempted_props << prompt if student.attempts.where(prompt_id: prompt.id).last(10)
+  end
+
 end

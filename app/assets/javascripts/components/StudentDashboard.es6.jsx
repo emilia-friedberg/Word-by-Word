@@ -130,6 +130,14 @@ class StudentDashboard extends React.Component {
                   <th> Lesson </th>
                 </tr>
               </thead>
+              { this.state.attemptedLessons.map((lesson, index) => {
+                return (
+                  <tr>
+                    <td> {lesson.unit_id} </td>
+                    <td> {lesson.lesson_id} - {lesson.lesson_name} </td>                        <td> {assignment.due_date} </td>
+                  </tr>
+                )
+              })}
             </table>
             }
           </div>

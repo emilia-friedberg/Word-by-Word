@@ -3,7 +3,7 @@ class UnitOneSentence < ApplicationRecord
   has_many :unit_one_prompts
 
   def prompts
-    self.unit_one_prompts
+    UnitOnePrompt.where(unit_one_sentence_id: self.id)
   end
 
   validates :content, presence: true
