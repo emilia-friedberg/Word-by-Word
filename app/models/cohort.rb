@@ -7,4 +7,9 @@ class Cohort < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 75 }
   validates :access_code, presence: true, length: { maximum: 50 }
+
+  def tally_students_with_overdue_assignments
+    self.students.select { |student| student.has_overdue_assignment?(self) }.length
+  end
+
 end
