@@ -41,7 +41,9 @@ class Lesson < ApplicationRecord
   end
 
   def score(student)
-    score = self.prompts.map { |prompt| student.attempts.find_by(prompt_id: prompt.id).correct? }.length
+    score = self.prompts.map do |prompt|
+       student.attempts.find_by(prompt_id: prompt.id).correct? if student.attempts.find_by(prompt_id: prompt.id)
+    end.length
   end
 
   def mastered?(student)
