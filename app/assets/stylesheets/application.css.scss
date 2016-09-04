@@ -14,50 +14,49 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-#brand-logo {
-  height: 50px;
-  width: 70px;
+
+ body {
+   padding-bottom: 65px;
+ }
+
+ #brand-logo {
+   height: 50px;
+   width: 70px;
+ }
+
+ .navbar li a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 16px;
+   font-size: 16px;
+   text-decoration: none;
+ }
+ //
+ .navbar li:hover {
+   background-color: #808080;
+ }
+
+ .navbar li a:hover {
+   text-decoration-color: white;
+ }
+
+.footer {
+    position: fixed;
+    width: 100%;
+    padding-top: 10px;
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: #FFF;
+  .footer-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #D3D3D3;
+    text-decoration: none;
+    .footer-bar li {
+      display: inline-block;
+      font-size: 8px;
+    }
+  }
 }
-
-
- // .navbar ul {
- //   list-style-type: none;
- //   margin: 0;
- //   padding: 0;
- //   background-color: #333;
- //   overflow: hidden;
- // }
- //
- // .navbar li {
- //   display: inline-block;
- //   float: left;
- //   font-family: "Times New Roman";
- // }
- //
- // .navbar li a {
- //   display: block;
- //   color: white;
- //   text-align: center;
- //   padding: 16px;
- //   font-size: 16px;
- //   text-decoration: none;
- // }
- //
- // .navbar li a:hover {
- //   background-color: #808080;
- // }
- //
- // #logoutButton {
- //   font-family: "Times New Roman";
- //   font-size: 16px;
- //   display: block;
- //   color: white;
- //   text-align: center;
- //   padding: 16px;
- //   background: none;
- //   border: none;
- // }
- //
- // #logoutButton:hover {
- //   background-color: #808080;
- // }
