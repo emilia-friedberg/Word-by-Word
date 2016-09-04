@@ -43,7 +43,7 @@ class StudentDashboard extends React.Component {
   handleSubmit(event) {
     $.ajax({
       method: 'post',
-      url: `/students/${this.props.studentId}/info`,
+      url: `/students/${this.props.studentId}/cohorts`,
       data: $(event.target).serialize()
     }).done(function(response) {
       location.reload()

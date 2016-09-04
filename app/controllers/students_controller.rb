@@ -84,7 +84,7 @@ class StudentsController < ApplicationController
   def assign_cohort
     student = Student.find(params[:id])
     cohort = Cohort.find_by(access_code: params[:cohort][:access_code])
-    cohort.students << student
+    cohort.students << student if cohort.students.find_by_id(student.id).nil?
   end
 
 end

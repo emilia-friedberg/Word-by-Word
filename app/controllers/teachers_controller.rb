@@ -25,11 +25,18 @@ class TeachersController < ApplicationController
     teacher_hash = {
       teacher: teacher,
       teacherHasCohorts: teacher_has_cohorts,
-      teacherCohorts: cohorts
+      teacherCohorts: cohorts,
+      lessons: Lesson.all
     }
 
     render json: teacher_hash.to_json
 
+  end
+
+  def assign_cohort
+    teacher = Teacher.find(params[:id])
+    cohort = Cohort.find_by(access_code: params[:cohort][:access_code])
+    cohort.teachers << teacher if cohort.teachers.find_by_id(teacher.id).nil?
   end
 
 end
