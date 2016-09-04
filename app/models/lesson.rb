@@ -46,9 +46,6 @@ class Lesson < ApplicationRecord
 
   def mastered?(student)
     self.attempts.select { |attempt| attempt[:scholar_id] = student.id}.last(10).all? { |attempt| attempt.correct? }
-
-    # self.sentences.prompts.each do |prompt|
-    #   correctly_attempted_props << prompt if student.attempts.where(prompt_id: prompt.id).last(10)
   end
 
 end
