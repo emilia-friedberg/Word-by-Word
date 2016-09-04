@@ -14,9 +14,8 @@ class Assignment < ApplicationRecord
       sentence.prompts.each do |prompt|
         all_prompts << prompt
       end
-      all_prompts
     end
-    p all_prompts
+    all_prompts
   end
 
   def completed?(student)
@@ -24,7 +23,12 @@ class Assignment < ApplicationRecord
     self.prompts.each do |prompt|
       attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
     end
-    return true if attempted_prompts.length === self.prompts.length
+    if !self.completion_number.nil?
+      completion_number = self.completion_number
+    else
+      completion_number = self.prompts.length
+    end
+    return true if attempted_prompts.length === completion_number
     return false
   end
 
