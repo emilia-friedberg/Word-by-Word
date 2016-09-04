@@ -2,7 +2,7 @@ class HomeInfo extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="summary-blurb">
         <div className="page-header">
           <h2>Framework</h2>
         </div>
