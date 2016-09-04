@@ -75,7 +75,11 @@ class StudentsController < ApplicationController
         }
       end
 
-      attempted_lessons = attempted_lessons.uniq - (attempted_lessons & assigned_lessons)
+      attempted_lessons.each do |lesson|
+        mastered_lessons << lesson if lesson.mastered?(student)
+      end
+
+      attempted_lessons = attempted_lessons.uniq - (attempted_lessons & assigned_lessons) - mastered_lessons
       attempted_lessons.map do |lesson|
         {
           lesson_id: lesson.id,
@@ -84,7 +88,23 @@ class StudentsController < ApplicationController
         }
       end
 
-      student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts, pendingAssignments: pending_assignments, pastDueAssignments: past_due_assignments, completedAssignments: completed_assignments, attemptedLessons: attempted_lessons}
+      mastered_lessons = mastered_lessons.uniq.map do |lesson|
+        {
+          lesson_id: lesson.id,
+          lesson_name: lesson.name,
+          unit_id: lesson.unit.id,
+          score: "#{lesson.score(student)}/#{lesson.prompts.length}"
+        }
+      end
+
+      student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts, pendingAssignments: pending_assignments, pastDueAssignments: past_due_assignments, completedAssignments: completed_assignments, attemptedLessons: attempted_lessons, masteredLessons: mastered_lessons}
       render json: student_hash.to_json
   end
+
+  def assign_cohort
+    student = Student.find(params[:id])
+    cohort = Cohort.find_by(access_code: params[:cohort][:access_code])
+    cohort.students << student
+  end
+
 end

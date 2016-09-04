@@ -8,8 +8,12 @@ class StudentDashboard extends React.Component {
       pendingAssignments: [],
       pastDueAssignments: [],
       completedAssignments: [],
-      attemptedLessons: []
+      attemptedLessons: [],
+      masteredLessons: [],
+      cohortFormVisible: false
     }
+    this.toggleAddCohortForm = this.toggleAddCohortForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -24,14 +28,43 @@ class StudentDashboard extends React.Component {
         pendingAssignments: response.pendingAssignments,
         pastDueAssignments: response.pastDueAssignments,
         completedAssignments: response.completedAssignments,
-        attemptedLessons: response.attemptedLessons
+        attemptedLessons: response.attemptedLessons,
+        masteredLessons: response.masteredLessons
       })
     }.bind(this))
   }
+
+  toggleAddCohortForm() {
+    this.setState({
+      cohortFormVisible: !this.state.cohortFormVisible
+    })
+  }
+
+  handleSubmit(event) {
+    $.ajax({
+      method: 'post',
+      url: `/students/${this.props.studentId}/info`,
+      data: $(event.target).serialize()
+    }).done(function(response) {
+      location.reload()
+    })
+  }
+
+
   render() {
     return(
       <div className="container">
         <h1> Welcome </h1>
+          <button onClick={this.toggleAddCohortForm} type="button">Add Your Cohort</button>
+          { this.state.cohortFormVisible ?
+              <form onSubmit={this.handleSubmit}>
+                <label htmlFor="cohort[access_code]">Access Code:</label>
+                <input type="text" name="cohort[access_code]" id="cohortAccessCode"/>
+                <input type="submit" value="Submit" className="form-input" />
+              </form>
+            :
+              null
+          }
           { this.state.studentBelongsToCohort ?
             <div>
 
@@ -109,7 +142,8 @@ class StudentDashboard extends React.Component {
                       <tr>
                         <td> {assignment.created_at}</td>
                         <td> {assignment.unit_id} </td>
-                        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>                        <td> {assignment.score} </td>
+                        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>
+                        <td> {assignment.score} </td>
                       </tr>
                     )
                   })}
@@ -134,7 +168,7 @@ class StudentDashboard extends React.Component {
                 return (
                   <tr>
                     <td> {lesson.unit_id} </td>
-                    <td> {lesson.lesson_id} - {lesson.lesson_name} </td>                        <td> {assignment.due_date} </td>
+                    <td> {lesson.lesson_id} - {lesson.lesson_name} </td>
                   </tr>
                 )
               })}
@@ -143,6 +177,9 @@ class StudentDashboard extends React.Component {
           </div>
           <div className="mastered-topics">
             <h2> Mastered Topics </h2>
+            { this.state.masteredLessons.length < 1 ?
+              <p> Answer ten questions in a row correctly to demonstrate your mastery of a topic. </p>
+              :
             <table className="table table-hover table-responsive">
               <thead className="thead-inverse">
                 <tr>
@@ -151,7 +188,18 @@ class StudentDashboard extends React.Component {
                   <th>Score</th>
                 </tr>
               </thead>
+              { this.state.masteredLessons.map((lesson, index) => {
+                return (
+                  <tr>
+                    <td> {lesson.unit_id} </td>
+                    <td> {lesson.lesson_id} - {lesson.lesson_name} </td>
+                    <td> {lesson.score} </td>
+                  </tr>
+                )
+              })}
+
             </table>
+          }
           </div>
       </div>
     )

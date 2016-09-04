@@ -41,14 +41,13 @@ class Lesson < ApplicationRecord
   end
 
   def score(student)
-    score = self.prompts.map { |prompt| student.attempts.find_by(prompt_id: prompt.id).correct? }.length
+    score = self.prompts.map do |prompt|
+       student.attempts.find_by(prompt_id: prompt.id).correct? if student.attempts.find_by(prompt_id: prompt.id)
+    end.length
   end
 
   def mastered?(student)
     self.attempts.select { |attempt| attempt[:scholar_id] = student.id}.last(10).all? { |attempt| attempt.correct? }
-
-    # self.sentences.prompts.each do |prompt|
-    #   correctly_attempted_props << prompt if student.attempts.where(prompt_id: prompt.id).last(10)
   end
 
 end
