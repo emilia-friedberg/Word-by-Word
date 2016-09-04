@@ -15,7 +15,6 @@ class UnitOnePractice extends React.Component {
     this.dragStart = this.dragStart.bind(this)
     this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
   dragStart(ev) {
