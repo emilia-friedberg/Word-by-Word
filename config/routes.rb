@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :cohorts
   resources :assignments
   root to: 'application#index'
+
+  get '/practice/u1t', to: 'practice#show'
 end

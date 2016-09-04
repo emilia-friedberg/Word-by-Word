@@ -1,16 +1,85 @@
-.droppable {
+.dropBoxes {
   height: 300px;
   width: 300px;
-  background-color: darkgray;
-  border: 4px solid black;
+  background-color: pink;
+  border: 4px solid darkgray;
   margin: 30px;
+  border-radius: 10px;
   display: inline-block;
+  position: absolute;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
 
-.dragged {
+.draggable {
   font-size: 3em;
-  background-color: blue;
+  background-color: #a78db0;
   padding: 10px;
+  margin: 10px;
   border: 3px solid black;
-  max-width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+  display: inline-block;
+  color: oldlace;
+  font-family: 'Oswald', sans-serif;
+  // position: relative;
+}
+#submitContainer {
+  background-color: lightgreen;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  display: inline-block;
+  margin: 10px;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+  border: 3px solid black;
+
+  a {
+    margin: auto;
+    font-size: 1.5em;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-family: 'Oswald', sans-serif;
+
+  }
+}
+
+#boxContainer {
+  background-color: beige;
+  width: 750px;
+  height: 400px;
+  margin: 50px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+}
+
+#wordBox {
+  height: 200px;
+  background-color: beige;
+  display: inline-block;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  margin-left: 200px;
+}
+
+#dropBox1 {
+
+}
+#dropBox2 {
+  left: 400px;
+}
+#allRight {
+  width: 400px;
+  height: 100px;
+  background-color: green;
+  border: 5px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 3em;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
 }
