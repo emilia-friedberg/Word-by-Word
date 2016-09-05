@@ -46,6 +46,10 @@ class Student < User
     completed_assignments
   end
 
+  def completed_assignments_by_cohort(cohort)
+    completed_assignments.select {|assignment| assignment.cohort.id == cohort.id}
+  end
+
   def past_due_assignments
     past_due_assignments = []
     self.cohorts.each do |cohort|
@@ -55,6 +59,11 @@ class Student < User
     end
     past_due_assignments
   end
+
+  def past_due_assignments_by_cohort(cohort)
+    past_due_assignments.select {|assignment| assignment.cohort.id == cohort.id}
+  end
+
 
   def pending_assignments
     pending_assignments = []
