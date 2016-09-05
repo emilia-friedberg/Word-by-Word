@@ -196,7 +196,7 @@ class TeacherDashboard extends React.Component {
         : null
       }
       <h2> Cohorts </h2>
-      { this.state.teacherHasCohorts ?
+      { this.state.teacherCohorts.length > 0 ?
       <table className="table table-hover table-responsive">
         <thead className="thead-inverse">
           <tr>
