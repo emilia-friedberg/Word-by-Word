@@ -47,7 +47,10 @@ class Student < User
   end
 
   def completed_assignments_by_cohort(cohort)
-    completed_assignments.select {|assignment| assignment.cohort.id == cohort.id}
+    completed_assignments = []
+    cohort.assignments.each do |assignment|
+      completed_assignments << assignment if assignment.completed?(self)
+    end
   end
 
   def past_due_assignments
@@ -61,7 +64,10 @@ class Student < User
   end
 
   def past_due_assignments_by_cohort(cohort)
-    past_due_assignments.select {|assignment| assignment.cohort.id == cohort.id}
+    past_due_assignments = []
+    cohort.assignments.each do |assignment|
+      past_due_assignments << assignment if assignment.overdue? && !assignment.completed?(self)
+    end
   end
 
 

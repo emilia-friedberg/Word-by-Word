@@ -17,7 +17,6 @@ class CohortsController < ApplicationController
         first_name: student.first_name,
         last_name: student.last_name,
         email: student.email,
-        # clean up these methods - they're super slow
         number_of_completed_assignments: student.completed_assignments_by_cohort(cohort).length,
         number_of_past_due_assignments: student.past_due_assignments_by_cohort(cohort).length
       }
