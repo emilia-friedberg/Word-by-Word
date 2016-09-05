@@ -38,5 +38,6 @@ class Assignment < ApplicationRecord
 
   validates :cohort_id, presence: true
   validates :lesson_id, presence: true
+  validates :due_date, presence: true
 
 end
