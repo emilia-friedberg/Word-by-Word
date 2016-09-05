@@ -13,6 +13,8 @@ class TeacherDashboard extends React.Component {
       addAssignmentFormVisible: false,
       addCohortOptionVisible: false
     }
+    this.showAddCohortButton = this.showAddCohortButton.bind(this);
+    this.showAddAssignmentButton = this.showAddAssignmentButton.bind(this);
     this.hideAddCohortButton = this.hideAddCohortButton.bind(this);
     this.hideAddAssignmentButton = this.hideAddAssignmentButton.bind(this);
     this.toggleAddAssignmentForm = this.toggleAddAssignmentForm.bind(this);
@@ -34,6 +36,18 @@ class TeacherDashboard extends React.Component {
   hideAddAssignmentButton() {
     this.setState({
       addAssignmentButtonVisible: false
+    })
+  }
+
+  showAddCohortButton() {
+    this.setState({
+      addCohortButtonVisible: true
+    })
+  }
+
+  showAddAssignmentButton() {
+    this.setState({
+      addAssignmentButtonVisible: true
     })
   }
 
@@ -95,7 +109,12 @@ class TeacherDashboard extends React.Component {
       cohort: this.refs.cohortInput.value,
       completion_number: this.refs.completionNumber.value,
       due_date: this.refs.dueDate.value
-    })
+    }).done(function(response) {
+      this.refs.completionNumber.value = ''
+      this.refs.dueDate.value = ''
+      this.toggleAddAssignmentForm()
+      this.showAddAssignmentButton()
+    }.bind(this))
   }
 
 
