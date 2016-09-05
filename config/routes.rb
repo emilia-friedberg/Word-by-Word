@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'teachers/:id', to: 'teachers#show'
   post 'teachers/:id/cohorts', to: 'teachers#assign_cohort'
   get 'practice/units/:unit_id/lessons/:lesson_id', to: 'practice#show'
-  get 'cohorts/:id/info', to: 'cohorts#info'
+  get 'cohorts/:id/cohort_info', to: 'cohorts#cohort_info'
+  get 'cohorts/:id/students_info', to: 'cohorts#students_info'
+  get 'cohorts/:id/assignments_info', to: 'cohorts#assignments_info'
   resources :cohorts
   resources :assignments
   root to: 'application#index'
