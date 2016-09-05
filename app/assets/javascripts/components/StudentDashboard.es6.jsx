@@ -54,6 +54,7 @@ class StudentDashboard extends React.Component {
   render() {
     return(
       <div className="container">
+        <TopicList />
         <h1> Welcome, {this.state.student.display_name} </h1>
           <button onClick={this.toggleAddCohortForm} type="button">Add Your Cohort</button>
           { this.state.cohortFormVisible ?
