@@ -35,35 +35,86 @@ puts "students created"
 
 end
 
+puts "teachers created"
+
 15.times do
   new_cohort = Cohort.create(name: Faker::Team.name, access_code: Faker::Code.asin)
   Teacher.all.sample.cohorts << new_cohort
   Student.all.sample(25).each { |s| s.cohorts << new_cohort }
 end
 
+puts "cohorts created"
+
 15.times do
   Child.create(teacher_id: Teacher.all.sample.id, cohort_id: Cohort.all.sample.id, access_code: Faker::Code.asin)
 end
+
+puts "child (orphans) created"
 
 Unit.create(name: 'test development unit', description: "this unit is for testing purposes")
 5.times do
   Lesson.create(name: Faker::Hacker.ingverb + Faker::Hacker.noun, unit_id: Unit.first.id, common_core_standard: "CC 2.4")
 end
 
+puts "units created"
+
 50.times do
   Assignment.create(cohort_id: Cohort.all.sample.id, lesson_id: Lesson.all.sample.id, due_date: Faker::Date.between(2.days.from_now, 10.days.from_now))
 end
 
-30.times do
-  UnitOneSentence.create(content: Faker::Hipster.sentence(3), lesson_id: Lesson.all.sample.id)
+puts "assignments created"
+
+
+
+require_relative 'sen_seed'
+
+u_one_lesson = Unit.first.lessons.find(3)
+real_seeds.each do |seed_sentence|
+  lesson_sentence = u_one_lesson.unit_one_sentences.create(content: seed_sentence[:sentence])
+
+  lesson_sentence.unit_one_prompts.create(
+    text: 'sample prompt',
+    answer_type: 'S',
+    answer: seed_sentence[:subjects]
+  )
+  lesson_sentence.unit_one_prompts.create(
+    text: 'sample prompt',
+    answer_type: 'V',
+    answer: seed_sentence[:verbs]
+  )
 end
 
-UnitOneSentence.all.each do |s|
-  3.times do
-    hip_sen = Faker::Hipster.sentence(3)
-    UnitOnePrompt.create(unit_one_sentence_id: s.id, text: hip_sen, answer_type: ['S','V', 'O'].sample, answer: hip_sen.split.sample)
-  end
-end
+
+#   when 4
+#     #o
+#     lesson_sentence.unit_one_prompts.create(
+#       text: 'sample prompt',
+#       answer_type: 'O',
+#       answer: seed_sentence[:objects]
+#     )
+#   when 5
+#     #svo
+#     lesson_sentence.unit_one_prompts.create(
+#       text: 'sample prompt',
+#       answer_type: 'S',
+#       answer: seed_sentence[:subjects]
+#     )
+#     lesson_sentence.unit_one_prompts.create(
+#       text: 'sample prompt',
+#       answer_type: 'V',
+#       answer: seed_sentence[:verbs]
+#     )
+#     lesson_sentence.unit_one_prompts.create(
+#       text: 'sample prompt',
+#       answer_type: 'O',
+#       answer: seed_sentence[:objects]
+#     )
+#   end
+#
+# end
+
+
+puts "unit one sentences created"
 
 1000.times do
   Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: UnitOneSentence.all.sample.id, scholar_id: Student.all.sample.id, scholar_type: 'Student')

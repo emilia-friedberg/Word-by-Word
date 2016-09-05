@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   root to: 'application#index'
 
   get '/practice/u1t', to: 'practice#show'
+
+  get 'UnitOneWord', to: 'practice#unitoneword'
 end
