@@ -19,6 +19,8 @@
    padding-bottom: 15px;
  }
 
+
+
 #body-info {
    border: 1px solid #021a40;
  }
@@ -65,8 +67,21 @@
    background-color: #808080;
  }
 
+
+#homeLogin {
+  margin: 30px;
+  padding: 15px;
+  background-color: lightblue;
+  border: 2px solid black;
+  margin-top: 100px;
+  float: right;
+  width: 20%;
+}
+
 .summary-blurb {
   margin-left: 40px;
+  min-width: 70%;
+  float: left;
 }
 
  .footer {
