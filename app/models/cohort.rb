@@ -12,4 +12,8 @@ class Cohort < ApplicationRecord
     self.students.select { |student| student.has_overdue_assignment?(self) }.length
   end
 
+  def tally_students_with_completed_assignment(assignment)
+    self.students.select { |student| student.completed_assignments.include?(assignment)}.length
+  end
+
 end
