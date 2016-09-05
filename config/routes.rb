@@ -17,4 +17,13 @@ Rails.application.routes.draw do
   resources :cohorts
   resources :assignments
   root to: 'application#index'
+
+  get '/practice/UnitOne/Lesson1', to: 'unitone#one'
+  get '/practice/UnitOne/Lesson2', to: 'unitone#two'
+  get '/practice/UnitOne/Lesson3', to: 'unitone#three'
+  get '/practice/UnitOne/Lesson4', to: 'unitone#four'
+  get '/practice/UnitOne/Lesson5', to: 'unitone#five'
+
+  get '/UnitOneSentence', to: 'unitone#unitonesentence'
+  post '/UnitOne/Attempts', to: 'unitone#attempts'
 end

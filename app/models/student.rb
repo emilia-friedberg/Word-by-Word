@@ -87,4 +87,8 @@ class Student < User
     self.attempted_lessons.uniq - self.assigned_lessons - self.mastered_lessons
   end
 
+  def type
+    return 'Student'
+  end
+
 end
