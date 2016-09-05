@@ -16,6 +16,7 @@ class UnitoneController < ApplicationController
 
   def attempts
     if current_user
+      binding.pry
       params.permit(:subjects, :verbs, :objects).each do |key, value|
 
         Attempt.create(
