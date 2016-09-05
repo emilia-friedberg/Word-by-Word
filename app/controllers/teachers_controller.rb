@@ -15,6 +15,7 @@ class TeachersController < ApplicationController
 
   cohorts = teacher.cohorts.map do |cohort|
     {
+      id: cohort.id,
       name: cohort.name,
       access_code: cohort.access_code,
       size: cohort.students.length,

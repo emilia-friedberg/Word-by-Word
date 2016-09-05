@@ -130,7 +130,7 @@ class TeacherDashboard extends React.Component {
         teacherCohorts: response.teacherCohorts,
         lessons: response.lessons
       })
-    }.bind(this))
+    }.bind(this));
   }
 
   render () {
@@ -207,9 +207,10 @@ class TeacherDashboard extends React.Component {
           </tr>
         </thead>
         { this.state.teacherCohorts.map((cohort, index) => {
+          var link = "/cohorts/"
           return (
             <tr>
-              <td> {cohort.name} </td>
+              <td> <a href={link.concat(cohort.id)}> {cohort.name} </a> </td>
               <td> {cohort.size} </td>
               <td> {cohort.number_of_students_with_overdue_assignments} </td>
               <td> {cohort.access_code} </td>
