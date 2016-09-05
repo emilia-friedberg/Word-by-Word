@@ -7,4 +7,9 @@ class Student < User
   def attempts
     Attempt.where(scholar_id: id, scholar_type: 'Student')
   end
+
+  def type
+    return 'Student'
+  end
+
 end

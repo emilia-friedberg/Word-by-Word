@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   resources :assignments
   root to: 'application#index'
 
-  get '/practice/u1t', to: 'practice#show'
+  get '/practice/UnitOne/Lesson1', to: 'unitone#one'
+  get '/practice/UnitOne/Lesson2', to: 'unitone#two'
+  get '/practice/UnitOne/Lesson3', to: 'unitone#three'
+  get '/practice/UnitOne/Lesson4', to: 'unitone#four'
+  get '/practice/UnitOne/Lesson5', to: 'unitone#five'
 
-  get 'UnitOneWord', to: 'practice#unitoneword'
+  get '/UnitOneSentence', to: 'unitone#unitonesentence'
+  post '/UnitOne/Attempts', to: 'unitone#attempts'
 end

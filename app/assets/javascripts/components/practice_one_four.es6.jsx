@@ -1,5 +1,4 @@
-class UnitOnePractice extends React.Component {
-
+class PracticeOneFour extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -7,11 +6,16 @@ class UnitOnePractice extends React.Component {
       sentence: [],
       subjects: [],
       verbs: [],
+      objects: [],
       nextSet: {},
       allCorrect: false,
       subjectsCorrect: false,
       verbsCorrect: false,
-      displayFeedback: false
+      objectsCorrect: false,
+      displayFeedback: false,
+      verbPromptId: 0,
+      subjectPromptId: 0,
+      objecPromptId: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
@@ -23,17 +27,19 @@ class UnitOnePractice extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneWord').done((response)=> {
+    $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
-        verbs: response.verbs
+        verbs: response.verbs,
+        objects: response.objects,
+        verbPromptId: response.verb_prompt_id,
+        subjectPromptId: response.subject_prompt_id,
+        objecPromptId: response.object_prompt_id
         })
-        // debugger;
     })
-    $.get('/UnitOneWord').done((response) => {
+    $.get('/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
-      // debugger;
     })
 
   }
@@ -44,14 +50,17 @@ class UnitOnePractice extends React.Component {
       sentence: this.state.nextSet.sentence,
       verbs: this.state.nextSet.verbs,
       subjects: this.state.nextSet.subjects,
+      obejcts: this.state.nextSet.objects,
+      verbPromptId: this.state.nextSet.verb_prompt_id,
+      subjectPromptId: this.state.nextSet.subject_prompt_id,
+      objecPromptId: this.state.nextSet.object_prompt_id,
       allCorrect: false,
       subjectsCorrect: false,
       verbsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneWord').done((response)=> {
+    $.get('/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
-      // debugger;
     })
     this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
@@ -107,6 +116,14 @@ class UnitOnePractice extends React.Component {
       this.setState({subjectsCorrect: true})}
     else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
       this.setState({verbsCorrect: true}) }
+
+      if (this.state.displayFeedback === false) {
+        $.post('/UnitOne/Attempts', {
+            objects: this.state.objectsCorrect
+          }).done( (response) => {
+
+        })
+      }
 
     this.setState({ displayFeedback: true })
 

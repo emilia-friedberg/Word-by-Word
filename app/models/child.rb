@@ -9,6 +9,8 @@ class Child < ApplicationRecord
     Attempt.where(scholar_id: id, scholar_type: 'Child')
   end
 
-
+  def type
+    return 'Child'
+  end
   validates :teacher_id, :access_code, presence: true, length: { maximum: 25 }
 end

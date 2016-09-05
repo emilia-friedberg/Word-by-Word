@@ -112,8 +112,8 @@ def real_seeds
     objects: []
   },
   {
-    sentence: "D'Marcus dances",
-    subjects: ["D'Marcus"],
+    sentence: "DMarcus dances",
+    subjects: ["DMarcus"],
     verbs: ['dances'],
     objects: []
   },
@@ -150,7 +150,7 @@ def real_seeds
   {
     sentence: "Green monsters eat potatoes",
     subjects: ['monsters'],
-    verbs: ['eats'],
+    verbs: ['eat'],
     objects: ['potatoes']
   },
   {
