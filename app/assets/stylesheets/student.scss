@@ -1,46 +1,19 @@
-// Place all the styles related to the Student controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.tab-content {
-    display: none;
+#add-cohort-submit {
+  // height: 26px;
+  border-radius: 0px;
+  // padding-bottom: -15px;
+  // padding-top: -10px;
+  // height: 26px;
 }
 
-.tab-content .active {
-  display: block;
+#add-cohort-form {
+  margin-top: 5px;
+  vertical-align: middle;
+  // height: 26px;
 }
 
-.tabs {
-    float: left;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 16px;
-    list-style: none;
-}
-.tabs li {
-    float: left;
-    margin-right: 16px;
-    padding: 10px 15px;
-    height: 30px;
-    line-height: 30px;
-}
-.tabs li a {
-    color: #666;
-    font-family: Helvetica, Arial, sans-serif;
-    text-decoration: none;
-}
-
-.tabs li.active {
-    border: 1px solid #ccc;
-    border-bottom: 1px solid white;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    margin-bottom: -1px;
-    height: 31px;
-    padding: 9px 14px;
-}
-
-.tabs li.active a {
-    color: black;
-    text-decoration: none;
-    border-bottom: none;
+#cohort-access-code {
+  height: 34px;
+  margin-left: 3px;
+  vertical-align: middle;
 }
