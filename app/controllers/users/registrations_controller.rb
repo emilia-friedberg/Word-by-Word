@@ -54,7 +54,7 @@ before_action :configure_account_update_params, only: [:update]
     if current_user.status == "Teacher"
       "/teachers/#{current_user.id}"
     else
-      "/students/#{current_user.id}/info"
+      "/students/#{current_user.id}"
     end
   end
 

@@ -1,4 +1,4 @@
-class PracticeOneThree extends React.Component {
+class PracticeOneOne extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -27,8 +27,6 @@ class PracticeOneThree extends React.Component {
   }
 
   componentDidMount() {
-
-    // $.post("/UnitOne/Attempts", {test: "test"})
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
@@ -38,7 +36,7 @@ class PracticeOneThree extends React.Component {
         verbPromptId: response.verb_prompt_id,
         subjectPromptId: response.subject_prompt_id,
         objecPromptId: response.object_prompt_id
-        })
+      })
     })
     $.get('/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
@@ -67,6 +65,7 @@ class PracticeOneThree extends React.Component {
     this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
   }
+
 
   replaceWord(ev) {
     if (this.state.beingDragged.innerText === ev.target.innerText) {
@@ -100,57 +99,38 @@ class PracticeOneThree extends React.Component {
       dragged.className = "inBox"
       ev.target.appendChild(dragged)
   }
-  //
 
   handleSubmit(event) {
     event.preventDefault();
     var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {
       return element.innerText
     })
-    var wordsInVerbBox = Array.from(this.refs.verbBox.children).map(function(element) {
-      return element.innerText
-    })
+    // var wordsInVerbBox = Array.from(this.refs.verbBox.children).map(function(element) {
+    //   return element.innerText
+    // })
 
-    var instantFeedback = {subjects: false, verbs: false, objects: false}
-    if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() && wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({ allCorrect: true, subjectsCorrect: true, verbsCorrect: true })
-      instantFeedback.subjects = true
-      instantFeedback.verbs = true
-    }
-    else if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({subjectsCorrect: true})
-      instantFeedback.subjects = true
-    }
-    else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
-      this.setState({verbsCorrect: true})
-      instantFeedback.verbs = true
+    // debugger;
+    // if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() && wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
+    //   this.setState({ allCorrect: true, subjectsCorrect: true, verbsCorrect: true })
+    // }
+    if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
+      this.setState({subjectsCorrect: true, allCorrect: true})}
+    // else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
+    //   this.setState({verbsCorrect: true}) }
+
+    if (this.state.displayFeedback === false) {
+      $.post('/UnitOne/Attempts', {subjects: this.state.subjectsCorrect}).done( (response) => {
+
+      })
     }
 
-      if (this.state.displayFeedback === false) {
-        // debugger;
-        $.post("/UnitOne/Attempts",
-          {attempts:
-            {
-              verbs:
-                {
-                  correct: instantFeedback.verbs,
-                  prompt_id: this.state.verbPromptId
-                },
-              subjects:
-                {
-                  correct: instantFeedback.subjects,
-                  prompt_id: this.state.subjectPromptId
-                }
-            }
-          }
-        ).done( (response) => {
 
-          } )
-      }
 
     this.setState({ displayFeedback: true })
-    // debugger;
-    // post request for attemps goes here....
+
+    // post request for attempts goes here....
+
+
   }
 
   render() {
@@ -174,37 +154,25 @@ class PracticeOneThree extends React.Component {
               })}
             </div>
           }
-          { this.state.verbsCorrect ?
-            <div className="feedbackMsg"> you got all the verbs correct </div>
-            : <div>
-            Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
-              return <div className="littleFeedbackWord"> {word.innerText} </div>
-            })} </div> :  <div> </div> }
 
-            The correct contents were {this.state.verbs.map(function(word) {
-              return <div className="littleFeedbackWord"> {word} </div>
-            })}
-          </div>
-        }
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      : <div id="openingPrompt"> Find the Subjects in the sentence below</div>
   }
 
 
         <div id="problemContainer">
           <div id='boxContainer'>
             <div className='boxHeader'>Subjects</div>
-            <div className='boxHeader'>Verbs</div>
+
             <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
-            <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
-            </div>
+
           </div>
         </div>
 
         {this.state.allCorrect ?
-          <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question &#8594; </a></div>
+          <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
           :
           <div id="wordBox">
             <div id="promptWrap">
@@ -213,13 +181,12 @@ class PracticeOneThree extends React.Component {
             <div id="sentenceWrap">
               <h3> Sentence: <em>"{ this.state.sentence.join(" ") }"</em></h3>
             </div>
-
-              {this.state.sentence.map( (word, i) => {
-              return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } /> })}
-
-              <div id="submitContainer" >
-                <a href="/submit" onClick={this.handleSubmit}> submit </a>
-              </div>
+            <div id="submitContainer" >
+              <a href="/submit" onClick={this.handleSubmit}> submit </a>
+            </div>
+            {this.state.sentence.map( (word, i) => {
+              return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } />
+            })}
           </div>
 
       }
