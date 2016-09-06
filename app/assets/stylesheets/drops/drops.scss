@@ -20,15 +20,14 @@
   margin: 20px 75px 40px 20px;
   border-radius: 30px;
   background-color: #6B8E23;
-  justify-content: center;
-  align-items: center;
   &:hover {
     background-color: #008000;
   }
   a {
     font-size: 1.875em;
     color: black;
-    text-align: center;
+    display: table-cell;
+    justify-content: center;
     &:hover {
       text-decoration: none;
     }
@@ -140,26 +139,31 @@
 }
 
 #submitContainer {
-  background-color: lightgreen;
+  background-color: #6B8E23;
   width: 100px;
   height: 100px;
   border-radius: 50px;
   display: inline-block;
-  margin: 10px;
+  margin: 10px 10px 20px 30px;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
   border: 3px solid black;
+  &:hover {
+    background-color: #008000;
+  }
 
   a {
     margin: auto;
+    color: black;
     font-size: 1.5em;
     display: block;
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 20px;
     font-family: 'Oswald', sans-serif;
-
+    text-decoration: none;
   }
 }
+
 
 #boxContainer {
   background-color: beige;

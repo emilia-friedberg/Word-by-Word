@@ -195,12 +195,13 @@ class PracticeOneThree extends React.Component {
             <div id="sentenceWrap">
               <h3> Sentence: <em>"{ this.state.sentence.join(" ") }"</em></h3>
             </div>
-            <div id="submitContainer" >
-              <a href="/submit" onClick={this.handleSubmit}> submit </a>
-            </div>
-            {this.state.sentence.map( (word, i) => {
-              return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } />
-            })}
+
+              {this.state.sentence.map( (word, i) => {
+              return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } /> })}
+
+              <div id="submitContainer" >
+                <a href="/submit" onClick={this.handleSubmit}> submit </a>
+              </div>
           </div>
 
       }
