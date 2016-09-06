@@ -138,6 +138,7 @@ class PracticeOneThree extends React.Component {
   render() {
     return (
       <div>
+      <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> you got it!!! </div>
@@ -170,7 +171,8 @@ class PracticeOneThree extends React.Component {
         }
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      :
+      <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
   }
 
 
@@ -186,7 +188,10 @@ class PracticeOneThree extends React.Component {
         </div>
 
         {this.state.allCorrect ?
-          <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question &#8594; </a></div>
+          <div>
+            <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question&#8594; </a></div>
+            <Footer/>
+          </div>
           :
           <div id="wordBox">
             <div id="promptWrap">
@@ -202,6 +207,7 @@ class PracticeOneThree extends React.Component {
               <div id="submitContainer" >
                 <a href="/submit" onClick={this.handleSubmit}> submit </a>
               </div>
+              <Footer/>
           </div>
 
       }
