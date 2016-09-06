@@ -71,7 +71,7 @@ def real_seeds
   {
     sentence: "The neighborhood is loud",
     subjects: ['neighborhood'],
-    verbs: ['loud']
+    verbs: ['is']
   },
   {
     sentence: "Bacon is fatty",
