@@ -1,4 +1,6 @@
+include UnitoneHelper
 class UnitoneController < ApplicationController
+
   def one
   end
 
@@ -16,15 +18,20 @@ class UnitoneController < ApplicationController
 
   def attempts
     if current_user
-      params.permit(:subjects, :verbs, :objects).each do |key, value|
-
-        Attempt.create(
+      # binding.pry
+      attempt_params.each do |key, value|
+        # binding.pry
+        new_attempt = Attempt.new(
           prompt_type: 'UnitOneSentence',
           prompt_id: value[:prompt_id],
-          correct?: value[:correct],
+          correct?: to_bool(value[:correct]),
           scholar_id: current_user.id,
           scholar_type: current_user.type
         )
+        new_attempt.save
+        # binding.pry
+        p new_attempt.correct?
+        puts new_attempt.errors.full_messages.join("\n\n\n\n\n")
       end
     end
   end
@@ -73,6 +80,12 @@ class UnitoneController < ApplicationController
       subject_prompt_id: subject_prompt_id,
       object_prompt_id: object_prompt_id
     }
+  end
+
+  private
+
+  def attempt_params
+    params.require(:attempts)
   end
 
 end
