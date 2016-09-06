@@ -13,7 +13,6 @@ class PracticeOneOne extends React.Component {
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
-    this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -53,7 +52,6 @@ class PracticeOneOne extends React.Component {
       this.setState({nextSet: response})
     })
     this.refs.subjectBox.innerHTML = "";
-    this.refs.verbBox.innerHTML = "";
   }
 
 

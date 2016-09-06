@@ -13,7 +13,6 @@ class PracticeOneFour extends React.Component {
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
-    this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -36,8 +35,8 @@ class PracticeOneFour extends React.Component {
   loadNext(ev) {
     ev.preventDefault();
     this.setState({
-      obejcts: this.state.nextSet.objects,
-      sentence: response.sentence,
+      objects: this.state.nextSet.objects,
+      sentence: this.state.nextSet.sentence,
       objectPromptId: this.state.nextSet.object_prompt_id,
       allCorrect: false,
       objectsCorrect: false,
@@ -46,8 +45,7 @@ class PracticeOneFour extends React.Component {
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
-    this.refs.subjectBox.innerHTML = "";
-    this.refs.verbBox.innerHTML = "";
+    this.refs.objectBox.innerHTML = ""
   }
 
   replaceWord(ev) {

@@ -19,7 +19,6 @@ class PracticeOneFive extends React.Component {
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
-    this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -41,6 +40,8 @@ class PracticeOneFive extends React.Component {
     $.get('/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
+
+
   }
 
   loadNext(ev) {
@@ -49,7 +50,7 @@ class PracticeOneFive extends React.Component {
       sentence: this.state.nextSet.sentence,
       verbs: this.state.nextSet.verbs,
       subjects: this.state.nextSet.subjects,
-      obejcts: this.state.nextSet.objects,
+      objects: this.state.nextSet.objects,
       verbPromptId: this.state.nextSet.verb_prompt_id,
       subjectPromptId: this.state.nextSet.subject_prompt_id,
       objectPromptId: this.state.nextSet.object_prompt_id,
@@ -65,6 +66,7 @@ class PracticeOneFive extends React.Component {
     this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
     this.refs.objectBox.innerHTML = "";
+
   }
 
   replaceWord(ev) {
@@ -94,6 +96,9 @@ class PracticeOneFive extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log('subjects' , this.state.subjects )
+    console.log('verbs' , this.state.verbs )
+    console.log('objects' , this.state.objects )
     event.preventDefault();
     var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {
       return element.innerText
@@ -105,19 +110,23 @@ class PracticeOneFive extends React.Component {
       return element.innerText
     })
     var instantFeedback = {subjects: false, verbs: false, objects: false}
+    // verbs
     if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() ) {
       this.setState({verbsCorrect: true})
       instantFeedback.verbs = true
     }
+    // subjects
     if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join() ) {
-      this.setState({verbsCorrect: true})
+      this.setState({subjectsCorrect: true})
       instantFeedback.subjects = true
     }
+    // objects
     if (wordsInObjectBox.sort().join() === this.state.objects.sort().join() ) {
-      this.setState({verbsCorrect: true})
+      this.setState({objectsCorrect: true})
       instantFeedback.objects = true
     }
-    if (instantFeedback.subjects && instantFeedback.verbs && this.instantFeedback.objects ) {
+
+    if (instantFeedback.subjects && instantFeedback.verbs && instantFeedback.objects ) {
       this.setState({allCorrect: true})
     }
 

@@ -15,7 +15,17 @@ class UnitsController < ApplicationController
   end
 
   def lesson_show
-    # this needs to be changed to accomodate the params....
-    render :'unitone/three'
+    case params[:lesson_id].to_i
+    when 1
+      render :'unitone/one'
+    when 2
+      render :'unitone/two'
+    when 3
+      render :'unitone/three'
+    when 4
+      render :'unitone/four'
+    when 5
+      render :'unitone/five'
+    end
   end
 end

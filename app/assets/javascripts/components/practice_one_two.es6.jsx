@@ -17,7 +17,7 @@ class PracticeOneTwo extends React.Component {
       subjectPromptId: 0,
       objecPromptId: 0
     }
-    this.dropIn1 = this.dropIn1.bind(this)
+
     this.dragStart = this.dragStart.bind(this)
     this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -62,7 +62,6 @@ class PracticeOneTwo extends React.Component {
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
-    this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
   }
 
