@@ -137,7 +137,7 @@ class TeacherDashboard extends React.Component {
     return (
     <div className="container">
       <TopicList />
-      <h1> Welcome, {this.state.teacher.display_name} </h1>
+      <h1> Welcome, {this.state.teacher.first_name} {this.state.teacher.last_name}</h1>
       { this.state.addCohortButtonVisible ?
         <button type="button" onClick={this.toggleAddCohortOption}>Add A Cohort</button>
         : null
