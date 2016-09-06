@@ -1,0 +1,13 @@
+#topic-list {
+  width: 200px;
+  float: left;
+  margin-left: 20px;
+  // position: fixed;
+  border-right: gray 1px solid;
+  // display: inline-block;
+}
+
+#topic-list ol {
+  margin: 0;
+  padding: 15px;
+}
