@@ -6,16 +6,13 @@ class PracticeOneThree extends React.Component {
       sentence: [],
       subjects: [],
       verbs: [],
-      objects: [],
       nextSet: {},
       allCorrect: false,
       subjectsCorrect: false,
       verbsCorrect: false,
-      objectsCorrect: false,
       displayFeedback: false,
       verbPromptId: 0,
       subjectPromptId: 0,
-      objecPromptId: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
@@ -34,16 +31,13 @@ class PracticeOneThree extends React.Component {
         sentence: response.sentence,
         subjects: response.subjects,
         verbs: response.verbs,
-        objects: response.objects,
         verbPromptId: response.verb_prompt_id,
         subjectPromptId: response.subject_prompt_id,
-        objecPromptId: response.object_prompt_id
         })
     })
     $.get('/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
-
   }
 
   loadNext(ev) {
@@ -52,7 +46,6 @@ class PracticeOneThree extends React.Component {
       sentence: this.state.nextSet.sentence,
       verbs: this.state.nextSet.verbs,
       subjects: this.state.nextSet.subjects,
-      obejcts: this.state.nextSet.objects,
       verbPromptId: this.state.nextSet.verb_prompt_id,
       subjectPromptId: this.state.nextSet.subject_prompt_id,
       objecPromptId: this.state.nextSet.object_prompt_id,
@@ -125,9 +118,7 @@ class PracticeOneThree extends React.Component {
       this.setState({verbsCorrect: true})
       instantFeedback.verbs = true
     }
-
       if (this.state.displayFeedback === false) {
-        // debugger;
         $.post("/UnitOne/Attempts",
           {attempts:
             {
@@ -143,16 +134,11 @@ class PracticeOneThree extends React.Component {
                 }
             }
           }
-        ).done( (response) => {
-
-          } )
+        )
       }
 
     this.setState({ displayFeedback: true })
-    // debugger;
-    // post request for attemps goes here....
   }
-
   render() {
     return (
       <div>

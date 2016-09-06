@@ -5,17 +5,11 @@ class PracticeOneOne extends React.Component {
       beingDragged: <div> ***This takes a component***</div>,
       sentence: [],
       subjects: [],
-      verbs: [],
-      objects: [],
       nextSet: {},
       allCorrect: false,
       subjectsCorrect: false,
-      verbsCorrect: false,
-      objectsCorrect: false,
       displayFeedback: false,
-      verbPromptId: 0,
       subjectPromptId: 0,
-      objecPromptId: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
@@ -30,12 +24,8 @@ class PracticeOneOne extends React.Component {
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
-        subjects: response.subjects,
-        verbs: response.verbs,
-        objects: response.objects,
-        verbPromptId: response.verb_prompt_id,
+        subjects: response.subjects,,
         subjectPromptId: response.subject_prompt_id,
-        objecPromptId: response.object_prompt_id
       })
     })
     $.get('/UnitOneSentence').done((response) => {
@@ -93,46 +83,30 @@ class PracticeOneOne extends React.Component {
     ev.target.appendChild(dragged)
   }
 
-  dropIn2(ev) {
-      ev.preventDefault();
-      var dragged = this.state.beingDragged
-      dragged.className = "inBox"
-      ev.target.appendChild(dragged)
-  }
 
   handleSubmit(event) {
     event.preventDefault();
     var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {
       return element.innerText
     })
-    // var wordsInVerbBox = Array.from(this.refs.verbBox.children).map(function(element) {
-    //   return element.innerText
-    // })
-
-    // debugger;
-    // if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() && wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-    //   this.setState({ allCorrect: true, subjectsCorrect: true, verbsCorrect: true })
-    // }
+    var instantFeedback = {subjects: false}
     if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({subjectsCorrect: true, allCorrect: true})}
-    // else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
-    //   this.setState({verbsCorrect: true}) }
-
-    if (this.state.displayFeedback === false) {
-      $.post('/UnitOne/Attempts', {subjects: this.state.subjectsCorrect}).done( (response) => {
-
-      })
+      this.setState({subjectsCorrect: true, allCorrect: true})
+      instantFeedback.subjects = true
     }
-
-
-
+    if (this.state.displayFeedback === false) {
+      $.post('/UnitOne/Attempts',
+          {attempts: {
+              subjects: {
+                correct: instantFeedback.subjects,
+                prompt_id: this.state.subjectPromptId
+                        }
+                      }
+            }
+        )
+    }
     this.setState({ displayFeedback: true })
-
-    // post request for attemps goes here....
-
-
   }
-
   render() {
     return (
       <div>
@@ -159,18 +133,13 @@ class PracticeOneOne extends React.Component {
 
       : <div id="openingPrompt"> Find the Subjects in the sentence below</div>
   }
-
-
         <div id="problemContainer">
           <div id='boxContainer'>
             <div className='boxHeader'>Subjects</div>
-
             <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
-
           </div>
         </div>
-
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
           :
@@ -188,10 +157,7 @@ class PracticeOneOne extends React.Component {
               return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } />
             })}
           </div>
-
       }
-
-
       </div>
     )
   }
