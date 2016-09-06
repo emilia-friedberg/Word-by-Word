@@ -46,16 +46,6 @@ class CohortShow extends React.Component {
     }.bind(this));
   }
 
-  // deleteAssignment(event) {
-  //   var assignmentId = event.target.closest('tr').id
-  //   $.ajax({
-  //     method: 'delete',
-  //     url: `/assignments/${assignmentId}`
-  //   }).done(function(response) {
-  //     this.getAssignments()
-  //   }.bind(this))
-  // }
-
   componentWillMount() {
     this.getStudents();
     this.getCohort();
@@ -64,6 +54,7 @@ class CohortShow extends React.Component {
   render () {
     return (
       <div className="container">
+      <TopicList />
         <h1> {this.state.cohort.name} </h1>
         <h2> Students </h2>
         { this.state.students.length < 1 ?

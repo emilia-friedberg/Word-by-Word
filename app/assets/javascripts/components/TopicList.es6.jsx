@@ -10,13 +10,14 @@ class TopicList extends React.Component {
       method: 'get',
       url: '/units/unit_list'
     }).done(function(response) {
-      debugger;
       this.setState({
         units: response.units
       })
     }.bind(this))
   }
   render() {
+    var linkPartOne = "/units/"
+    var linkPartTwo = "/lessons/"
     return (
       <div>
       <h3> Topics </h3>
@@ -29,7 +30,7 @@ class TopicList extends React.Component {
               <ol>
                 {unit.lessons.map((lesson, index) => {
                   return (
-                    <li> {lesson.name} </li>
+                    <li><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.id)}>{lesson.name}</a> </li>
                   )
                 })}
               </ol>
