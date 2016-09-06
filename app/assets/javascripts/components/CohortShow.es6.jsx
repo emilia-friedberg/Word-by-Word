@@ -67,8 +67,9 @@ class CohortShow extends React.Component {
   }
   render () {
     return (
-      <div className="container">
+      <div className="show-page-container">
       <TopicList />
+      <div className="show-page-body">
         <h1> {this.state.cohort.name} </h1>
 
         <ul className="tabs">
@@ -130,6 +131,7 @@ class CohortShow extends React.Component {
             })}
           </table>
         }
+        </div>
         </div>
       </div>
     )
