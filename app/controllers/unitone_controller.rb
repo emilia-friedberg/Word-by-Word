@@ -15,10 +15,10 @@ class UnitoneController < ApplicationController
   end
 
   def attempts
+    # binding.pry 
     if current_user
-      binding.pry
-      params.permit(:subjects, :verbs, :objects).each do |key, value|
-
+      params = params.permit("subjects", "verbs", "objects")
+      params.each do |key, value|
         Attempt.create(
           prompt_type: 'UnitOneSentence',
           prompt_id: value[:prompt_id],

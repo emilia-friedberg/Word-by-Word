@@ -27,6 +27,8 @@ class PracticeOneThree extends React.Component {
   }
 
   componentDidMount() {
+
+    // $.post("/UnitOne/Attempts", {test: "test"})
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
@@ -118,6 +120,7 @@ class PracticeOneThree extends React.Component {
       this.setState({verbsCorrect: true}) }
 
       if (this.state.displayFeedback === false) {
+        // debugger;
         $.post('/UnitOne/Attempts', {
             verbs: {
               correct: this.state.verbsCorrect,
@@ -127,7 +130,10 @@ class PracticeOneThree extends React.Component {
               correct: this.state.subjectsCorrect,
               prompt_id: this.state.subjectPromptId
             }
-          })
+          }
+        ).done( (response) => {
+
+          } )
       }
 
     this.setState({ displayFeedback: true })
