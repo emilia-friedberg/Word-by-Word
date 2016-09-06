@@ -13,7 +13,77 @@ class StudentDashboard extends React.Component {
       cohortFormVisible: false
     }
     this.toggleAddCohortForm = this.toggleAddCohortForm.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.viewMasteredTopics = this.viewMasteredTopics.bind(this);
+    this.viewLateAssignments = this.viewLateAssignments.bind(this);
+    this.viewPracticeLessons = this.viewPracticeLessons.bind(this);
+    this.viewActiveAssignments = this.viewActiveAssignments.bind(this);
+    this.viewCompletedAssignments = this.viewCompletedAssignments.bind(this)
+  }
+
+  viewCompletedAssignments() {
+    this.refs.completedTab.className += "active"
+    this.refs.completedAssignments.className += "active"
+    this.refs.pastDueTab.className = ''
+    this.refs.activeTab.className = ''
+    this.refs.masteredTab.className = ''
+    this.refs.pastPracticeTab.className = ''
+    this.refs.pastDueAssignments.className = "tab-content"
+    this.refs.activeAssignments.className = "tab-content"
+    this.refs.masteredTopics.className = "tab-content"
+    this.refs.pastPracticeLessons.className = "tab-content"
+  }
+
+  viewActiveAssignments() {
+    this.refs.activeTab.className += "active"
+    this.refs.activeAssignments.className += "active"
+    this.refs.pastDueTab.className = ''
+    this.refs.masteredTab.className = ''
+    this.refs.completedTab.className = ''
+    this.refs.pastPracticeTab.className = ''
+    this.refs.pastDueAssignments.className = "tab-content"
+    this.refs.masteredTopics.className = "tab-content"
+    this.refs.completedAssignments.className = "tab-content"
+    this.refs.pastPracticeLessons.className = "tab-content"
+  }
+
+  viewPracticeLessons() {
+    this.refs.pastPracticeTab.className += "active"
+    this.refs.pastPracticeLessons.className += "active"
+    this.refs.pastDueTab.className = ''
+    this.refs.activeTab.className = ''
+    this.refs.completedTab.className = ''
+    this.refs.masteredTab.className = ''
+    this.refs.pastDueAssignments.className = "tab-content"
+    this.refs.activeAssignments.className = "tab-content"
+    this.refs.completedAssignments.className = "tab-content"
+    this.refs.masteredTopics.className = "tab-content"
+  }
+
+  viewMasteredTopics() {
+    this.refs.masteredTab.className += "active"
+    this.refs.masteredTopics.className += "active"
+    this.refs.pastDueTab.className = ''
+    this.refs.activeTab.className = ''
+    this.refs.completedTab.className = ''
+    this.refs.pastPracticeTab.className = ''
+    this.refs.pastDueAssignments.className = "tab-content"
+    this.refs.activeAssignments.className = "tab-content"
+    this.refs.completedAssignments.className = "tab-content"
+    this.refs.pastPracticeLessons.className = "tab-content"
+  }
+
+  viewLateAssignments() {
+    this.refs.pastDueTab.className += "active"
+    this.refs.pastDueAssignments.className += "active"
+    this.refs.masteredTab.className = ''
+    this.refs.activeTab.className = ''
+    this.refs.completedTab.className = ''
+    this.refs.pastPracticeTab.className = ''
+    this.refs.masteredTopics.className = "tab-content"
+    this.refs.activeAssignments.className = "tab-content"
+    this.refs.completedAssignments.className = "tab-content"
+    this.refs.pastPracticeLessons.className = "tab-content"
   }
 
   componentDidMount() {
@@ -66,10 +136,23 @@ class StudentDashboard extends React.Component {
             :
               null
           }
-          { this.state.studentBelongsToCohort ?
+
+          <ul className="tabs">
+            {this.state.studentBelongsToCohort ?
+              <span>
+                <li ref="pastDueTab" className="active"><a href="#pastdueassignments" onClick={this.viewLateAssignments}> Past Due Assignments</a></li>
+                <li ref="activeTab"><a href="#activeassignments" onClick={this.viewActiveAssignments}>Active Assignments</a></li>
+                <li ref="completedTab"><a href="#completedassignments" onClick={this.viewCompletedAssignments}>Completed Assignments</a></li>
+              </span>
+            : null}
+              <span>
+                <li ref="pastPracticeTab"><a href="#pastpracticelessons" onClick={this.viewPracticeLessons}> Past Practice Lessons</a></li>
+                <li ref="masteredTab"><a href="#masteredtopics" onClick={this.viewMasteredTopics}>Mastered Topics</a></li>
+              </span>
+          </ul>
             <div>
 
-              <div className="past-due-assignments">
+              <div className="tab-content" ref="pastDueAssignments">
                 <h2> Past-Due Assignments </h2>
                 { this.state.pastDueAssignments.length < 1 ?
                   <p> You have no past-due assignments. </p>
@@ -97,7 +180,7 @@ class StudentDashboard extends React.Component {
               }
               </div>
 
-              <div className="active-assignments">
+              <div className="tab-content" ref="activeAssignments">
               <h2> Active Assignments </h2>
               { this.state.pendingAssignments.length < 1 ?
                 <p> You have no active assignments. </p>
@@ -124,7 +207,7 @@ class StudentDashboard extends React.Component {
                 </table>
               }
               </div>
-              <div className="completed-assignments">
+              <div className="tab-content" ref="completedAssignments">
                 <h2> Completed Assignments </h2>
                 { this.state.completedAssignments.length < 1 ?
                   <p> You have no completed assignments. </p>
@@ -152,8 +235,7 @@ class StudentDashboard extends React.Component {
               }
               </div>
             </div>
-            : <br /> }
-          <div className="past-practice-lessons">
+          <div className="tab-content" ref="pastPracticeLessons">
             <h2> Past Practice Lessons </h2>
             { this.state.attemptedLessons.length < 1 ?
               <p> You have no past practice lessons. </p>
@@ -176,7 +258,7 @@ class StudentDashboard extends React.Component {
             </table>
             }
           </div>
-          <div className="mastered-topics">
+          <div className="tab-content" ref="masteredTopics">
             <h2> Mastered Topics </h2>
             { this.state.masteredLessons.length < 1 ?
               <p> Answer ten questions in a row correctly to demonstrate your mastery of a topic. </p>
