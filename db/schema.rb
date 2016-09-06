@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20160904183755) do
     t.string   "first_name"
     t.string   "last_name",              default: "", null: false
     t.string   "display_name"
-    t.string   "status",                              null: false
+    t.string   "status"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
