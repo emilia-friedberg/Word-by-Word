@@ -15,15 +15,14 @@ class PracticeOneFive extends React.Component {
       displayFeedback: false,
       verbPromptId: 0,
       subjectPromptId: 0,
-      objecPromptId: 0
+      objectPromptId: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
-    this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.loadNext = this.loadNext.bind(this);
+    this.loadNext = this.loadNext.bind(this)
   }
 
   componentDidMount() {
@@ -35,12 +34,13 @@ class PracticeOneFive extends React.Component {
         objects: response.objects,
         verbPromptId: response.verb_prompt_id,
         subjectPromptId: response.subject_prompt_id,
-        objecPromptId: response.object_prompt_id
+        objectPromptId: response.object_prompt_id
         })
     })
     $.get('/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
+
 
   }
 
@@ -50,13 +50,14 @@ class PracticeOneFive extends React.Component {
       sentence: this.state.nextSet.sentence,
       verbs: this.state.nextSet.verbs,
       subjects: this.state.nextSet.subjects,
-      obejcts: this.state.nextSet.objects,
+      objects: this.state.nextSet.objects,
       verbPromptId: this.state.nextSet.verb_prompt_id,
       subjectPromptId: this.state.nextSet.subject_prompt_id,
-      objecPromptId: this.state.nextSet.object_prompt_id,
+      objectPromptId: this.state.nextSet.object_prompt_id,
       allCorrect: false,
       subjectsCorrect: false,
       verbsCorrect: false,
+      objectsCorrect: false,
       displayFeedback: false
     })
     $.get('/UnitOneSentence').done((response)=> {
@@ -64,6 +65,8 @@ class PracticeOneFive extends React.Component {
     })
     this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
+    this.refs.objectBox.innerHTML = "";
+
   }
 
   replaceWord(ev) {
@@ -92,14 +95,10 @@ class PracticeOneFive extends React.Component {
     ev.target.appendChild(dragged)
   }
 
-  dropIn2(ev) {
-      ev.preventDefault();
-      var dragged = this.state.beingDragged
-      dragged.className = "inBox"
-      ev.target.appendChild(dragged)
-  }
-
   handleSubmit(event) {
+    console.log('subjects' , this.state.subjects )
+    console.log('verbs' , this.state.verbs )
+    console.log('objects' , this.state.objects )
     event.preventDefault();
     var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {
       return element.innerText
@@ -107,29 +106,54 @@ class PracticeOneFive extends React.Component {
     var wordsInVerbBox = Array.from(this.refs.verbBox.children).map(function(element) {
       return element.innerText
     })
-
-    // debugger;
-    if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() && wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({ allCorrect: true, subjectsCorrect: true, verbsCorrect: true })
+    var wordsInObjectBox = Array.from(this.refs.objectBox.children).map(function(element) {
+      return element.innerText
+    })
+    var instantFeedback = {subjects: false, verbs: false, objects: false}
+    // verbs
+    if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() ) {
+      this.setState({verbsCorrect: true})
+      instantFeedback.verbs = true
     }
-    else if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({subjectsCorrect: true})}
-    else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
-      this.setState({verbsCorrect: true}) }
+    // subjects
+    if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join() ) {
+      this.setState({subjectsCorrect: true})
+      instantFeedback.subjects = true
+    }
+    // objects
+    if (wordsInObjectBox.sort().join() === this.state.objects.sort().join() ) {
+      this.setState({objectsCorrect: true})
+      instantFeedback.objects = true
+    }
+
+    if (instantFeedback.subjects && instantFeedback.verbs && instantFeedback.objects ) {
+      this.setState({allCorrect: true})
+    }
 
       if (this.state.displayFeedback === false) {
-        $.post('/UnitOne/Attempts', {
-            verbs: this.state.verbsCorrect,
-            subjects: this.state.subjectsCorrect,
-            objects: this.state.objectsCorrect
-          }).done( (response) => {
-
-        })
+        $.post('/UnitOne/Attempts',
+        {attempts:
+          {
+            verbs:
+              {
+                correct: instantFeedback.verbs,
+                prompt_id: this.state.verbPromptId
+              },
+            subjects:
+              {
+                correct: instantFeedback.subjects,
+                prompt_id: this.state.subjectPromptId
+              },
+            objects:
+              {
+                correct: instantFeedback.objects,
+                prompt_id: this.state.objectPromptId
+              }
+          }
+        }
+        )
       }
-
     this.setState({ displayFeedback: true })
-
-    // post request for attemps goes here....
   }
 
   render() {
@@ -165,19 +189,32 @@ class PracticeOneFive extends React.Component {
             })}
           </div>
         }
+        { this.state.objectsCorrect ?
+          <div className="feedbackMsg"> you got all the objects correct </div>
+          : <div>
+          Your object box wasn't quite right. { this.refs.objectBox.children.length  ? <div> You included {Array.from(this.refs.objectBox.children).map(function(word) {
+            return <div className="littleFeedbackWord"> {word.innerText} </div>
+          })} </div> :  <div> </div> }
+
+          The correct contents were {this.state.objects.map(function(word) {
+            return <div className="littleFeedbackWord"> {word} </div>
+          })}
+        </div>
+      }
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      : <div id="openingPrompt"> Find the Subjects, Verbs, AND Objects in the sentence below</div>
   }
-
-
         <div id="problemContainer">
           <div id='boxContainer'>
             <div className='boxHeader'>Subjects</div>
             <div className='boxHeader'>Verbs</div>
+            <div className='boxHeader'>Objects</div>
             <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
-            <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
+            <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+            </div>
+            <div ref="objectBox" id="dropBox3" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
         </div>
@@ -199,10 +236,7 @@ class PracticeOneFive extends React.Component {
               return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } />
             })}
           </div>
-
       }
-
-
       </div>
     )
   }

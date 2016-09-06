@@ -31,7 +31,7 @@ class UnitoneController < ApplicationController
   end
 
   def unitonesentence
-    sentence = Unit.first.lessons.find(3).sentences.sample
+    sentence = UnitOneSentence.all.sample
     prompts = sentence.unit_one_prompts
 
 
@@ -63,8 +63,6 @@ class UnitoneController < ApplicationController
     end
 
 
-
-    # binding.pry
     return render json: {
       sentence: sentence.content.split,
       subjects: subjects,

@@ -10,7 +10,7 @@ def real_seeds
     sentence: "You like chocolate",
     subjects: ['You'],
     verbs: ['like'],
-    objects: []
+    objects: ['chocolate']
   },
   {
     sentence: "Sarah and Albert run fast.",
@@ -21,32 +21,38 @@ def real_seeds
   {
     sentence: "Robert sings",
     subjects: ['Robert'],
-    verbs: ['sings']
+    verbs: ['sings'],
+    objects: []
   },
   {
     sentence: "Canarsie is nice",
     subjects: ['Canarsie'],
-    verbs: ['is']
+    verbs: ['is'],
+    objects: ['nice']
   },
   {
     sentence: "Omar scored 30 points",
     subjects: ['Omar'],
-    verbs: ['scored']
+    verbs: ['scored'],
+    objects: ['points']
   },
   {
     sentence: "Hoverboards are dangerous",
     subjects: ['Hoverboards'],
-    verbs: ['are']
+    verbs: ['are'],
+    objects: []
   },
   {
     sentence: "Smoking is not healthy",
     subjects: ['Smoking'],
-    verbs: ['is']
+    verbs: ['is'],
+    objects: []
   },
   {
     sentence: "Tania has dreams",
     subjects: ['Tania'],
-    verbs: ['has']
+    verbs: ['has'],
+    objects: []
   },
   {
     sentence: "Marco likes the movies",
@@ -61,32 +67,38 @@ def real_seeds
   {
     sentence: "Obama is the president.",
     subjects: ['Obama'],
-    verbs: ['is']
+    verbs: ['is'],
+    objects: ['president']
   },
   {
     sentence: "Trump discriminated against minorities.",
     subjects: ['Trump'],
-    verbs: ['discriminated']
+    verbs: ['discriminated'],
+    objects: ['minorities']
   },
   {
     sentence: "The neighborhood is loud",
     subjects: ['neighborhood'],
-    verbs: ['is']
+    verbs: ['is'],
+    objects: ['loud']
   },
   {
     sentence: "Bacon is fatty",
     subjects: ['Bacon'],
-    verbs: ['is']
+    verbs: ['is'],
+    objects: ['fatty']
   },
   {
     sentence: "George and Elisa are married",
     subjects: ['George','Elisa'],
-    verbs: ['are']
+    verbs: ['are'],
+    objects: ['married']
   },
   {
     sentence: "Juasia sells mittens",
     subjects: ['Juasia'],
-    verbs: ['sells']
+    verbs: ['sells'],
+    objects: []
   },
   {
     sentence: "Sherecia buys eggs",
@@ -97,7 +109,8 @@ def real_seeds
   {
     sentence: "Pitbulls are adorable",
     subjects: ['Pitbulls'],
-    verbs: ['are']
+    verbs: ['are'],
+    objects: []
   },
   {
     sentence: "Fatima and Grace play football",
@@ -109,7 +122,7 @@ def real_seeds
     sentence: "The apartment is small",
     subjects: ['apartment'],
     verbs: ['is'],
-    objects: []
+    objects: ['small']
   },
   {
     sentence: "DMarcus dances",

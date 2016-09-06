@@ -17,13 +17,13 @@ class PracticeOneTwo extends React.Component {
       subjectPromptId: 0,
       objecPromptId: 0
     }
-    this.dropIn1 = this.dropIn1.bind(this)
+
     this.dragStart = this.dragStart.bind(this)
     this.dropIn2 = this.dropIn2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.loadNext = this.loadNext.bind(this);
+    this.loadNext = this.loadNext.bind(this)
   }
 
   componentDidMount() {
@@ -62,7 +62,6 @@ class PracticeOneTwo extends React.Component {
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
-    this.refs.subjectBox.innerHTML = "";
     this.refs.verbBox.innerHTML = "";
   }
 
@@ -85,13 +84,6 @@ class PracticeOneTwo extends React.Component {
     ev.preventDefault();
   }
 
-  dropIn1(ev) {
-    ev.preventDefault();
-    var dragged = this.state.beingDragged
-    dragged.className = "inBox"
-    ev.target.appendChild(dragged)
-  }
-
   dropIn2(ev) {
       ev.preventDefault();
       var dragged = this.state.beingDragged
@@ -101,29 +93,27 @@ class PracticeOneTwo extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {
-      return element.innerText
-    })
+
     var wordsInVerbBox = Array.from(this.refs.verbBox.children).map(function(element) {
       return element.innerText
     })
+    var instantFeedback = {subjects: false, verbs: false, objects: false}
 
-    // debugger;
     if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join())  {
       this.setState({ allCorrect: true, verbsCorrect: true })
+      instantFeedback.verbs = true
     }
-
     if (this.state.displayFeedback === false) {
-      $.post('/UnitOne/Attempts', {
-          verbs: this.state.verbsCorrect
-        }).done( (response) => {
-
-      })
-    }
-
+      $.post('/UnitOne/Attempts',
+                {attempts:
+                  {verbs:
+                      {
+                        correct: instantFeedback.verbs,
+                        prompt_id: this.state.verbPromptId
+                      }
+                  }
+                })}
     this.setState({ displayFeedback: true })
-
-    // post request for attemps goes here....
   }
 
   render() {
@@ -149,26 +139,23 @@ class PracticeOneTwo extends React.Component {
         }
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      : <div id="openingPrompt"> Find the verbs in the sentence below</div>
   }
 
 
         <div id="problemContainer">
           <div id='boxContainer'>
-
             <div className='boxHeader'>Verbs</div>
-
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
         </div>
-
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
           :
           <div id="wordBox">
             <div id="promptWrap">
-              Drag the subject(s) into the subject box, and drag the verb(s) into the verb box.
+              Drag the verb(s) into the verb box.
             </div>
             <div id="sentenceWrap">
               <h3> Sentence: <em>"{ this.state.sentence.join(" ") }"</em></h3>

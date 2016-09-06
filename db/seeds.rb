@@ -68,21 +68,28 @@ puts "assignments created"
 
 require_relative 'sen_seed'
 
-u_one_lesson = Unit.first.lessons.find(3)
-real_seeds.each do |seed_sentence|
-  lesson_sentence = u_one_lesson.unit_one_sentences.create(content: seed_sentence[:sentence])
+Unit.first.lessons.each do |u_one_lesson|
+  real_seeds.each do |seed_sentence|
+    lesson_sentence = u_one_lesson.unit_one_sentences.create(content: seed_sentence[:sentence])
 
-  lesson_sentence.unit_one_prompts.create(
-    text: 'sample prompt',
-    answer_type: 'S',
-    answer: seed_sentence[:subjects]
-  )
-  lesson_sentence.unit_one_prompts.create(
-    text: 'sample prompt',
-    answer_type: 'V',
-    answer: seed_sentence[:verbs]
-  )
+    lesson_sentence.unit_one_prompts.create(
+      text: 'sample prompt',
+      answer_type: 'S',
+      answer: seed_sentence[:subjects]
+    )
+    lesson_sentence.unit_one_prompts.create(
+      text: 'sample prompt',
+      answer_type: 'V',
+      answer: seed_sentence[:verbs]
+    )
+    lesson_sentence.unit_one_prompts.create(
+      text: 'sample prompt',
+      answer_type: 'O',
+      answer: seed_sentence[:objects]
+    )
+  end
 end
+
 
 
 #   when 4
