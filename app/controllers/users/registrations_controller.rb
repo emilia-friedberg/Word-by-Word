@@ -51,7 +51,11 @@ before_action :configure_account_update_params, only: [:update]
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    '/practice/UnitOne/Lesson1'
+    if current_user.status
+      "/teachers/#{current_user.id}"
+    else
+      "/students/#{current_user.id}/info"
+    end
   end
 
   # The path used after sign up for inactive accounts.

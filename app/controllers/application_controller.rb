@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
 
 private
   def after_sign_in_path_for(resource)
-    '/teachers/1'
+    if current_user.status
+      "/teachers/#{current_user.id}"
+    else
+      "/students/#{current_user.id}/info"
+    end
   end
 
 end

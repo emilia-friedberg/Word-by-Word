@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'practice/show'
 
   devise_for :users, controllers: { registrations: 'users/registrations'}
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'students/:id/info', to: 'students#info'
   post 'students/:id/cohorts', to: 'students#assign_cohort'
