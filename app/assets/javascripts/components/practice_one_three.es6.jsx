@@ -100,6 +100,7 @@ class PracticeOneThree extends React.Component {
       dragged.className = "inBox"
       ev.target.appendChild(dragged)
   }
+  //
 
   handleSubmit(event) {
     event.preventDefault();
@@ -121,14 +122,19 @@ class PracticeOneThree extends React.Component {
 
       if (this.state.displayFeedback === false) {
         // debugger;
-        $.post('/UnitOne/Attempts', {
-            verbs: {
-              correct: this.state.verbsCorrect,
-              prompt_id: this.state.verbPromptId
-            },
-            subjects: {
-              correct: this.state.subjectsCorrect,
-              prompt_id: this.state.subjectPromptId
+        $.post("/UnitOne/Attempts",
+          {attempts:
+            {
+              verbs:
+                {
+                  correct: this.state.verbsCorrect,
+                  prompt_id: this.state.verbPromptId
+                },
+              subjects:
+                {
+                  correct: this.state.subjectsCorrect,
+                  prompt_id: this.state.subjectPromptId
+                }
             }
           }
         ).done( (response) => {
