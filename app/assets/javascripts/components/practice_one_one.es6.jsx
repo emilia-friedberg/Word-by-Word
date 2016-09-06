@@ -179,7 +179,7 @@ class PracticeOneOne extends React.Component {
               Drag the subject(s) into the subject box, and drag the verb(s) into the verb box.
             </div>
             <div id="sentenceWrap">
-              <h3> Sentence: <em>"{ this.state.sentence.join(" ") }"</em></h3>
+              <h3 className="sentence"> Sentence: <em>"{ this.state.sentence.join(" ") }"</em></h3>
             </div>
             <div id="submitContainer" >
               <a href="/submit" onClick={this.handleSubmit}> submit </a>
