@@ -188,7 +188,7 @@ def real_seeds
     sentence: "Puppies bark loudly",
     subjects: ['Puppies'],
     verbs: ['bark'],
-    objects: ['loudly']
+    objects: []
   },
   {
     sentence: "Dewayne buys posters",
