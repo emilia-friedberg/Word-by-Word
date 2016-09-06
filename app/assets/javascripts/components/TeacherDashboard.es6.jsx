@@ -139,55 +139,55 @@ class TeacherDashboard extends React.Component {
       <TopicList />
       <div className="show-page-body">
         <h1> Welcome, {this.state.teacher.first_name} {this.state.teacher.last_name}</h1>
-          <button className="btn btn-info primary-button" type="button" onClick={this.toggleAddCohortOption}>Add A Cohort</button>
-          <button className="btn btn-info primary-button" type="button" onClick={this.toggleAddAssignmentForm}>Add A New Assignment</button>
+          <button className="btn btn-info button" type="button" onClick={this.toggleAddCohortOption}>Add A Cohort</button>
+          <button className="btn btn-info button" type="button" onClick={this.toggleAddAssignmentForm}>Add A New Assignment</button>
         { this.state.addAssignmentFormVisible ?
-          <form onSubmit={this.handleAssignmentFormSubmit}>
-            <label htmlFor="cohort[name]">Cohort:</label>
-            <select ref="cohortInput">
+          <form className="add-assignment-form" onSubmit={this.handleAssignmentFormSubmit}>
+            <label className="add-assignment-label" htmlFor="cohort[name]">Cohort:</label>
+            <select className="add-assignment-input" ref="cohortInput">
             { this.state.teacherCohorts.map((cohort, index) => {
               return (
                 <option name="cohort[name]"> {cohort.name} </option>
               )
             })}
             </select>
-            <label htmlFor="lesson[name]">Lesson:</label>
-              <select ref="lessonInput">
+            <label className="add-assignment-label" htmlFor="lesson[name]">Lesson:</label>
+              <select className="add-assignment-input" ref="lessonInput">
               { this.state.lessons.map((lesson, index) => {
                 return (
                   <option name="lesson[name]"> {lesson.name} </option>
                 )
               })}
               </select>
-            <label htmlFor="assignment[due_date]">Due Date:</label>
-            <input ref="dueDate" type="datetime-local" name="assignment[due_date]" id="assignmentDueDate"/>
-            <label htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
-            <input type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
-            <input type="submit" value="Submit" className="form-input btn btn-info" />
+            <label className="add-assignment-label" htmlFor="assignment[due_date]">Due Date:</label>
+            <input className="add-assignment-input" ref="dueDate" value="" placeholder='' type="datetime-local" name="assignment[due_date]" id="assignmentDueDate"/>
+            <label className="add-assignment-label" htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
+            <input className="add-assignment-input" type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
+            <input type="submit" value="Submit" className="form-input btn btn-info add-assignment-submit" />
           </form>
           : null
         }
         { this.state.addCohortOptionVisible ?
           <div className="add-cohort-option-div">
-            <button className="btn btn-info" type="button" onClick={this.toggleAddExistingCohortForm}>Existing Cohort</button>
-            <button className="btn btn-info" type="button" onClick={this.toggleAddNewCohortForm}>Create New Cohort</button>
+            <button className="btn btn-info button" type="button" onClick={this.toggleAddExistingCohortForm}>Existing Cohort</button>
+            <button className="btn btn-info button" type="button" onClick={this.toggleAddNewCohortForm}>Create New Cohort</button>
           </div>
           : null
         }
         { this.state.addExistingCohortFormVisible ?
-          <form onSubmit={this.handleExistingCohortFormSubmit}>
+          <form className="add-cohort-form" onSubmit={this.handleExistingCohortFormSubmit}>
             <label htmlFor="cohort[access_code]">Access Code:</label>
-            <input type="text" name="cohort[access_code]" id="cohortAccessCode"/>
-            <input type="submit" value="Submit" className="btn btn-info form-input" />
+            <input type="text" name="cohort[access_code]" className="cohort-form-input"/>
+            <input type="submit" value="Submit" className="add-cohort-submit btn btn-info form-input" />
           </form>
           : null
         }
         { this.state.addNewCohortFormVisible ?
-          <form onSubmit={this.handleNewCohortFormSubmit}>
+          <form className="add-cohort-form" onSubmit={this.handleNewCohortFormSubmit}>
             <label htmlFor="cohort[name]">Name:</label>
-            <input type="text" name="cohort[name]" id="cohortName"/>
+            <input type="text" name="cohort[name]" className="cohort-form-input"/>
             <input type="hidden" name="teacher[id]" value={this.props.teacherId}/>
-            <input type="submit" value="Submit" className="btn btn-info form-input" />
+            <input type="submit" value="Submit" className="add-cohort-submit btn btn-info form-input" />
           </form>
           : null
         }
