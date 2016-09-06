@@ -128,7 +128,7 @@ class PracticeOneOne extends React.Component {
 
     this.setState({ displayFeedback: true })
 
-    // post request for attemps goes here....
+    // post request for attempts goes here....
 
 
   }

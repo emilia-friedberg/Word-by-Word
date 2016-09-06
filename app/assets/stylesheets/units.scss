@@ -1,3 +1,20 @@
 // Place all the styles related to the units controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#feedback {
+  margin: 20px;
+}
+
+#feedbackMsg {
+  margin: 20px;
+}
+
+#proceedeMsg {
+  margin: 20px;
+  padding: 10px;
+  border: solid 1px black;
+  font-size: 0.875em; 
+}
