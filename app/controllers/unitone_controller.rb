@@ -18,20 +18,14 @@ class UnitoneController < ApplicationController
 
   def attempts
     if current_user
-      # binding.pry
       attempt_params.each do |key, value|
-        # binding.pry
-        new_attempt = Attempt.new(
+        new_attempt = Attempt.create(
           prompt_type: 'UnitOneSentence',
           prompt_id: value[:prompt_id],
           correct?: to_bool(value[:correct]),
           scholar_id: current_user.id,
           scholar_type: current_user.type
         )
-        new_attempt.save
-        binding.pry
-        p new_attempt.correct?
-        puts new_attempt.errors.full_messages.join("\n\n\n\n\n")
       end
     end
   end

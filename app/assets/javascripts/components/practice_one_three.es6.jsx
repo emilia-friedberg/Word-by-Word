@@ -111,14 +111,20 @@ class PracticeOneThree extends React.Component {
       return element.innerText
     })
 
-    // debugger;
-    if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() ) {
+    var instantFeedback = {subjects: false, verbs: false, objects: false}
+    if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join() && wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
       this.setState({ allCorrect: true, subjectsCorrect: true, verbsCorrect: true })
+      instantFeedback.subjects = true
+      instantFeedback.verbs = true
     }
     else if (wordsInSubjectBox.sort().join() === this.state.subjects.sort().join()) {
-      this.setState({subjectsCorrect: true})}
+      this.setState({subjectsCorrect: true})
+      instantFeedback.subjects = true
+    }
     else if (wordsInVerbBox.sort().join() === this.state.verbs.sort().join()) {
-      this.setState({verbsCorrect: true}) }
+      this.setState({verbsCorrect: true})
+      instantFeedback.verbs = true
+    }
 
       if (this.state.displayFeedback === false) {
         // debugger;
@@ -127,12 +133,12 @@ class PracticeOneThree extends React.Component {
             {
               verbs:
                 {
-                  correct: this.state.verbsCorrect,
+                  correct: instantFeedback.verbs,
                   prompt_id: this.state.verbPromptId
                 },
               subjects:
                 {
-                  correct: this.state.subjectsCorrect,
+                  correct: instantFeedback.subjects,
                   prompt_id: this.state.subjectPromptId
                 }
             }
@@ -143,7 +149,7 @@ class PracticeOneThree extends React.Component {
       }
 
     this.setState({ displayFeedback: true })
-
+    // debugger;
     // post request for attemps goes here....
   }
 

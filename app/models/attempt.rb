@@ -6,5 +6,5 @@ class Attempt < ApplicationRecord
     UnitOnePrompt.find(self.prompt_id)
   end
 
-  validates :correct?, :scholar_id, presence: true
+  validates  :scholar_id, presence: true
 end
