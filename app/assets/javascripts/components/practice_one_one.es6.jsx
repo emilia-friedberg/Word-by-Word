@@ -24,7 +24,7 @@ class PracticeOneOne extends React.Component {
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
-        subjects: response.subjects,,
+        subjects: response.subjects,
         subjectPromptId: response.subject_prompt_id,
       })
     })

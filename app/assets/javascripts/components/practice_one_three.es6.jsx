@@ -24,8 +24,6 @@ class PracticeOneThree extends React.Component {
   }
 
   componentDidMount() {
-
-    // $.post("/UnitOne/Attempts", {test: "test"})
     $.get('/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
@@ -93,8 +91,6 @@ class PracticeOneThree extends React.Component {
       dragged.className = "inBox"
       ev.target.appendChild(dragged)
   }
-  //
-
   handleSubmit(event) {
     event.preventDefault();
     var wordsInSubjectBox = Array.from(this.refs.subjectBox.children).map(function(element) {

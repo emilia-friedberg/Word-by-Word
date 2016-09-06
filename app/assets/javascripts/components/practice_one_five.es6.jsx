@@ -23,7 +23,7 @@ class PracticeOneFive extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.loadNext = this.loadNext.bind(this);
+    this.loadNext = this.loadNext.bind(this)
   }
 
   componentDidMount() {
@@ -145,7 +145,6 @@ class PracticeOneFive extends React.Component {
         )
       }
     this.setState({ displayFeedback: true })
-post request for attemps goes here....
   }
 
   render() {

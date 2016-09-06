@@ -23,7 +23,7 @@ class PracticeOneTwo extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.loadNext = this.loadNext.bind(this);
+    this.loadNext = this.loadNext.bind(this)
   }
 
   componentDidMount() {
@@ -112,11 +112,11 @@ class PracticeOneTwo extends React.Component {
                         correct: instantFeedback.verbs,
                         prompt_id: this.state.verbPromptId
                       }
-                  })
-                }
-
+                  }
+                })}
     this.setState({ displayFeedback: true })
   }
+
   render() {
     return (
       <div>
