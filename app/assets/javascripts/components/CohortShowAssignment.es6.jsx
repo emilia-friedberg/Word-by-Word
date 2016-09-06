@@ -57,8 +57,8 @@ class CohortShowAssignment extends React.Component {
           <td> {assignment.number_of_prompts} </td>
           <td> <input type="integer" ref="completionNumber" defaultValue={assignment.completion_number} name="assignment[completion_number]" /> </td>
           <td> {assignment.number_of_students_completed} </td>
-          <td> <button type="button" onClick={this.deleteAssignment}>Delete</button></td>
-          <td> <button type="button" onClick={this.editAssignment}>Submit Edits</button></td>
+          <td> <button type="button" className="btn btn-info table-button" onClick={this.deleteAssignment}>Delete</button></td>
+          <td> <button type="button" className="btn btn-info table-button" onClick={this.editAssignment}>Submit Edits</button></td>
         </tr>
       :
       <tr id={assignment.id}>
@@ -69,8 +69,8 @@ class CohortShowAssignment extends React.Component {
         <td> {assignment.number_of_prompts} </td>
         <td ref="completionNumber"> {assignment.completion_number} </td>
         <td> {assignment.number_of_students_completed} </td>
-        <td> <button type="button" onClick={this.deleteAssignment}>Delete</button></td>
-        <td> <button type="button" onClick={this.toggleEditable}>Edit</button></td>
+        <td> <button type="button" className="btn btn-info table-button" onClick={this.deleteAssignment}>Delete</button></td>
+        <td> <button type="button" className="btn btn-info table-button" onClick={this.toggleEditable}>Edit</button></td>
       </tr>
     }
     </tbody>

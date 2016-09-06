@@ -2,45 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.tab-content {
-    display: none;
-}
-
-.tab-content .active {
-  display: block;
-}
-
-.tabs {
-    float: left;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 16px;
-    list-style: none;
-}
-.tabs li {
-    float: left;
-    margin-right: 16px;
-    padding: 10px 15px;
-    height: 30px;
-    line-height: 30px;
-}
-.tabs li a {
-    color: #666;
-    text-decoration: none;
-}
-
-.tabs li.active {
-    border: 1px solid #ccc;
-    border-bottom: 1px solid white;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    margin-bottom: -1px;
-    height: 31px;
-    padding: 9px 14px;
-}
-
-.tabs li.active a {
-    color: black;
-    text-decoration: none;
-    border-bottom: none;
+.table-button {
+  border-radius: 0px;
+  margin-left: 3px;
+  margin-bottom: 10px;
 }

@@ -1,7 +1,28 @@
 // Place all the styles related to the Teacher controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.primary-button {
+.button {
   border-radius: 0px;
+  margin-left: 3px;
+  margin-bottom: 10px;
+  width: 184px;
+}
+
+.add-assignment-submit {
+  border-radius: 0px;
+}
+
+.add-assignment-form {
+  margin-top: 5px;
+  vertical-align: middle;
+}
+
+.add-assignment-input {
+  height: 34px;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+.add-assignment-label {
   margin-left: 3px;
 }

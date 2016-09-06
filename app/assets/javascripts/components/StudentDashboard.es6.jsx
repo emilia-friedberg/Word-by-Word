@@ -133,7 +133,7 @@ class StudentDashboard extends React.Component {
             { this.state.cohortFormVisible ?
                 <form className="add-cohort-form" onSubmit={this.handleSubmit}>
                   <label htmlFor="cohort[access_code]">Access Code: </label>
-                  <input type="text" name="cohort[access_code]" className="cohort-access-code"/>
+                  <input type="text" name="cohort[access_code]" className="cohort-form-input"/>
                   <input type="submit" value="Submit" className="add-cohort-submit form-input btn btn-info" />
                 </form>
               :

@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
   def show
     @teacher = Teacher.find_by_id(params[:id])
-    # redirect_to(root_url, :notice => 'Record not found') unless @teacher
+    redirect_to(root_url, :notice => 'Record not found') unless @teacher
   end
 
   def info
