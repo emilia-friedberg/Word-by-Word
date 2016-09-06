@@ -12,11 +12,26 @@
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
 #proceedeMsg {
-  width: 200px;
-  height: 200px;
-  background-color: green;
+  width: 250px;
+  height: 70px;
+  float: right;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px 75px 40px 20px;
+  border-radius: 30px;
+  background-color: #6B8E23;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: #008000;
+  }
   a {
-    font-size: 50px;
+    font-size: 1.875em;
+    color: black;
+    text-align: center;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -121,8 +136,8 @@
   border-radius: 10px;
   border: 5px solid black;
   color: oldlace;
+  margin: 20px;
 }
-
 
 #submitContainer {
   background-color: lightgreen;
@@ -150,34 +165,44 @@
   background-color: beige;
   width: 750px;
   height: 400px;
-  margin: 50px;
+  margin: 50px auto;
   border-radius: 20px;
   position: relative;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+}
+
+#problemContainer {
+  margin: auto
 }
 
 #promptWrap {
   font-size: 1.5em;
 }
 
+#allRight {
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #sentenceWrap {
-
-
   em {
       font-weight: bold;
   }
 }
 
-
 #wordBox {
   height: 250px;
+  width: 70%;
   background-color: beige;
-  display: inline-block;
+  display: block;
+  justify-content: center;
+  align-items: center;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
   border-radius: 20px;
   padding: 20px;
-  margin: 20px;
-  margin-left: 200px;
+  margin: 20px auto;
 }
 
 
