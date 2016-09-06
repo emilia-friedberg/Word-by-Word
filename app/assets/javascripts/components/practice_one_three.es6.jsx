@@ -138,6 +138,7 @@ class PracticeOneThree extends React.Component {
   render() {
     return (
       <div>
+      <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> you got it!!! </div>
@@ -171,10 +172,7 @@ class PracticeOneThree extends React.Component {
       </div>
 
       :
-      <div>
-      <NavBar currentUser={this.props.currentUser}/>
       <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
-      </div>
   }
 
 
@@ -191,7 +189,7 @@ class PracticeOneThree extends React.Component {
 
         {this.state.allCorrect ?
           <div>
-          <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question &#8594; </a></div>
+          <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question&#8594; </a></div>
           <Footer/>
           </div>
           :
