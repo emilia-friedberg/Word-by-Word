@@ -29,7 +29,7 @@ class UnitoneController < ApplicationController
           scholar_type: current_user.type
         )
         new_attempt.save
-        # binding.pry
+        binding.pry
         p new_attempt.correct?
         puts new_attempt.errors.full_messages.join("\n\n\n\n\n")
       end
