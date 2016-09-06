@@ -160,7 +160,7 @@ class TeacherDashboard extends React.Component {
               })}
               </select>
             <label className="add-assignment-label" htmlFor="assignment[due_date]">Due Date:</label>
-            <input className="add-assignment-input" ref="dueDate" value="" placeholder='' type="datetime-local" name="assignment[due_date]" id="assignmentDueDate"/>
+            <input className="add-assignment-input" ref="dueDate" defaultValue="" type="datetime-local" name="assignment[due_date]" id="assignmentDueDate"/>
             <label className="add-assignment-label" htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
             <input className="add-assignment-input" type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
             <input type="submit" value="Submit" className="form-input btn btn-info add-assignment-submit" />
