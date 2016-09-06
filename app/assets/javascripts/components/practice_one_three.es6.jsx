@@ -170,7 +170,11 @@ class PracticeOneThree extends React.Component {
         }
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      :
+      <div>
+      <NavBar currentUser={this.props.currentUser}/>
+      <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      </div>
   }
 
 
@@ -186,7 +190,10 @@ class PracticeOneThree extends React.Component {
         </div>
 
         {this.state.allCorrect ?
+          <div>
           <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question &#8594; </a></div>
+          <Footer/>
+          </div>
           :
           <div id="wordBox">
             <div id="promptWrap">
@@ -202,6 +209,7 @@ class PracticeOneThree extends React.Component {
               <div id="submitContainer" >
                 <a href="/submit" onClick={this.handleSubmit}> submit </a>
               </div>
+              <Footer/>
           </div>
 
       }
