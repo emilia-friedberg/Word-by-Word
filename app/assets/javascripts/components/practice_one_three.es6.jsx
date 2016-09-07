@@ -153,12 +153,12 @@ class PracticeOneThree extends React.Component {
       <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> you got it!!! </div>
-              : <div> So close! View your feedback below  </div>
+              <div id="allRight"> You got it!!! </div>
+              : <div id="notRight"> Incorrect. View your feedback below.  </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg"> You got all the subjects correct </div>
-            : <div>
+            <div className="feedbackMsg1"> You got all the subjects correct </div>
+            : <div className="feedbackMsg1">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -170,8 +170,8 @@ class PracticeOneThree extends React.Component {
             </div>
           }
           { this.state.verbsCorrect ?
-            <div className="feedbackMsg"> you got all the verbs correct </div>
-            : <div>
+            <div className="feedbackMsg2"> you got all the verbs correct </div>
+            : <div className="feedbackMsg2">
             Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
               return <div className="littleFeedbackWord"> {word.innerText} </div>
             })} </div> :  <div> </div> }
@@ -184,7 +184,7 @@ class PracticeOneThree extends React.Component {
       </div>
 
       :
-      <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      <div id="openingPrompt"> Find the subjects and verbs in the sentence below</div>
   }
 
 
@@ -197,11 +197,11 @@ class PracticeOneThree extends React.Component {
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
-            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
+            <div id="status-bar"><StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} /></div>
         </div>
         {this.state.allCorrect ?
           <div>
-            <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question&#8594; </a></div>
+            <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next&#8594; </a></div>
           </div>
           :
           <div id="wordBox">
@@ -216,7 +216,7 @@ class PracticeOneThree extends React.Component {
               return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } /> })}
 
               <div id="submitContainer" >
-                <a href="/submit" onClick={this.handleSubmit}> submit </a>
+                <a href="/submit" onClick={this.handleSubmit}> Submit </a>
               </div>
           </div>
 
