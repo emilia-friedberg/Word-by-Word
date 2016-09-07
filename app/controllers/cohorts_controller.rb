@@ -24,7 +24,8 @@ class CohortsController < ApplicationController
         first_name: student.first_name,
         last_name: student.last_name,
         email: student.email,
-        number_of_completed_assignments: student.completed_assignments_by_cohort(cohort).length,
+        # number_of_completed_assignments: student.completed_assignments_by_cohort(cohort).length,
+        number_of_completed_assignments: cohort.total_comp(student),
         number_of_past_due_assignments: student.past_due_assignments_by_cohort(cohort).length
       }
     end

@@ -35,4 +35,10 @@ class Cohort < ApplicationRecord
     return count
   end
 
+
+  def total_comp(student)
+    return 7
+  end
+
+
 end
