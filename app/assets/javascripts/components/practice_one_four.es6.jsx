@@ -9,7 +9,10 @@ class PracticeOneFour extends React.Component {
       allCorrect: false,
       objectsCorrect: false,
       displayFeedback: false,
-      objectPromptId: 0
+      objectPromptId: 0,
+      streak: 0,
+      totalCorrect: 0,
+      totalAttempts: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
@@ -29,6 +32,15 @@ class PracticeOneFour extends React.Component {
     })
     $.get('/4/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
+    })
+  }
+
+  componentWillUpdate() {
+    var streakURL = `/units/${this.props.unitId}/lessons/${this.props.lessonId}/attempts/streak`
+    $.get(streakURL).done((response) => {
+      if (this.state.totalAttempts != response.totalAttempts) {
+        this.setState({streak: response.streak, totalCorrect: response.totalCorrect, totalAttempts: response.totalAttempts})
+      }
     })
   }
 
@@ -82,15 +94,16 @@ class PracticeOneFour extends React.Component {
     var instantFeedback = {objects: false}
     if (wordsInObjectBox.sort().join() === this.state.objects.sort().join() ) {
       this.setState({ allCorrect: true, objectsCorrect: true })
+      instantFeedback.objects = true
     }
       if (this.state.displayFeedback === false) {
-        $.post('/UnitOne/Attempts',
+        $.post("/UnitOne/Attempts",
             { attempts:
               {
                 objects:
                   {
-                    correct: this.state.objectsCorrect,
-                    prompt_id: this.state.objecPromptId
+                    correct: instantFeedback.objects,
+                    prompt_id: this.state.objectPromptId
                   }
               }
             }
@@ -129,6 +142,7 @@ class PracticeOneFour extends React.Component {
             <div ref="objectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
+            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
 
         {this.state.allCorrect ?

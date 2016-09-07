@@ -18,6 +18,7 @@ class UnitoneController < ApplicationController
 
   def attempts
     if current_user
+      # binding.pry
       attempt_params.each do |key, value|
         new_attempt = Attempt.create(
           prompt_type: 'UnitOneSentence',

@@ -40,7 +40,7 @@ def real_seeds
     sentence: "Hoverboards are dangerous",
     subjects: ['Hoverboards'],
     verbs: ['are'],
-    objects: []
+    objects: ['dangerous']
   },
   {
     sentence: "Smoking is not healthy",
@@ -57,12 +57,14 @@ def real_seeds
   {
     sentence: "Marco likes the movies",
     subjects: ['Marco'],
-    verbs: ['likes']
+    verbs: ['likes'],
+    objects: ['movies']
   },
   {
     sentence: "Bodegas sell sandwiches",
     subjects: ['Bodegas'],
-    verbs: ['sell']
+    verbs: ['sell'],
+    objects: ['sandwiches']
   },
   {
     sentence: "Obama is the president.",
@@ -98,7 +100,7 @@ def real_seeds
     sentence: "Juasia sells mittens",
     subjects: ['Juasia'],
     verbs: ['sells'],
-    objects: []
+    objects: ['mittens']
   },
   {
     sentence: "Sherecia buys eggs",
