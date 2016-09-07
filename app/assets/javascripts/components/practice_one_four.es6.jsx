@@ -20,14 +20,14 @@ class PracticeOneFour extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/4/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         objects: response.objects,
         objectPromptId: response.object_prompt_id
         })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/4/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
   }
@@ -42,7 +42,7 @@ class PracticeOneFour extends React.Component {
       objectsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/4/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.objectBox.innerHTML = ""

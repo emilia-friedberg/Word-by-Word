@@ -20,14 +20,14 @@ class PracticeOneOne extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/1/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
         subjectPromptId: response.subject_prompt_id,
       })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/1/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
 
@@ -48,7 +48,7 @@ class PracticeOneOne extends React.Component {
       verbsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/1/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.subjectBox.innerHTML = "";
@@ -129,7 +129,7 @@ class PracticeOneOne extends React.Component {
 
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects in the sentence below</div>
+      : <div id="openingPrompt"> Find the Subjects in the sentence below </div>
   }
         <div id="problemContainer">
           <div id='boxContainer'>
@@ -137,6 +137,7 @@ class PracticeOneOne extends React.Component {
             <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
+          <StatusBar lessonId={1} unitId={1} />
         </div>
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>

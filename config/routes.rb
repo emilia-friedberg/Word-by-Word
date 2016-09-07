@@ -23,9 +23,11 @@ Rails.application.routes.draw do
 
   get '/units/:unit_id/lessons/:lesson_id', to: "units#lesson_show"
 
-  get '/UnitOneSentence', to: 'unitone#unitonesentence'
+  get '/:lesson_id/UnitOneSentence', to: 'unitone#unitonesentence'
   post '/UnitOne/Attempts', to: 'unitone#attempts'
 
   get 'units/unit_list', to: 'units#unit_list'
+
+  get '/units/:unit_id/lessons/:lesson_id/attempts/streak', to: 'attempts#streak'
 
 end

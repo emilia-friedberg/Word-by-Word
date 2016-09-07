@@ -27,7 +27,7 @@ class PracticeOneTwo extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/2/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
@@ -38,7 +38,7 @@ class PracticeOneTwo extends React.Component {
         objecPromptId: response.object_prompt_id
         })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/2/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
 
@@ -59,7 +59,7 @@ class PracticeOneTwo extends React.Component {
       verbsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/2/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.verbBox.innerHTML = "";
