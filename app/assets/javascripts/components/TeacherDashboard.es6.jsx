@@ -11,7 +11,9 @@ class TeacherDashboard extends React.Component {
       addExistingCohortFormVisible: false,
       addNewCohortFormVisible: false,
       addAssignmentFormVisible: false,
-      addCohortOptionVisible: false
+      addCohortOptionVisible: false,
+      errors: [],
+      notices: []
     }
     this.showAddCohortButton = this.showAddCohortButton.bind(this);
     this.showAddAssignmentButton = this.showAddAssignmentButton.bind(this);
@@ -24,7 +26,8 @@ class TeacherDashboard extends React.Component {
     this.handleExistingCohortFormSubmit = this.handleExistingCohortFormSubmit.bind(this);
     this.handleNewCohortFormSubmit = this.handleNewCohortFormSubmit.bind(this);
     this.handleAssignmentFormSubmit = this.handleAssignmentFormSubmit.bind(this);
-
+    this.getTeacher = this.getTeacher.bind(this);
+    this.getLessons = this.getLessons.bind(this);
   }
 
   hideAddCohortButton() {
@@ -108,18 +111,29 @@ class TeacherDashboard extends React.Component {
       lesson: this.refs.lessonInput.value,
       cohort: this.refs.cohortInput.value,
       completion_number: this.refs.completionNumber.value,
-      due_date: this.refs.dueDate.value
+      due_date: this.refs.dueDate.value,
+      due_time: this.refs.dueTime.value
     }).done(function(response) {
-      this.refs.completionNumber.value = ''
-      this.refs.dueDate.value = ''
-      this.toggleAddAssignmentForm()
-      this.showAddAssignmentButton()
+      if (response.errors) {
+        this.setState({
+          errors: response.errors
+        })
+      } else {
+        this.setState({
+          errors: [],
+          notices: response
+        })
+        this.refs.completionNumber.value = ''
+        this.refs.dueDate.value = ''
+        this.refs.dueTime.value = ''
+        this.toggleAddAssignmentForm()
+        this.showAddAssignmentButton()
+      }
     }.bind(this))
   }
 
 
-
-  componentDidMount() {
+  getTeacher() {
     $.ajax({
       method: 'get',
       url: `/teachers/${this.props.teacherId}/info`
@@ -128,9 +142,24 @@ class TeacherDashboard extends React.Component {
         teacher: response.teacher,
         teacherHasCohorts: response.teacherHasCohorts,
         teacherCohorts: response.teacherCohorts,
+      })
+    }.bind(this));
+  }
+
+  getLessons() {
+    $.ajax({
+      method: 'get',
+      url: '/lessons'
+    }).done(function(response) {
+      this.setState({
         lessons: response.lessons
       })
     }.bind(this));
+  }
+
+  componentWillMount() {
+    this.getTeacher();
+    this.getLessons();
   }
 
   render () {
@@ -141,6 +170,14 @@ class TeacherDashboard extends React.Component {
         <h1> Welcome, {this.state.teacher.first_name} {this.state.teacher.last_name}</h1>
           <button className="btn btn-info button" type="button" onClick={this.toggleAddCohortOption}>Add A Cohort</button>
           <button className="btn btn-info button" type="button" onClick={this.toggleAddAssignmentForm}>Add A New Assignment</button>
+          { this.state.errors.length > 0 ?
+            <p className="errors"> {this.state.errors} </p>
+          : null
+          }
+          { this.state.notices.length > 0 ?
+            <p className="notices"> {this.state.notices} </p>
+          :null
+          }
         { this.state.addAssignmentFormVisible ?
           <form className="add-assignment-form" onSubmit={this.handleAssignmentFormSubmit}>
             <label className="add-assignment-label" htmlFor="cohort[name]">Cohort:</label>
@@ -159,8 +196,10 @@ class TeacherDashboard extends React.Component {
                 )
               })}
               </select>
-            <label className="add-assignment-label" htmlFor="assignment[due_date]">Due Date:</label>
-            <input className="add-assignment-input" ref="dueDate" defaultValue="" type="datetime-local" name="assignment[due_date]" id="assignmentDueDate"/>
+            <label className="add-assignment-label" htmlFor="assignment[due_date]">Date Due:</label>
+            <input className="add-assignment-input" ref="dueDate" defaultValue="" type="date" name="assignment[date_due]" id="assignmentDueDate"/>
+            <label className="add-assignment-label" htmlFor="assignment[due_date]">Time Due:</label>
+            <input className="add-assignment-input" ref="dueTime" defaultValue="" type="time" name="assignment[date_time]" id="assignmentDueTime"/>
             <label className="add-assignment-label" htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
             <input className="add-assignment-input" type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
             <input type="submit" value="Submit" className="form-input btn btn-info add-assignment-submit" />

@@ -11,7 +11,8 @@ class StudentDashboard extends React.Component {
       attemptedLessons: [],
       masteredLessons: [],
       cohortFormVisible: false,
-      errors: []
+      errors: [],
+      notices: []
     }
     this.toggleAddCohortForm = this.toggleAddCohortForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -184,16 +185,17 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/cohorts`,
       data: $(event.target).serialize()
     }).done(function(response) {
-      if (response != undefined) {
+      if (response.errors) {
         this.setState({
-          errors: response
+          errors: response.errors
         })
       }
       else {
         this.getPastDueAssignments();
         this.getPendingAssignments();
         this.setState({
-          errors: []
+          errors: [],
+          notices: response
         });
         this.refs.cohortAccessCode.value = '';
         this.toggleAddCohortForm();
@@ -214,12 +216,15 @@ class StudentDashboard extends React.Component {
             <p className="errors"> {this.state.errors} </p>
           : null
           }
+          { this.state.notices.length > 0 ?
+            <p className="notices"> {this.state.notices} </p>
+          :null
+          }
             <button onClick={this.toggleAddCohortForm} type="button" className="add-cohort-button btn btn-info">Add Your Cohort</button>
             { this.state.cohortFormVisible ?
                 <form className="add-cohort-form" onSubmit={this.handleSubmit}>
                   <label htmlFor="cohort[access_code]">Access Code: </label>
                   <input type="text" ref="cohortAccessCode" name="cohort[access_code]" className="cohort-access-code"/>
->>>>>>> handle invalid access code input for student show page
                   <input type="submit" value="Submit" className="add-cohort-submit form-input btn btn-info" />
                 </form>
               :
