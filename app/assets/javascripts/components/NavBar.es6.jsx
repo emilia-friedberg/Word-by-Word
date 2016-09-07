@@ -1,6 +1,5 @@
 class NavBar extends React.Component{
 
-
   render(){
     return(
       <nav className="navbar navbar-default">
@@ -15,25 +14,17 @@ class NavBar extends React.Component{
               <a href="/"><img id="brand-logo" src="/assets/test_logo_1.png"/></a>
             </ul>
           </div>
-       { this.props.currentUser ?
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
-              <li>
+              <li id="navbar-buttons"><a id="navbar-links" href="/">My Account</a></li>
+              <li id="navbar-buttons">
                   <form  method="post" action="/users/sign_out">
-                    <input id="logoutButton" type="Submit" value="Log Out"/>
+                    <input id="navbar-links" type="Submit" value="Log Out"/>
                     <input type="hidden" name="_method" value="Delete"/>
                   </form>
                 </li>
               </ul>
             </div>
-          :
-            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-             <ul className="nav navbar-nav navbar-right">
-                <li><a href='/users/sign_up'>Register</a></li>
-                <li><a href='/users/sign_in'>Sign In</a></li>
-              </ul>
-            </div>
-        }
       </nav>
     )
   }
