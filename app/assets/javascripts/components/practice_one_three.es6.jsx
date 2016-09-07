@@ -154,7 +154,7 @@ class PracticeOneThree extends React.Component {
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> You got it!!! </div>
-              : <div> Incorrect. View your feedback below.  </div>
+              : <div id="notRight"> Incorrect. View your feedback below.  </div>
           }
           { this.state.subjectsCorrect ?
             <div className="feedbackMsg1"> You got all the subjects correct </div>
@@ -184,7 +184,7 @@ class PracticeOneThree extends React.Component {
       </div>
 
       :
-      <div id="openingPrompt"> Find the Subjects and Verbs in the sentence below</div>
+      <div id="openingPrompt"> Find the subjects and verbs in the sentence below</div>
   }
 
 
@@ -197,7 +197,7 @@ class PracticeOneThree extends React.Component {
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
-            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
+            <div id="status-bar"><StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} /></div>
         </div>
         {this.state.allCorrect ?
           <div>

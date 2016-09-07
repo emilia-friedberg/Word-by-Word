@@ -14,11 +14,13 @@
 
 }
 #proceedeMsg {
-  width: 250px;
-  height: 70px;
+  width: 130px;
+  height: 75px;
   float: right;
   border: 2px solid black;
   padding: 20px;
+  vertical-align: middle;
+  text-align: center;
   margin: 20px 75px 40px 20px;
   border-radius: 30px;
   background-color: #6699ff;
@@ -106,8 +108,12 @@
 .littleFeedbackWord {
   display: inline-block;
   font-size: 20px;
+  padding: 2px;
+  margin: 2px;
+  color: white;
   border: 5px solid black;
-  background-color: beige;
+  background-color: #00802b;
+  border-radius: 10px;
 }
 
 #openingPrompt {
@@ -136,25 +142,29 @@
 .feedbackMsg1 {
   background-color: #006600;
   font-size: 20px;
-  margin-left: 35%;
+  margin-left: 33%;
   margin-top: 25px;
-  width: 200px;
+  width: 250px;
   display: inline-block;
   border-radius: 10px;
   border: 5px solid black;
-  color: oldlace;
+  color: black;
+  padding: 5px;
+  background: linear-gradient(#A0A0A0, #C0C0C0);
 }
 
 .feedbackMsg2 {
   background-color: #006600;
   font-size: 20px;
-  margin-left: 10%;
-  margin-top: 25px; 
-  width: 200px;
+  margin-left: 7%;
+  margin-top: 25px;
+  width: 250px;
   display: inline-block;
   border-radius: 10px;
   border: 5px solid black;
-  color: oldlace;
+  color: black;
+  padding: 5px;
+  background: linear-gradient(#A0A0A0, #C0C0C0);
 }
 
 #submitContainer {
@@ -166,6 +176,7 @@
   margin: 10px 10px 20px 30px;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
   border: 3px solid black;
+  float: right;
   &:hover {
     background-color: #008000;
   }
@@ -188,12 +199,12 @@
 
 
 #boxContainer {
-  background: linear-gradient(grey, black);
+  background: linear-gradient(grey, #404040);
   width: 850px;
   height: 450px;
   margin: 50px auto;
   border-radius: 20px;
-  border: solid 1px #4d2600;
+  border: solid 3px #4d2600;
   position: relative;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
@@ -206,12 +217,6 @@
   font-size: 1.5em;
 }
 
-#allRight {
-  margin: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
 
 #sentenceWrap {
   em {
@@ -222,8 +227,8 @@
 #wordBox {
   height: 250px;
   width: 70%;
-  background-color: #c68c53;
-  border: solid 1px black;
+  background: url("/assets/light-wood-desk-background.jpg");
+  border: solid 4px black;
   display: block;
   justify-content: center;
   align-items: center;
@@ -248,6 +253,26 @@
   text-align: center;
 }
 
+#notRight {
+  width: 550px;
+  height: 85px;
+  background: linear-gradient(#A0A0A0, #707070);
+  margin: auto;
+  font-variant: small-caps;
+  border: 5px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 3em;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
 #dropBox3 {
   left: 900px;
+}
+
+#status-bar {
+   margin: auto;
+   width: 50%;
+  color: #B8B8B8;
 }
