@@ -157,8 +157,8 @@ class PracticeOneThree extends React.Component {
               : <div> Incorrect. View your feedback below.  </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg"> You got all the subjects correct </div>
-            : <div>
+            <div className="feedbackMsg1"> You got all the subjects correct </div>
+            : <div className="feedbackMsg1">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -170,8 +170,8 @@ class PracticeOneThree extends React.Component {
             </div>
           }
           { this.state.verbsCorrect ?
-            <div className="feedbackMsg"> you got all the verbs correct </div>
-            : <div>
+            <div className="feedbackMsg2"> you got all the verbs correct </div>
+            : <div className="feedbackMsg2">
             Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
               return <div className="littleFeedbackWord"> {word.innerText} </div>
             })} </div> :  <div> </div> }
@@ -201,7 +201,7 @@ class PracticeOneThree extends React.Component {
         </div>
         {this.state.allCorrect ?
           <div>
-            <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question&#8594; </a></div>
+            <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next&#8594; </a></div>
           </div>
           :
           <div id="wordBox">

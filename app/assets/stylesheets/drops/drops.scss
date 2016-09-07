@@ -133,16 +133,28 @@
   margin: auto;
 }
 
-.feedbackMsg {
+.feedbackMsg1 {
   background-color: #006600;
   font-size: 20px;
-  margin: auto;
+  margin-left: 35%;
+  margin-top: 25px;
   width: 200px;
   display: inline-block;
   border-radius: 10px;
   border: 5px solid black;
   color: oldlace;
-  margin: 20px;
+}
+
+.feedbackMsg2 {
+  background-color: #006600;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-top: 25px; 
+  width: 200px;
+  display: inline-block;
+  border-radius: 10px;
+  border: 5px solid black;
+  color: oldlace;
 }
 
 #submitContainer {
