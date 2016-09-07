@@ -81,39 +81,9 @@ Unit.first.lessons.each do |u_one_lesson|
 end
 
 
-
-#   when 4
-#     #o
-#     lesson_sentence.unit_one_prompts.create(
-#       text: 'sample prompt',
-#       answer_type: 'O',
-#       answer: seed_sentence[:objects]
-#     )
-#   when 5
-#     #svo
-#     lesson_sentence.unit_one_prompts.create(
-#       text: 'sample prompt',
-#       answer_type: 'S',
-#       answer: seed_sentence[:subjects]
-#     )
-#     lesson_sentence.unit_one_prompts.create(
-#       text: 'sample prompt',
-#       answer_type: 'V',
-#       answer: seed_sentence[:verbs]
-#     )
-#     lesson_sentence.unit_one_prompts.create(
-#       text: 'sample prompt',
-#       answer_type: 'O',
-#       answer: seed_sentence[:objects]
-#     )
-#   end
-#
-# end
-
-
 puts "unit one sentences created"
 
 1000.times do
-  Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: UnitOneSentence.all.sample.id, scholar_id: Student.all.sample.id, scholar_type: 'Student')
+  Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: UnitOnePrompt.all.sample.id, scholar_id: Student.all.sample.id, scholar_type: 'Student')
 
 end
