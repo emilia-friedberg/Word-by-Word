@@ -35,4 +35,26 @@ class Cohort < ApplicationRecord
     return count
   end
 
+
+  def total_comp(student)
+    assignments = self.assignments
+    count = 0
+    assignments.each do |ass|
+      pr_ids = ass.lesson.prompts.pluck(:id)
+      total_correct_attempts = student.attempts.where(correct?: true)
+      tot_cor_in_prids = total_correct_attempts.select { |atm| pr_ids.include?(atm.prompt_id)  }
+      the_num = tot_cor_in_prids.length
+
+      if ass.completion_number
+        count += 1 if the_num >= ass.completion_number
+      else
+        count += 1 if the_num >= 10
+      end
+      # count += 1 if student.attempts.where(correct?: true).select { |atm| pr_ids.include?(atm.prompt_id) }.length >= assignment.completion_number
+    end
+    
+    return count
+  end
+
+
 end
