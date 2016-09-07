@@ -26,7 +26,7 @@ class PracticeOneFive extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/5/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
@@ -37,7 +37,7 @@ class PracticeOneFive extends React.Component {
         objectPromptId: response.object_prompt_id
         })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/5/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
 
@@ -60,7 +60,7 @@ class PracticeOneFive extends React.Component {
       objectsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/5/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.subjectBox.innerHTML = "";

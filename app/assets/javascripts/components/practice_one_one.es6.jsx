@@ -10,27 +10,39 @@ class PracticeOneOne extends React.Component {
       subjectsCorrect: false,
       displayFeedback: false,
       subjectPromptId: 0,
+      streak: 0,
+      totalCorrect: 0,
+      totalAttempts: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.replaceWord = this.replaceWord.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.loadNext = this.loadNext.bind(this);
+    this.loadNext = this.loadNext.bind(this)
+    // this.componentDidUpdate = this.componentDidUpdate.bind(this)
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/1/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
         subjectPromptId: response.subject_prompt_id,
       })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/1/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
+  }
 
+  componentWillUpdate() {
+    var streakURL = `/units/${this.props.unitId}/lessons/${this.props.lessonId}/attempts/streak`
+    $.get(streakURL).done((response) => {
+      if (this.state.totalAttempts != response.totalAttempts) {
+        this.setState({streak: response.streak, totalCorrect: response.totalCorrect, totalAttempts: response.totalAttempts})
+      }
+    })
   }
 
   loadNext(ev) {
@@ -48,7 +60,7 @@ class PracticeOneOne extends React.Component {
       verbsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/1/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.subjectBox.innerHTML = "";
@@ -129,7 +141,7 @@ class PracticeOneOne extends React.Component {
 
       </div>
 
-      : <div id="openingPrompt"> Find the Subjects in the sentence below</div>
+      : <div id="openingPrompt"> Find the Subjects in the sentence below </div>
   }
         <div id="problemContainer">
           <div id='boxContainer'>
@@ -137,6 +149,7 @@ class PracticeOneOne extends React.Component {
             <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
+          <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>

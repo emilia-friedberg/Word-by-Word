@@ -31,7 +31,7 @@ class UnitoneController < ApplicationController
   end
 
   def unitonesentence
-    sentence = UnitOneSentence.all.sample
+    sentence = UnitOneSentence.where(lesson_id: params[:lesson_id]).sample
     prompts = sentence.unit_one_prompts
 
 
@@ -73,6 +73,7 @@ class UnitoneController < ApplicationController
       object_prompt_id: object_prompt_id
     }
   end
+
 
   private
 

@@ -24,7 +24,7 @@ class PracticeOneThree extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/3/UnitOneSentence').done((response)=> {
       this.setState({
         sentence: response.sentence,
         subjects: response.subjects,
@@ -33,7 +33,7 @@ class PracticeOneThree extends React.Component {
         subjectPromptId: response.subject_prompt_id,
         })
     })
-    $.get('/UnitOneSentence').done((response) => {
+    $.get('/3/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
   }
@@ -52,7 +52,7 @@ class PracticeOneThree extends React.Component {
       verbsCorrect: false,
       displayFeedback: false
     })
-    $.get('/UnitOneSentence').done((response)=> {
+    $.get('/3/UnitOneSentence').done((response)=> {
       this.setState({nextSet: response})
     })
     this.refs.subjectBox.innerHTML = "";
