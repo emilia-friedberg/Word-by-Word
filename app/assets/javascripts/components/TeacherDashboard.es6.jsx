@@ -90,8 +90,22 @@ class TeacherDashboard extends React.Component {
       url: `/teachers/${this.props.teacherId}/cohorts`,
       data: $(event.target).serialize()
     }).done(function(response) {
-      location.reload()
-    })
+      if (response.errors) {
+        this.setState({
+          errors: response.errors
+        })
+      }
+      else {
+        this.getTeacher();
+        this.setState({
+          errors: [],
+          notices: response
+        });
+        this.refs.cohortAccessCode.value = '';
+        this.toggleAddExistingCohortForm();
+        this.toggleAddCohortOption();
+      }
+    }.bind(this))
   }
 
   handleNewCohortFormSubmit(event) {
@@ -101,8 +115,22 @@ class TeacherDashboard extends React.Component {
       url: "/cohorts",
       data: $(event.target).serialize()
     }).done(function(response) {
-      location.reload()
-    })
+      if (response.errors) {
+        this.setState({
+          errors: response.errors
+        })
+      }
+      else {
+        this.getTeacher();
+        this.setState({
+          errors: [],
+          notices: response
+        });
+        this.refs.cohortNameInput.value = '';
+        this.toggleAddNewCohortForm();
+        this.toggleAddCohortOption();
+      }
+    }.bind(this));
   }
 
   handleAssignmentFormSubmit(event) {
@@ -216,7 +244,7 @@ class TeacherDashboard extends React.Component {
         { this.state.addExistingCohortFormVisible ?
           <form className="add-cohort-form" onSubmit={this.handleExistingCohortFormSubmit}>
             <label htmlFor="cohort[access_code]">Access Code:</label>
-            <input type="text" name="cohort[access_code]" className="cohort-form-input"/>
+            <input ref="cohortAccessCode" type="text" name="cohort[access_code]" className="cohort-form-input"/>
             <input type="submit" value="Submit" className="add-cohort-submit btn btn-info form-input" />
           </form>
           : null
@@ -224,7 +252,7 @@ class TeacherDashboard extends React.Component {
         { this.state.addNewCohortFormVisible ?
           <form className="add-cohort-form" onSubmit={this.handleNewCohortFormSubmit}>
             <label htmlFor="cohort[name]">Name:</label>
-            <input type="text" name="cohort[name]" className="cohort-form-input"/>
+            <input ref="cohortNameInput" type="text" name="cohort[name]" className="cohort-form-input"/>
             <input type="hidden" name="teacher[id]" value={this.props.teacherId}/>
             <input type="submit" value="Submit" className="add-cohort-submit btn btn-info form-input" />
           </form>
