@@ -13,7 +13,8 @@ class Cohort < ApplicationRecord
   end
 
   def tally_students_with_completed_assignment(assignment)
-    self.students.select { |student| student.completed_assignments.include?(assignment)}.length
+    # self.students.select { |student| student.completed_assignments.include?(assignment)}.length
+    self.students.select { |student| assignment.completed?(student) }.length
   end
 
 end
