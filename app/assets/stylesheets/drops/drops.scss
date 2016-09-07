@@ -2,7 +2,7 @@
   height: 300px;
   width: 40%;
   // width: 300px;
-  background-color: pink;
+  background-color: #ffffcc;
   border: 4px solid darkgray;
   margin: 5%;
   border-radius: 10px;
@@ -107,12 +107,15 @@
   border: 5px solid black;
   background-color: beige;
 }
+
 #openingPrompt {
-  background-color: beige;
+  background-color: #c8daea;
   border: 5px solid black;
   font-size: 30px;
   text-align: center;
   padding: 5px;
+  margin: auto;
+  max-width:50%;
   border-radius: 10px;
 }
 .boxHeader {
@@ -166,7 +169,7 @@
 
 
 #boxContainer {
-  background-color: beige;
+  background-color: #c68c53;
   width: 750px;
   height: 400px;
   margin: 50px auto;
@@ -199,7 +202,8 @@
 #wordBox {
   height: 250px;
   width: 70%;
-  background-color: beige;
+  background-color: #c68c53;
+  border: solid 1px black;
   display: block;
   justify-content: center;
   align-items: center;
