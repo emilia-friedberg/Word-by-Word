@@ -10,6 +10,18 @@ class Cohort < ApplicationRecord
 
   def tally_students_with_overdue_assignments
     self.students.select { |student| student.has_overdue_assignment?(self) }.length
+    # count = 0
+    #
+    # self.students.each do |s|
+    #   coh = s.cohorts.where(id: self.id)
+    #   assignments = coh.assignments
+    #   assignments.each do
+    #
+    #   end
+    # end
+
+
+
   end
 
   def tally_students_with_completed_assignment(assignment)
@@ -52,7 +64,7 @@ class Cohort < ApplicationRecord
       end
       # count += 1 if student.attempts.where(correct?: true).select { |atm| pr_ids.include?(atm.prompt_id) }.length >= assignment.completion_number
     end
-    
+
     return count
   end
 
