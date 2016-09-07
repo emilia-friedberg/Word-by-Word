@@ -117,8 +117,10 @@ class StudentsController < ApplicationController
     cohort = Cohort.find_by(access_code: params[:cohort][:access_code])
     if cohort
       cohort.students << student if cohort.students.find_by_id(student.id).nil?
+      render json: "You have been added to the #{cohort.name}. View any new assignments by clicking on the tabs below.".to_json
     else
-      render json: "Invalid access code.".to_json
+      errors = {errors: "Invalid access code"}
+      render json: errors.to_json
     end
   end
 

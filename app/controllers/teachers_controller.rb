@@ -27,7 +27,6 @@ class TeachersController < ApplicationController
       teacher: teacher,
       teacherHasCohorts: teacher_has_cohorts,
       teacherCohorts: cohorts,
-      lessons: Lesson.all
     }
 
     render json: teacher_hash.to_json
