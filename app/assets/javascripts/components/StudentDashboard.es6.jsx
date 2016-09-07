@@ -10,7 +10,8 @@ class StudentDashboard extends React.Component {
       completedAssignments: [],
       attemptedLessons: [],
       masteredLessons: [],
-      cohortFormVisible: false
+      cohortFormVisible: false,
+      errors: []
     }
     this.toggleAddCohortForm = this.toggleAddCohortForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,13 @@ class StudentDashboard extends React.Component {
     this.viewLateAssignments = this.viewLateAssignments.bind(this);
     this.viewPracticeLessons = this.viewPracticeLessons.bind(this);
     this.viewActiveAssignments = this.viewActiveAssignments.bind(this);
-    this.viewCompletedAssignments = this.viewCompletedAssignments.bind(this)
+    this.viewCompletedAssignments = this.viewCompletedAssignments.bind(this);
+    this.getStudent = this.getStudent.bind(this);
+    this.getPastDueAssignments = this.getPastDueAssignments.bind(this);
+    this.getCompletedAssignments = this.getCompletedAssignments.bind(this);
+    this.getPendingAssignments = this.getPendingAssignments.bind(this);
+    this.getAttemptedLessons = this.getAttemptedLessons.bind(this);
+    this.getMasteredLessons = this.getMasteredLessons.bind(this);
   }
 
   viewCompletedAssignments() {
@@ -86,7 +93,7 @@ class StudentDashboard extends React.Component {
     this.refs.pastPracticeLessons.className = "tab-content"
   }
 
-  componentDidMount() {
+  getStudent() {
     $.ajax({
       method: 'get',
       url: `/students/${this.props.studentId}/info`
@@ -94,14 +101,74 @@ class StudentDashboard extends React.Component {
       this.setState({
         student: response.student,
         studentBelongsToCohort: response.studentBelongsToCohort,
-        studentCohorts: response.studentCohorts,
-        pendingAssignments: response.pendingAssignments,
-        pastDueAssignments: response.pastDueAssignments,
-        completedAssignments: response.completedAssignments,
-        attemptedLessons: response.attemptedLessons,
+        studentCohorts: response.studentCohorts
+      })
+    }.bind(this))
+  }
+
+  getPastDueAssignments() {
+    $.ajax({
+      method: 'get',
+      url: `/students/${this.props.studentId}/past_due_assignments`
+    }).done(function(response) {
+      this.setState({
+        pastDueAssignments: response.pastDueAssignments
+      })
+    }.bind(this))
+  }
+
+  getPendingAssignments() {
+    $.ajax({
+      method: 'get',
+      url: `/students/${this.props.studentId}/pending_assignments`
+    }).done(function(response) {
+      this.setState({
+        pendingAssignments: response.pendingAssignments
+      })
+    }.bind(this))
+  }
+
+  getCompletedAssignments() {
+    $.ajax({
+      method: 'get',
+      url: `/students/${this.props.studentId}/completed_assignments`
+    }).done(function(response) {
+      this.setState({
+        completedAssignments: response.completedAssignments
+      })
+    }.bind(this))
+  }
+
+  getAttemptedLessons() {
+    $.ajax({
+      method: 'get',
+      url: `/students/${this.props.studentId}/attempted_lessons`
+    }).done(function(response) {
+      this.setState({
+        attemptedLessons: response.attemptedLessons
+      })
+    }.bind(this))
+  }
+
+  getMasteredLessons() {
+    $.ajax({
+      method: 'get',
+      url: `/students/${this.props.studentId}/mastered_lessons`
+    }).done(function(response) {
+      this.setState({
         masteredLessons: response.masteredLessons
       })
     }.bind(this))
+  }
+
+
+  componentWillMount() {
+    this.getStudent();
+    this.getPastDueAssignments();
+    this.getPendingAssignments();
+    this.getCompletedAssignments();
+    this.getAttemptedLessons();
+    this.getMasteredLessons();
   }
 
   toggleAddCohortForm() {
@@ -111,13 +178,27 @@ class StudentDashboard extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     $.ajax({
       method: 'post',
       url: `/students/${this.props.studentId}/cohorts`,
       data: $(event.target).serialize()
     }).done(function(response) {
-      location.reload()
-    })
+      if (response != undefined) {
+        this.setState({
+          errors: response
+        })
+      }
+      else {
+        this.getPastDueAssignments();
+        this.getPendingAssignments();
+        this.setState({
+          errors: []
+        });
+        this.refs.cohortAccessCode.value = '';
+        this.toggleAddCohortForm();
+      }
+    }.bind(this))
   }
 
 
@@ -129,11 +210,16 @@ class StudentDashboard extends React.Component {
         <TopicList />
         <div className="show-page-body">
           <h1> Welcome, {this.state.student.first_name} {this.state.student.last_name}</h1>
+          { this.state.errors.length > 0 ?
+            <p className="errors"> {this.state.errors} </p>
+          : null
+          }
             <button onClick={this.toggleAddCohortForm} type="button" className="add-cohort-button btn btn-info">Add Your Cohort</button>
             { this.state.cohortFormVisible ?
                 <form className="add-cohort-form" onSubmit={this.handleSubmit}>
                   <label htmlFor="cohort[access_code]">Access Code: </label>
-                  <input type="text" name="cohort[access_code]" className="cohort-form-input"/>
+                  <input type="text" ref="cohortAccessCode" name="cohort[access_code]" className="cohort-access-code"/>
+>>>>>>> handle invalid access code input for student show page
                   <input type="submit" value="Submit" className="add-cohort-submit form-input btn btn-info" />
                 </form>
               :
