@@ -25,8 +25,8 @@
   <% else %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav navbar-right">
-          <li id="register-link"><a href='/users/sign_up'>Register</a></li>
-          <li><%= form_for(:user, :url => session_path(:user)) do |f| %>
+          <li id="navbar-buttons"><a id="navbar-links" href='/users/sign_up'>Register</a></li>
+          <li id ="signin-form"><%= form_for(:user, :url => session_path(:user)) do |f| %>
             <%= f.text_field :email, placeholder: "Email" %>
             <%= f.password_field :password, placeholder: "Password" %>
             <%= f.submit 'Sign in' %>
