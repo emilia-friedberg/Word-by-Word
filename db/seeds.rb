@@ -79,11 +79,13 @@ Unit.first.lessons.each do |u_one_lesson|
     )
   end
 end
-
-
 puts "unit one sentences created"
 
-1000.times do
-  Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: UnitOnePrompt.all.sample.id, scholar_id: Student.all.sample.id, scholar_type: 'Student')
+unit_prompt_ids = UnitOnePrompt.all.map { |p| p.id }
+student_ids = Student.all.map { |s| s.id }
 
+1000.times do
+  Attempt.create(correct?: [true, false].sample, prompt_type: 'UnitOneSentence', prompt_id: unit_prompt_ids.sample, scholar_id: student_ids.sample, scholar_type: 'Student')
 end
+
+puts "attempts created"
