@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'students/:id/info', to: 'students#info'
+  get 'students/:id/completed_assignments', to: 'students#completed_assignments'
+  get 'students/:id/past_due_assignments', to: 'students#past_due_assignments'
+  get 'students/:id/pending_assignments', to: 'students#pending_assignments'
+  get 'students/:id/attempted_lessons', to: 'students#attempted_lessons'
+  get 'students/:id/mastered_lessons', to: 'students#mastered_lessons'
   post 'students/:id/cohorts', to: 'students#assign_cohort'
   get 'students/:id', to: 'students#show'
   get 'teachers/:id/info', to: 'teachers#info'

@@ -23,10 +23,10 @@ class Assignment < ApplicationRecord
     self.prompts.each do |prompt|
       attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
     end
-    if !self.completion_number.nil?
-      completion_number = self.completion_number
-    else
+    if self.completion_number.nil?
       completion_number = self.prompts.length
+    else
+      completion_number = self.completion_number
     end
     return true if attempted_prompts.length === completion_number
     return false
