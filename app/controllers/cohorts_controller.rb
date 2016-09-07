@@ -2,7 +2,14 @@ class CohortsController < ApplicationController
 
   def create
     teacher = Teacher.find(params[:teacher][:id])
-    teacher.cohorts.create(name: params[:cohort][:name], access_code: Faker::Code.asin)
+    cohort = teacher.cohorts.new(name: params[:cohort][:name], access_code: Faker::Code.asin)
+    if cohort.save
+      cohort.teachers << teacher
+      render json: "You have added the #{cohort.name} as a cohort. In order to join a cohort, students must have a registered account and add themselves to the classroom using the provided access code.".to_json
+    else
+      errors = {errors: cohort.errors.full_messages}
+      render json: errors.to_json
+    end
   end
 
   def show

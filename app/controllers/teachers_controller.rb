@@ -36,7 +36,13 @@ class TeachersController < ApplicationController
   def assign_cohort
     teacher = Teacher.find(params[:id])
     cohort = Cohort.find_by(access_code: params[:cohort][:access_code])
-    cohort.teachers << teacher if cohort.teachers.find_by_id(teacher.id).nil?
+    if cohort
+      cohort.teachers << teacher if cohort.teachers.find_by_id(teacher.id).nil?
+      render json: "You have been added as a teacher to the #{cohort.name}.".to_json
+    else
+      errors = {errors: "Invalid access code"}
+      render json: errors.to_json
+    end
   end
 
 end
