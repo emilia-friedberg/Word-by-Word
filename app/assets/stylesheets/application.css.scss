@@ -37,8 +37,27 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
+.nav {
+  font-size: 0.875em;
+}
+
 #body-info {
    border: 1px solid #021a40;
+   margin-left: 7%;
+   margin-bottom: 20px;
+}
+
+#body-content {
+  font-size: 1.0em;
+  margin-left: 7%;
+  margin-right: 20%;
+  text-align: justify;
+}
+
+#home-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 7%;
 }
 
 #brand-logo {
@@ -48,35 +67,34 @@ body {
    padding: 0;
 }
 
-#logout-button {
+#navbar-buttons {
    display: block;
-   color: white;
+   border-left: solid #888888;
    text-align: center;
    padding: 16px;
    font-size: 1.8em;
    text-decoration: none;
+  text-align: center;
    margin: 0;
    padding: 0;
+   &:hover {
+  background-color: #808080;
+   }
 }
 
 #register-link {
     padding: 0;
 }
 
-
-#logoutButton {
-   font-size: 16px;
+#navbar-links {
+   font-size: 1.0em;
    display: block;
    color: black;
-   text-align: center;
    padding: 16px;
    background: none;
    border: none;
 }
 
-#logoutButton:hover {
-   background-color: #808080;
-}
 
 
 #homeLogin {
@@ -92,8 +110,9 @@ body {
 
 
 .summary-blurb {
-  margin-left: 40px;
+  font-size: 1.875em;
   min-width: 70%;
+  margin-left: 100px;
   float: left;
 }
 
