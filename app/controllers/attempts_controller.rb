@@ -10,11 +10,11 @@ class AttemptsController < ApplicationController
       total_attempts = user_attempts.length
       total_correct = user_attempts.select { |attempt| attempt.correct? }.length
       streak = 0
-      for attempt in user_attempts
+      for attempt in user_attempts.reverse
         break unless attempt.correct?
         streak += 1
       end
-
+      # binding.pry
       return render json: {totalAttempts: total_attempts, totalCorrect: total_correct, streak: streak}
     end
   end
