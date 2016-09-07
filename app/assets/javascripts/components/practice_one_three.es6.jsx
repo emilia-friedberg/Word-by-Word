@@ -153,8 +153,8 @@ class PracticeOneThree extends React.Component {
       <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> you got it!!! </div>
-              : <div> So close! View your feedback below  </div>
+              <div id="allRight"> You got it!!! </div>
+              : <div> Incorrect. View your feedback below.  </div>
           }
           { this.state.subjectsCorrect ?
             <div className="feedbackMsg"> You got all the subjects correct </div>
@@ -216,7 +216,7 @@ class PracticeOneThree extends React.Component {
               return <Word key= { i } dragFunction={ this.dragStart } allowDrop={this.allowDrop} reDrop={this.replaceWord} word={ word } /> })}
 
               <div id="submitContainer" >
-                <a href="/submit" onClick={this.handleSubmit}> submit </a>
+                <a href="/submit" onClick={this.handleSubmit}> Submit </a>
               </div>
           </div>
 
