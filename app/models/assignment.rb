@@ -19,16 +19,27 @@ class Assignment < ApplicationRecord
   end
 
   def completed?(student)
-    attempted_prompts = []
-    self.prompts.each do |prompt|
-      attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
-    end
-    if self.completion_number.nil?
-      completion_number = self.prompts.length
+    # attempted_prompts = []
+    # self.prompts.each do |prompt|
+    #   attempted_prompts << prompt if !student.attempts.where(prompt_id: prompt.id).empty?
+    # end
+    # if self.completion_number.nil?
+    #   completion_number = self.prompts.length
+    # else
+    #   completion_number = self.completion_number
+    # end
+    # return true if attempted_prompts.length === completion_number
+
+    # prompts = self.lesson.prompts
+
+    stu_prids = student.attempts.where(correct?: true).pluck(:prompt_id)
+    num_correct = self.lesson.prompts.pluck(:id).select { |pid| stu_prids.include?(pid)}.length
+
+    if self.completion_number
+      return true if num_correct >= self.completion_number
     else
-      completion_number = self.completion_number
+      return true if num_correct >= 10
     end
-    return true if attempted_prompts.length === completion_number
     return false
   end
 
