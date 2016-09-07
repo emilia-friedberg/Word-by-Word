@@ -13,6 +13,9 @@ class PracticeOneThree extends React.Component {
       displayFeedback: false,
       verbPromptId: 0,
       subjectPromptId: 0,
+      streak: 0,
+      totalCorrect: 0,
+      totalAttempts: 0
     }
     this.dropIn1 = this.dropIn1.bind(this)
     this.dragStart = this.dragStart.bind(this)
@@ -35,6 +38,15 @@ class PracticeOneThree extends React.Component {
     })
     $.get('/3/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
+    })
+  }
+
+  componentWillUpdate() {
+    var streakURL = `/units/${this.props.unitId}/lessons/${this.props.lessonId}/attempts/streak`
+    $.get(streakURL).done((response) => {
+      if (this.state.totalAttempts != response.totalAttempts) {
+        this.setState({streak: response.streak, totalCorrect: response.totalCorrect, totalAttempts: response.totalAttempts})
+      }
     })
   }
 
@@ -183,8 +195,8 @@ class PracticeOneThree extends React.Component {
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
+            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
-
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a id="nextLess" onClick={this.loadNext} href="/next"> Next Question &#8594; </a></div>
           :

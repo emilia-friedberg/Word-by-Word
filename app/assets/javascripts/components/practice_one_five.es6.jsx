@@ -40,8 +40,15 @@ class PracticeOneFive extends React.Component {
     $.get('/5/UnitOneSentence').done((response) => {
       this.setState({nextSet: response})
     })
+  }
 
-
+  componentWillUpdate() {
+    var streakURL = `/units/${this.props.unitId}/lessons/${this.props.lessonId}/attempts/streak`
+    $.get(streakURL).done((response) => {
+      if (this.state.totalAttempts != response.totalAttempts) {
+        this.setState({streak: response.streak, totalCorrect: response.totalCorrect, totalAttempts: response.totalAttempts})
+      }
+    })
   }
 
   loadNext(ev) {
@@ -94,7 +101,7 @@ class PracticeOneFive extends React.Component {
     dragged.className = "inBox"
     ev.target.appendChild(dragged)
   }
-
+  
   handleSubmit(event) {
     console.log('subjects' , this.state.subjects )
     console.log('verbs' , this.state.verbs )
@@ -125,7 +132,6 @@ class PracticeOneFive extends React.Component {
       this.setState({objectsCorrect: true})
       instantFeedback.objects = true
     }
-
     if (instantFeedback.subjects && instantFeedback.verbs && instantFeedback.objects ) {
       this.setState({allCorrect: true})
     }
@@ -217,6 +223,7 @@ class PracticeOneFive extends React.Component {
             <div ref="objectBox" id="dropBox3" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
+            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
 
         {this.state.allCorrect ?
