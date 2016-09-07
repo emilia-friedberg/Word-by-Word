@@ -37,8 +37,27 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
+.nav {
+  font-size: 0.875em;
+}
+
 #body-info {
    border: 1px solid #021a40;
+   margin-left: 7%;
+   margin-bottom: 20px;
+}
+
+#body-content {
+  font-size: 1.0em;
+  margin-left: 7%;
+  margin-right: 20%;
+  text-align: justify;
+}
+
+#home-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 7%;
 }
 
 #brand-logo {
@@ -48,35 +67,47 @@ body {
    padding: 0;
 }
 
-#logout-button {
+#navbar-buttons {
    display: block;
-   color: white;
    text-align: center;
    padding: 16px;
-   font-size: 1.8em;
+   font-size: 1.5em;
    text-decoration: none;
-   margin: 0;
-   padding: 0;
-}
-
-#register-link {
-    padding: 0;
-}
-
-
-#logoutButton {
-   font-size: 16px;
-   display: block;
-   color: black;
    text-align: center;
+   margin: 0 0 3 0;
+   padding: 0;
+   &:hover {
+  background-color: #D0D0D0;
+   }
+}
+
+#signin-form {
+   font-size: 1.5em;
+   text-decoration: none;
+   padding-right: 10px;
+   padding-left: 14px;
+   padding-top: 15px;
+   padding-bottom: 0px;
+   margin: 0px;
+   height: 64px;
+   &:hover {
+   background-color: #D0D0D0;
+   }
+}
+
+#navbar-links {
+   font-size: 1.0em;
+   line-height: 32px;
+   display: block;
+   color: #808080;
    padding: 16px;
    background: none;
    border: none;
+   &:hover{
+     color: white;
+   }
 }
 
-#logoutButton:hover {
-   background-color: #808080;
-}
 
 
 #homeLogin {
@@ -92,8 +123,9 @@ body {
 
 
 .summary-blurb {
-  margin-left: 40px;
+  font-size: 1.875em;
   min-width: 70%;
+  margin-left: 100px;
   float: left;
 }
 
@@ -123,6 +155,7 @@ body {
    display: inline-block;
    font-size: 1.5em;
    padding-left: 15px;
+   margin-left: 15px;
 }
 
 .footer-bar li a {
