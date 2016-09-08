@@ -18,19 +18,19 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <nav id="homeNav" class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap
+                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> word-by-word
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <div  id="ssss" class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
@@ -40,10 +40,10 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download">Download</a>
+                        <a class="page-scroll" href="#download">Login</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#contact">Register</a>
                     </li>
                 </ul>
             </div>
@@ -71,12 +71,12 @@
 
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
-        <div class="row">
+        <div id="homeAbout" class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Grayscale</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <h2>About Word-by-Word</h2>
+                <p>Word by word by word is an incredibly simple and interactive alterative to the drudgery of sentence diagramming and grammar exercies. Intended as an instructional support or intervention tool for all ages, word-by-word supports teachers and students with a variety of challenges and quantitative data to track skill growth. </p>
+                <p></p>
+                <p>-</p>
             </div>
         </div>
     </section>
@@ -86,9 +86,31 @@
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
+                    <h2>Exisiting User Login</h2>
                     <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                      <div class="field">
+                        <%= f.label :email %><br />
+                        <%= f.email_field :email, autofocus: true %>
+                      </div>
+
+                      <div class="field">
+                        <%= f.label :password %><br />
+                        <%= f.password_field :password, autocomplete: "off" %>
+                      </div>
+
+                      <% if devise_mapping.rememberable? -%>
+                        <div class="field">
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                        </div>
+                      <% end -%>
+
+                      <div class="actions">
+                        <%= f.submit "Log in" %>
+                      </div>
+                    <% end %>
+
                 </div>
             </div>
         </div>
@@ -96,23 +118,51 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
+        <div id="homeSignUp" class="">
+          <h2>Sign up</h2>
+            <div id="sp">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <div class="homeLoginContainer">
+                <div class="field">
+                <%= f.text_field :first_name, autofocus: true, placeholder: "First Name" %>
+                </div>
+
+                <div class="field">
+
+                  <%= f.text_field :last_name, autofocus: true, placeholder: "Last Name" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :status %><br />
+                  <%= f.select :status, ['Student', 'Teacher'] %>
+                </div>
+              </div>
+                <div class="homeLoginContainer">
+
+                  <div class="field">
+
+                    <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+                  </div>
+
+                  <div class="field">
+
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
+                  </div>
+                </div>
+                <div class="actions">
+                  <%= f.submit "Sign up" %>
+                </div>
+              <% end %>
+
+              <%= render "devise/shared/links" %>
             </div>
         </div>
     </section>

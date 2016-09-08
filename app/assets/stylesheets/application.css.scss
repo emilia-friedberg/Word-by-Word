@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
 h1, h2, h3, h4, h5, h6 {
   // font-family: 'Unica One', cursive;
   // font-family: 'Ovo', serif;
@@ -31,13 +32,7 @@ em {
   font-family: 'Muli', sans-serif;
 }
 
-body {
-   padding-bottom: 15px;
-  //  font-family: 'Vollkorn', serif;
-  font-family: 'Muli', sans-serif;
-  // background: url("/assets/desk2.jpg");
-  background-repeat: none;
-}
+
 
 #nb {
   box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
@@ -62,26 +57,14 @@ body {
 
 
 
-h1, h2, h3, h4, h5, h6 {
-  // font-family: 'Unica One', cursive;
-  // font-family: 'Ovo', serif;
-  font-family: 'Open Sans', sans-serif;
-
-}
-
-h3.sentence {
-  font-family: 'Muli', sans-serif;
-}
-
-em {
-  font-family: 'Muli', sans-serif;
-}
 
 body {
    padding-bottom: 15px;
   //  font-family: 'Vollkorn', serif;
   font-family: 'Muli', sans-serif;
-  // background: url("/assets/chalkboard_4.jpg");
+
+  background: url("/assets/chalkboard_4.jpg");
+
   background-repeat: none;
 }
 
@@ -188,6 +171,7 @@ body {
   color: red;
   font-style: bold;
 }
+
 
 .summary-blurb {
   font-size: 1.875em;
