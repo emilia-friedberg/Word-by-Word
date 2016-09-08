@@ -6,9 +6,16 @@
 //
 .show-page-container {
   width: 1200px;
+  background: url("/assets/chalkboard_4.jpg") no-repeat bottom center scroll;
+  background-color: white;
+
 }
 .tab-content {
   display: none;
+}
+
+.show-page-body h1, h2, h3, h4, h5, h6 {
+  margin-top: 10px;
 }
 
 .tab-content .active {
@@ -17,12 +24,14 @@
 
 .tabs {
   // border: black 1px solid;
+    font-family: 'Muli', sans-serif;
     float: left;
     border-bottom: 1px solid #ccc;
     width: 100%;
     margin-bottom: 16px;
     list-style: none;
     box-sizing: border-box;
+    color: white;
     // height: 50px;
     // display: inline-block;
     padding: 0px;
@@ -45,7 +54,7 @@
 }
 
 .tabs li a {
-    color: #666;
+    color: white;
     text-decoration: none;
     font-size: 90%;
 }
@@ -61,14 +70,19 @@
 }
 
 .tabs li.active a {
-    color: black;
+    color: #42DCA3;
     text-decoration: none;
     border-bottom: none;
 }
 
 th {
-  text-align: left;
-  margin-left: 0px;
+  text-align: center;
+  // margin-left: 0px;
+}
+
+td {
+  text-align: center;
+  // padding-left: 15px;
 }
 
 .add-cohort-submit {
@@ -96,4 +110,13 @@ th {
 
 .hidden {
   display: none;
+}
+
+.btn-info, .btn-info:hover, .btn-info:active {
+  background-color: #42DCA3;
+  border: white;
+}
+
+label {
+  margin-right: 5px;
 }

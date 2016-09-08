@@ -19,7 +19,7 @@
 h1, h2, h3, h4, h5, h6 {
   // font-family: 'Unica One', cursive;
   // font-family: 'Ovo', serif;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
 }
 
@@ -39,9 +39,55 @@ body {
   background-repeat: none;
 }
 
+#nb {
+  box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
+  background-color: rgba(0, 0, 0, 0.22);
+}
+
+#home {
+  // background-color: gray;
+  // box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
+  border-radius: 10px;
+}
+
+#homeFilter {
+  background-color: rgba(0, 0, 0, 0.22);
+  box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  // margin/
+  text-align: center;
+  padding: 50px;
+  color: oldlace;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  // font-family: 'Unica One', cursive;
+  // font-family: 'Ovo', serif;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+h3.sentence {
+  font-family: 'Muli', sans-serif;
+}
+
+em {
+  font-family: 'Muli', sans-serif;
+}
+
+body {
+   padding-bottom: 15px;
+  //  font-family: 'Vollkorn', serif;
+  font-family: 'Muli', sans-serif;
+  background: url("/assets/chalkboard_4.jpg");
+  background-repeat: none;
+}
+
 .nav {
   font-size: 0.875em;
-  background-color: #f2f2f2;
+  // background-color: #f2f2f2;
 }
 
 .collapse {
@@ -52,6 +98,7 @@ body {
    border: 1px solid #021a40;
    margin-left: 7%;
    margin-bottom: 20px;
+
 }
 
 #body-content {
