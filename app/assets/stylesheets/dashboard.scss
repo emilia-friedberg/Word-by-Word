@@ -50,13 +50,17 @@
     line-height: 30px;
     box-sizing: border-box;
     max-width: 20%;
-    margin-bottom: 3px;
+    // vertical-align: center;
+    // margin-bottom: 3px;
 }
 
 .tabs li a {
     color: white;
     text-decoration: none;
     font-size: 90%;
+    position: relative;
+    bottom: 10px;
+    // vertical-align: center
 }
 
 .tabs li.active {
@@ -67,6 +71,7 @@
     margin-bottom: -1px;
     height: 31px;
     padding: 9px 10px;
+    background: white;
 }
 
 .tabs li.active a {
@@ -101,22 +106,28 @@ td {
 }
 
 .errors {
-  color: #ff1a1a
+  color: #ff4f00
 }
 
 .loading-container {
   text-align: center;
+  // opacity: 0.1
 }
 
 .hidden {
   display: none;
 }
 
-.btn-info, .btn-info:hover, .btn-info:active {
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus {
   background-color: #42DCA3;
   border: white;
+  box-shadow: none;
 }
 
 label {
   margin-right: 5px;
+}
+
+input {
+  color: black;
 }
