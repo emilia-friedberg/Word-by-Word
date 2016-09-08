@@ -197,7 +197,7 @@ class PracticeOneThree extends React.Component {
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
-            <div id="status-bar"><StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} /></div>
+            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
         {this.state.allCorrect ?
           <div>

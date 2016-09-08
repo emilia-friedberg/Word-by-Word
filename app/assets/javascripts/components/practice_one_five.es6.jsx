@@ -101,7 +101,7 @@ class PracticeOneFive extends React.Component {
     dragged.className = "inBox"
     ev.target.appendChild(dragged)
   }
-  
+
   handleSubmit(event) {
     console.log('subjects' , this.state.subjects )
     console.log('verbs' , this.state.verbs )
@@ -212,7 +212,7 @@ class PracticeOneFive extends React.Component {
       : <div id="openingPrompt"> Find the Subjects, Verbs, AND Objects in the sentence below</div>
   }
         <div id="problemContainer">
-          <div id='boxContainer'>
+          <div id='boxContainer-single'>
             <div className='boxHeader'>Subjects</div>
             <div className='boxHeader'>Verbs</div>
             <div className='boxHeader'>Objects</div>

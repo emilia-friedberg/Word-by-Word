@@ -1,7 +1,7 @@
 class StatusBar extends React.Component {
   render() {
       return (
-        <div id="statusBar">
+        <div id="status-bar">
           <ul>
             <li> 	&#9734; Hot Streak: {this.props.streak}  |</li>
             <li> Total Correct: {this.props.totalCorrect}  |</li>

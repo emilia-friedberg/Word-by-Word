@@ -209,6 +209,21 @@
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
 
+#boxContainer-single {
+  background: beige;
+  width: 450px;
+  height: 450px;
+  margin: 50px auto;
+  border-radius: 20px;
+  border: solid 1px #4d2600;
+  position: relative;
+  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
+}
+
+
+
+
+
 #problemContainer {
   margin: auto
 }
@@ -278,4 +293,15 @@
 
 #status-bar li {
    color: white;
+}
+
+#status-bar ul {
+   color: white;
+}
+
+#status-bar li {
+  list-style-type: none;
+  display: inline;
+  margin: 0px 20px;
+>>>>>>> Style the status-bar component to standardize across lessons
 }
