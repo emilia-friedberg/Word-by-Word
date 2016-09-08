@@ -224,29 +224,39 @@ class TeacherDashboard extends React.Component {
           }
         { this.state.addAssignmentFormVisible ?
           <form className="add-assignment-form" onSubmit={this.handleAssignmentFormSubmit}>
-            <label className="add-assignment-label" htmlFor="cohort[name]">Cohort:</label>
-            <select className="add-assignment-input" ref="cohortInput">
-            { this.state.teacherCohorts.map((cohort, index) => {
-              return (
-                <option name="cohort[name]"> {cohort.name} </option>
-              )
-            })}
-            </select>
-            <label className="add-assignment-label" htmlFor="lesson[name]">Lesson:</label>
-              <select className="add-assignment-input" ref="lessonInput">
-              { this.state.lessons.map((lesson, index) => {
+            <div className="form-group row">
+              <label className="add-assignment-label" htmlFor="cohort[name]">Cohort:</label>
+              <select className="add-assignment-input form-control form-control-sm" ref="cohortInput">
+              { this.state.teacherCohorts.map((cohort, index) => {
                 return (
-                  <option name="lesson[name]"> {lesson.name} </option>
+                  <option name="cohort[name]"> {cohort.name} </option>
                 )
               })}
               </select>
-            <label className="add-assignment-label" htmlFor="assignment[due_date]">Date Due:</label>
-            <input className="add-assignment-input" ref="dueDate" defaultValue="" type="date" name="assignment[date_due]" id="assignmentDueDate"/>
-            <label className="add-assignment-label" htmlFor="assignment[due_date]">Time Due:</label>
-            <input className="add-assignment-input" ref="dueTime" defaultValue="" type="time" name="assignment[date_time]" id="assignmentDueTime"/>
-            <label className="add-assignment-label" htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
-            <input className="add-assignment-input" type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
-            <input type="submit" value="Submit" className="form-input btn btn-info add-assignment-submit" />
+            </div>
+            <div className="form-group row">
+              <label className="add-assignment-label" htmlFor="lesson[name]">Lesson:</label>
+                <select className="add-assignment-input form-control" ref="lessonInput">
+                { this.state.lessons.map((lesson, index) => {
+                  return (
+                    <option name="lesson[name]"> {lesson.name} </option>
+                  )
+                })}
+                </select>
+            </div>
+            <div className="form-group row">
+              <label className="add-assignment-label" htmlFor="assignment[due_date]">Date Due:</label>
+              <input className="add-assignment-input" ref="dueDate" defaultValue="" type="date" name="assignment[date_due]" id="assignmentDueDate"/>
+              <label className="add-assignment-label" htmlFor="assignment[due_date]">Time Due:</label>
+              <input className="add-assignment-input" ref="dueTime" defaultValue="" type="time" name="assignment[date_time]" id="assignmentDueTime"/>
+            </div>
+            <div className="form-group row">
+              <label className="add-assignment-label" htmlFor="assignment[completion_number]">Number of Prompts to Attempt:</label>
+              <input className="add-assignment-input" type="number" ref="completionNumber" name="assignment[completion_number]" id="assignmentCompletionNumber" />
+            </div>
+            <div className="form-group row">
+              <input type="submit" value="Submit" className="form-input btn btn-info add-assignment-submit" />
+            </div>
           </form>
           : null
         }
