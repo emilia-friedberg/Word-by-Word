@@ -47,6 +47,7 @@
   background-repeat: none;
   border: 3px solid #331a00;
   margin: 10%;
+  left: -23px;
   border-radius: 10px;
   display: inline-block;
   position: absolute;
@@ -151,7 +152,7 @@
   color: white;
   border-radius: 10px;
   text-align: center;
-  width: 100%;
+  width: 50%;
   display: inline-block;
   margin: auto;
 }
@@ -168,32 +169,31 @@
   margin: auto;
 }
 
-.feedbackMsg1 {
-  background-color: #006600;
+.feedbackMsg {
+  // background-color: #006600;
   font-size: 20px;
-  margin-left: 33%;
   margin-top: 25px;
   width: 250px;
-  display: inline-block;
   border-radius: 10px;
   border: 5px solid black;
   color: black;
   padding: 5px;
-  background: linear-gradient(#A0A0A0, #C0C0C0);
+  background: #C0C0C0;
 }
 
-.feedbackMsg2 {
-  background-color: #006600;
-  font-size: 20px;
-  margin-left: 7%;
-  margin-top: 25px;
-  width: 250px;
+#message1 {
+  margin-left: 33%;
   display: inline-block;
-  border-radius: 10px;
-  border: 5px solid black;
-  color: black;
-  padding: 5px;
-  background: linear-gradient(#A0A0A0, #C0C0C0);
+}
+
+#message2 {
+  margin-left: 7%;
+  display: inline-block;
+}
+
+#message-single {
+  margin: 25px auto 10px auto;
+  display: block;
 }
 
 #submitContainer {
@@ -250,9 +250,6 @@
 }
 
 
-
-
-
 #problemContainer {
   margin: auto
 }
@@ -285,7 +282,7 @@
 
 #allRight {
   width: 400px;
-  height: 100px;
+  height: 85px;
   background-color: #006600;
   margin: auto;
   font-variant: small-caps;
@@ -300,7 +297,7 @@
 #notRight {
   width: 550px;
   height: 85px;
-  background: linear-gradient(#A0A0A0, #707070);
+  background: #C0C0C0;
   margin: auto;
   font-variant: small-caps;
   border: 5px solid black;
@@ -320,9 +317,6 @@
    width: 50%;
 }
 
-#status-bar li {
-   color: white;
-}
 
 #status-bar ul {
    color: white;
@@ -331,5 +325,7 @@
 #status-bar li {
   list-style-type: none;
   display: inline;
+  color: white;
+  padding-right: 5px;
   margin: 0px 20px;
 }

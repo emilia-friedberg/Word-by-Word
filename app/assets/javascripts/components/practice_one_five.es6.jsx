@@ -227,7 +227,7 @@ class PracticeOneFive extends React.Component {
         </div>
 
         {this.state.allCorrect ?
-          <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
+          <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> Next&#8594;</a></div>
           :
           <div id="wordBox">
             <div id="promptWrap">
