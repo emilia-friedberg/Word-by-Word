@@ -336,6 +336,7 @@ class StudentDashboard extends React.Component {
                           <th> Unit </th>
                           <th> Lesson </th>
                           <th> Score </th>
+                          <th> Current Streak </th>
                         </tr>
                       </thead>
                       { this.state.completedAssignments.map((assignment, index) => {
@@ -345,6 +346,7 @@ class StudentDashboard extends React.Component {
                             <td> {assignment.unit_id} </td>
                             <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
                             <td> {assignment.score} </td>
+                            <td> {assignment.streak} </td>
                           </tr>
                         )
                       })}
@@ -368,6 +370,8 @@ class StudentDashboard extends React.Component {
                       <tr>
                         <th> Unit </th>
                         <th> Lesson </th>
+                        <th> Score </th>
+                        <th> Current Streak </th>
                       </tr>
                     </thead>
                     { this.state.attemptedLessons.map((lesson, index) => {
@@ -375,6 +379,8 @@ class StudentDashboard extends React.Component {
                         <tr>
                           <td> {lesson.unit_id} </td>
                           <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
+                          <td> {lesson.score} </td>
+                          <td> {lesson.streak} </td>
                         </tr>
                       )
                     })}
@@ -398,6 +404,7 @@ class StudentDashboard extends React.Component {
                           <th>Unit</th>
                           <th>Lesson</th>
                           <th>Score</th>
+                          <th>Current Streak </th>
                         </tr>
                       </thead>
                       { this.state.masteredLessons.map((lesson, index) => {
@@ -406,6 +413,7 @@ class StudentDashboard extends React.Component {
                             <td> {lesson.unit_id} </td>
                             <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
                             <td> {lesson.score} </td>
+                            <td> {lesson.streak} </td>
                           </tr>
                         )
                       })}

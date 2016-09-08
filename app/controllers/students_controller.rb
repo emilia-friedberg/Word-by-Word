@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
 
     if request.xhr?
       completed_assignments = student.completed_assignments.map do |assignment|
+        lesson = assignment.lesson
 
         {
           created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
@@ -40,7 +41,8 @@ class StudentsController < ApplicationController
           cohort_id:  assignment.cohort_id,
           unit_id: assignment.lesson.unit.id,
           due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p'),
-          score: "#{assignment.score(student)}/#{assignment.prompts.length}"
+          score: "#{student.total_correct_attempts_by_lesson(lesson)}/#{student.total_attempts_by_lesson(lesson)}",
+          streak: "#{student.streak(lesson)}"
         }
       end
 
@@ -105,7 +107,9 @@ class StudentsController < ApplicationController
         {
           lesson_id: lesson.id,
           lesson_name: lesson.name,
-          unit_id: lesson.unit.id
+          unit_id: lesson.unit.id,
+          score: "#{student.total_correct_attempts_by_lesson(lesson)}/#{student.total_attempts_by_lesson(lesson)}",
+          streak: "#{student.streak(lesson)}"
         }
       end
 
@@ -126,7 +130,8 @@ class StudentsController < ApplicationController
           lesson_id: lesson.id,
           lesson_name: lesson.name,
           unit_id: lesson.unit.id,
-          score: "#{lesson.score(student)}/#{lesson.prompts.length}"
+          score: "#{student.total_correct_attempts_by_lesson(lesson)}/#{student.total_attempts_by_lesson(lesson)}",
+          streak: "#{student.streak(lesson)}"
         }
       end
 
