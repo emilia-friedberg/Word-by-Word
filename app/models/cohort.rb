@@ -25,6 +25,7 @@ class Cohort < ApplicationRecord
   end
 
   def tally_students_with_completed_assignment(assignment)
+# conflict started here
     lesson_prompts = assignment.lesson.sentences.map {|sen| sen.prompts.map {|prompt| prompt.id } }
     count = 0
     for student in self.students
@@ -45,6 +46,11 @@ class Cohort < ApplicationRecord
     end
 
     return count
+# and ended here
+# commented this out because presumably it is the old stuff
+    # self.students.select { |student| student.completed_assignments.include?(assignment)}.length
+    # self.students.select { |student| assignment.completed?(student) }.length
+#
   end
 
 
