@@ -43,6 +43,30 @@ p {
 }
 
 #sp {
+
+  ::-webkit-input-placeholder {
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+:-ms-input-placeholder {
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
   background-color: oldlace;
   display: inline-block;
   margin: 40px;
@@ -59,14 +83,17 @@ p {
   input {
     border-radius: 5px;
     // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
-    height: 30px;
+    height: 40px;
     width: 200px;
   }
   select {
     width: 200px;
-    height: 30px;
+    height: 40px;
   }
 }
+
+
+
 
 #ssss {
   background-color: black;
