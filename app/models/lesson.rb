@@ -20,6 +20,10 @@ class Lesson < ApplicationRecord
     all_prompts
   end
 
+  def prompt_ids
+    self.sentences.map { |sen| sen.prompts.pluck(:id) }.flatten.sort
+  end
+
   def attempts
     all_attempts = []
 
