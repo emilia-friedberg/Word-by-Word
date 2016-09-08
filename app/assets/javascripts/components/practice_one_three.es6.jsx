@@ -154,11 +154,11 @@ class PracticeOneThree extends React.Component {
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> You got it!!! </div>
-              : <div id="notRight"> Incorrect. View your feedback below.  </div>
+              : <div id="notRight"> Incorrect. View your feedback below. </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg1"> You got all the subjects correct </div>
-            : <div className="feedbackMsg1">
+            <div className="feedbackMsg" id="message1"> You got all the subjects correct </div>
+            : <div className="feedbackMsg" id="message1">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -170,8 +170,8 @@ class PracticeOneThree extends React.Component {
             </div>
           }
           { this.state.verbsCorrect ?
-            <div className="feedbackMsg2"> you got all the verbs correct </div>
-            : <div className="feedbackMsg2">
+            <div className="feedbackMsg" id="message2"> you got all the verbs correct </div>
+            : <div className="feedbackMsg" id="message2">
             Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
               return <div className="littleFeedbackWord"> {word.innerText} </div>
             })} </div> :  <div> </div> }
@@ -197,7 +197,7 @@ class PracticeOneThree extends React.Component {
             <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
-            <div id="status-bar"><StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} /></div>
+            <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
         </div>
         {this.state.allCorrect ?
           <div>

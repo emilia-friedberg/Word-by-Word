@@ -120,14 +120,15 @@ class PracticeOneOne extends React.Component {
   render() {
     return (
       <div>
+      <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> you got it!!! </div>
-              : <div> So close! View your feedback below  </div>
+              <div id="allRight"> You got it!!! </div>
+              : <div id="notRight"> Incorrect. View your feedback below  </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg"> You got all the subjects correct </div>
-            : <div>
+            <div className="feedbackMsg" id="message-single"> You got all the subjects correct </div>
+            : <div className="feedbackMsg" id="message-single">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -144,16 +145,16 @@ class PracticeOneOne extends React.Component {
       : <div id="openingPrompt"> Find the Subjects in the sentence below </div>
   }
         <div id="problemContainer">
-          <div id='boxContainer'>
-            <div className='boxHeader'>Subjects</div>
-            <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+          <div id='boxContainer-single'>
+            <div className='boxHeader-single'>Subjects</div>
+            <div ref="subjectBox" className="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
           <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
           <Glossary />
         </div>
         {this.state.allCorrect ?
-          <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
+          <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> Next&#8594;</a></div>
           :
           <div id="wordBox">
             <div id="promptWrap">
