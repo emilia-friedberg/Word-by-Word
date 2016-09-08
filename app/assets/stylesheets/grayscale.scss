@@ -42,6 +42,74 @@ p {
     }
 }
 
+#sp {
+
+  ::-webkit-input-placeholder {
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+:-ms-input-placeholder {
+ font-size: 14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+  background-color: oldlace;
+  display: inline-block;
+  margin: 40px;
+  border-radius: 5px;
+  .field {
+    margin: 10px;
+    // display: inline-block;
+
+  }
+  .homeLoginContainer {
+    display: inline-block;
+    margin: 30px;
+  }
+  input {
+    border-radius: 5px;
+    // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
+    height: 40px;
+    width: 200px;
+  }
+  select {
+    width: 200px;
+    height: 40px;
+  }
+}
+
+
+
+
+#ssss {
+  background-color: black;
+  border-radius: 10px;
+}
+
+#homeAbout, #homeSignUp {
+  background-color: rgba(230,230,230,.6);
+  box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.82);
+  border-radius:  15px;
+}
+
+
+
+
+
 a {
     color: $primary;
     -webkit-transition: all .2s ease-in-out;
