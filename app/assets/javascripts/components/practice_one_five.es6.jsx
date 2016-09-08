@@ -168,11 +168,11 @@ class PracticeOneFive extends React.Component {
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> You got it!!! </div>
-              : <div> Incorrect. View your feedback below  </div>
+              : <div id="notRight"> Incorrect. View your feedback below  </div>
           }
           { this.state.subjectsCorrect ?
             <div className="feedbackMsg"> You got all the subjects correct </div>
-            : <div>
+            : <div className="feedbackMsg" id="message1-triple">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -185,7 +185,7 @@ class PracticeOneFive extends React.Component {
           }
           { this.state.verbsCorrect ?
             <div className="feedbackMsg"> you got all the verbs correct </div>
-            : <div>
+            : <div className="feedbackMsg" id="message2-triple">
             Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
               return <div className="littleFeedbackWord"> {word.innerText} </div>
             })} </div> :  <div> </div> }
@@ -197,7 +197,7 @@ class PracticeOneFive extends React.Component {
         }
         { this.state.objectsCorrect ?
           <div className="feedbackMsg"> you got all the objects correct </div>
-          : <div>
+          : <div className="feedbackMsg" id="message3-triple">
           Your object box wasn't quite right. { this.refs.objectBox.children.length  ? <div> You included {Array.from(this.refs.objectBox.children).map(function(word) {
             return <div className="littleFeedbackWord"> {word.innerText} </div>
           })} </div> :  <div> </div> }

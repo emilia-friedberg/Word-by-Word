@@ -10,13 +10,11 @@
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
 
-
 #dropBox-single {
   width: 90%;
   margin: 10%;
   left: -23px;
 }
-
 
 #dropBox1-double {
   left: -12px;
@@ -179,6 +177,10 @@
   width: 33%;
 }
 
+#feedback {
+  text-align: center;
+}
+
 .feedbackMsg {
   // background-color: #006600;
   font-size: 20px;
@@ -191,6 +193,11 @@
   background: #C0C0C0;
 }
 
+#message-single {
+  margin: 25px auto 10px auto;
+  display: block;
+}
+
 #message1 {
   margin-left: 33%;
   display: inline-block;
@@ -201,10 +208,20 @@
   display: inline-block;
 }
 
-#message-single {
-  margin: 25px auto 10px auto;
-  display: block;
+#message1-triple {
+  display: inline-block;
 }
+
+#message2-triple {
+  display: inline-block;
+  margin-left:7%;
+}
+
+#message3-triple {
+  display: inline-block;
+  margin-left:7%;
+}
+
 
 #submitContainer {
   background-color: #006600;
