@@ -120,6 +120,7 @@ class PracticeOneOne extends React.Component {
   render() {
     return (
       <div>
+      <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> you got it!!! </div>
@@ -144,9 +145,9 @@ class PracticeOneOne extends React.Component {
       : <div id="openingPrompt"> Find the Subjects in the sentence below </div>
   }
         <div id="problemContainer">
-          <div id='boxContainer'>
-            <div className='boxHeader'>Subjects</div>
-            <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+          <div id='boxContainer-single'>
+            <div className='boxHeader-single'>Subjects</div>
+            <div ref="subjectBox" id="dropBox1" className="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
           <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
