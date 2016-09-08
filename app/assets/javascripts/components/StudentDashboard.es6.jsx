@@ -12,7 +12,12 @@ class StudentDashboard extends React.Component {
       masteredLessons: [],
       cohortFormVisible: false,
       errors: [],
-      notices: []
+      notices: [],
+      pendingAssignmentsLoading: true,
+      pastDueAssignmentsLoading: true,
+      completedAssignmentsLoading: true,
+      attemptedLessonsLoading: true,
+      masteredLessonsLoading: true
     }
     this.toggleAddCohortForm = this.toggleAddCohortForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -113,7 +118,8 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/past_due_assignments`
     }).done(function(response) {
       this.setState({
-        pastDueAssignments: response.pastDueAssignments
+        pastDueAssignments: response.pastDueAssignments,
+        pastDueAssignmentsLoading: false
       })
     }.bind(this))
   }
@@ -124,7 +130,8 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/pending_assignments`
     }).done(function(response) {
       this.setState({
-        pendingAssignments: response.pendingAssignments
+        pendingAssignments: response.pendingAssignments,
+        pendingAssignmentsLoading: false
       })
     }.bind(this))
   }
@@ -135,7 +142,8 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/completed_assignments`
     }).done(function(response) {
       this.setState({
-        completedAssignments: response.completedAssignments
+        completedAssignments: response.completedAssignments,
+        completedAssignmentsLoading: false
       })
     }.bind(this))
   }
@@ -146,7 +154,8 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/attempted_lessons`
     }).done(function(response) {
       this.setState({
-        attemptedLessons: response.attemptedLessons
+        attemptedLessons: response.attemptedLessons,
+        attemptedLessonsLoading: false
       })
     }.bind(this))
   }
@@ -157,7 +166,8 @@ class StudentDashboard extends React.Component {
       url: `/students/${this.props.studentId}/mastered_lessons`
     }).done(function(response) {
       this.setState({
-        masteredLessons: response.masteredLessons
+        masteredLessons: response.masteredLessons,
+        masteredLessonsLoading: false
       })
     }.bind(this))
   }
@@ -234,7 +244,7 @@ class StudentDashboard extends React.Component {
             <ul className="tabs">
               {this.state.studentBelongsToCohort ?
                 <span>
-                  <li ref="pastDueTab" className="active"><a href="#pastdueassignments" onClick={this.viewLateAssignments}> Past Due Assignments</a></li>
+                  <li ref="pastDueTab"><a href="#pastdueassignments" onClick={this.viewLateAssignments}> Past Due Assignments</a></li>
                   <li ref="activeTab"><a href="#activeassignments" onClick={this.viewActiveAssignments}>Active Assignments</a></li>
                   <li ref="completedTab"><a href="#completedassignments" onClick={this.viewCompletedAssignments}>Completed Assignments</a></li>
                 </span>
@@ -247,34 +257,42 @@ class StudentDashboard extends React.Component {
               <div>
 
                 <div className="tab-content" ref="pastDueAssignments">
-                  <h2> Past-Due Assignments </h2>
-                  { this.state.pastDueAssignments.length < 1 ?
-                    <p> You have no past-due assignments. </p>
-                    :
-                  <table className="table table-hover table-responsive">
-                    <thead className="thead-inverse">
-                      <tr>
-                        <th>Date Assigned</th>
-                        <th>Unit</th>
-                        <th>Lesson</th>
-                        <th>Due Date</th>
-                      </tr>
-                    </thead>
-                    { this.state.pastDueAssignments.map((assignment, index) => {
-                      return (
+                { this.state.pastDueAssignmentsLoading ?
+                  <LoadingPage />
+                : <div>
+                    <h2> Past-Due Assignments </h2>
+                    { this.state.pastDueAssignments.length < 1 ?
+                      <p> You have no past-due assignments. </p>
+                      :
+                    <table className="table table-hover table-responsive">
+                      <thead className="thead-inverse">
                         <tr>
-                          <td> {assignment.created_at}</td>
-                          <td> {assignment.unit_id} </td>
-                          <td> <a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a> </td>
-                          <td> {assignment.due_date} </td>
+                          <th>Date Assigned</th>
+                          <th>Unit</th>
+                          <th>Lesson</th>
+                          <th>Due Date</th>
                         </tr>
-                      )
-                    })}
-                  </table>
+                      </thead>
+                      { this.state.pastDueAssignments.map((assignment, index) => {
+                        return (
+                          <tr>
+                            <td> {assignment.created_at}</td>
+                            <td> {assignment.unit_id} </td>
+                            <td> <a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a> </td>
+                            <td> {assignment.due_date} </td>
+                          </tr>
+                        )
+                      })}
+                    </table>
+                  }
+                  </div>
                 }
                 </div>
 
                 <div className="tab-content" ref="activeAssignments">
+                { this.state.pendingAssignmentsLoading ?
+                  <LoadingPage />
+                : <div>
                 <h2> Active Assignments </h2>
                 { this.state.pendingAssignments.length < 1 ?
                   <p> You have no active assignments. </p>
@@ -301,82 +319,109 @@ class StudentDashboard extends React.Component {
                   </table>
                 }
                 </div>
+              }
+                </div>
                 <div className="tab-content" ref="completedAssignments">
-                  <h2> Completed Assignments </h2>
-                  { this.state.completedAssignments.length < 1 ?
-                    <p> You have no completed assignments. </p>
+                { this.state.completedAssignmentsLoading ?
+                  <LoadingPage />
+                  : <div>
+                    <h2> Completed Assignments </h2>
+                    { this.state.completedAssignments.length < 1 ?
+                      <p> You have no completed assignments. </p>
+                      :
+                    <table className="table table-hover table-responsive">
+                      <thead className="thead-inverse">
+                        <tr>
+                          <th> Date Assigned </th>
+                          <th> Unit </th>
+                          <th> Lesson </th>
+                          <th> Score </th>
+                          <th> Current Streak </th>
+                        </tr>
+                      </thead>
+                      { this.state.completedAssignments.map((assignment, index) => {
+                        return (
+                          <tr>
+                            <td> {assignment.created_at}</td>
+                            <td> {assignment.unit_id} </td>
+                            <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
+                            <td> {assignment.score} </td>
+                            <td> {assignment.streak} </td>
+                          </tr>
+                        )
+                      })}
+                    </table>
+                  }
+                  </div>
+                }
+                </div>
+              </div>
+
+            <div className="tab-content" ref="pastPracticeLessons">
+              {this.state.attemptedLessonsLoading ?
+                <LoadingPage />
+                : <div>
+                  <h2> Past Practice Lessons </h2>
+                  { this.state.attemptedLessons.length < 1 ?
+                    <p> You have no past practice lessons. </p>
                     :
                   <table className="table table-hover table-responsive">
                     <thead className="thead-inverse">
                       <tr>
-                        <th> Date Assigned </th>
                         <th> Unit </th>
                         <th> Lesson </th>
                         <th> Score </th>
+                        <th> Current Streak </th>
                       </tr>
                     </thead>
-                    { this.state.completedAssignments.map((assignment, index) => {
+                    { this.state.attemptedLessons.map((lesson, index) => {
                       return (
                         <tr>
-                          <td> {assignment.created_at}</td>
-                          <td> {assignment.unit_id} </td>
-                          <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
-                          <td> {assignment.score} </td>
+                          <td> {lesson.unit_id} </td>
+                          <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
+                          <td> {lesson.score} </td>
+                          <td> {lesson.streak} </td>
                         </tr>
                       )
                     })}
                   </table>
-                }
+                  }
                 </div>
-              </div>
-            <div className="tab-content" ref="pastPracticeLessons">
-              <h2> Past Practice Lessons </h2>
-              { this.state.attemptedLessons.length < 1 ?
-                <p> You have no past practice lessons. </p>
-                :
-              <table className="table table-hover table-responsive">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th> Unit </th>
-                    <th> Lesson </th>
-                  </tr>
-                </thead>
-                { this.state.attemptedLessons.map((lesson, index) => {
-                  return (
-                    <tr>
-                      <td> {lesson.unit_id} </td>
-                      <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
-                    </tr>
-                  )
-                })}
-              </table>
               }
             </div>
-            <div className="tab-content" ref="masteredTopics">
-              <h2> Mastered Topics </h2>
-              { this.state.masteredLessons.length < 1 ?
-                <p> Answer ten questions in a row correctly to demonstrate your mastery of a topic. </p>
-                :
-              <table className="table table-hover table-responsive">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th>Unit</th>
-                    <th>Lesson</th>
-                    <th>Score</th>
-                  </tr>
-                </thead>
-                { this.state.masteredLessons.map((lesson, index) => {
-                  return (
-                    <tr>
-                      <td> {lesson.unit_id} </td>
-                      <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
-                      <td> {lesson.score} </td>
-                    </tr>
-                  )
-                })}
 
-              </table>
-            }
+            <div className="tab-content" ref="masteredTopics">
+              {this.masteredLessonsLoading ?
+                <LoadingPage />
+                : <div>
+                    <h2> Mastered Topics </h2>
+                    { this.state.masteredLessons.length < 1 ?
+                      <p> Answer ten questions in a row correctly to demonstrate your mastery of a topic. </p>
+                      :
+                    <table className="table table-hover table-responsive">
+                      <thead className="thead-inverse">
+                        <tr>
+                          <th>Unit</th>
+                          <th>Lesson</th>
+                          <th>Score</th>
+                          <th>Current Streak </th>
+                        </tr>
+                      </thead>
+                      { this.state.masteredLessons.map((lesson, index) => {
+                        return (
+                          <tr>
+                            <td> {lesson.unit_id} </td>
+                            <td><a href={linkPartOne.concat(lesson.unit_id).concat(linkPartTwo).concat(lesson.lesson_id)}>{lesson.lesson_name}</a></td>
+                            <td> {lesson.score} </td>
+                            <td> {lesson.streak} </td>
+                          </tr>
+                        )
+                      })}
+
+                    </table>
+                  }
+                </div>
+              }
             </div>
           </div>
       </div>

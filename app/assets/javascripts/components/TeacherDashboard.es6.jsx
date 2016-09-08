@@ -13,7 +13,8 @@ class TeacherDashboard extends React.Component {
       addAssignmentFormVisible: false,
       addCohortOptionVisible: false,
       errors: [],
-      notices: []
+      notices: [],
+      loadingCohorts: true
     }
     this.showAddCohortButton = this.showAddCohortButton.bind(this);
     this.showAddAssignmentButton = this.showAddAssignmentButton.bind(this);
@@ -27,6 +28,7 @@ class TeacherDashboard extends React.Component {
     this.handleNewCohortFormSubmit = this.handleNewCohortFormSubmit.bind(this);
     this.handleAssignmentFormSubmit = this.handleAssignmentFormSubmit.bind(this);
     this.getTeacher = this.getTeacher.bind(this);
+    this.getCohorts = this.getCohorts.bind(this);
     this.getLessons = this.getLessons.bind(this);
   }
 
@@ -169,7 +171,20 @@ class TeacherDashboard extends React.Component {
       this.setState({
         teacher: response.teacher,
         teacherHasCohorts: response.teacherHasCohorts,
+        teacherCohorts: response.teacherCohorts
+      })
+    }.bind(this));
+  }
+
+  getCohorts() {
+    $.ajax({
+      method: 'get',
+      url: `/teachers/${this.props.teacherId}/cohorts`
+    }).done(function(response) {
+      this.setState({
+        teacherHasCohorts: response.teacherHasCohorts,
         teacherCohorts: response.teacherCohorts,
+        loadingCohorts: false
       })
     }.bind(this));
   }
@@ -187,6 +202,7 @@ class TeacherDashboard extends React.Component {
 
   componentWillMount() {
     this.getTeacher();
+    this.getCohorts();
     this.getLessons();
   }
 
@@ -258,32 +274,38 @@ class TeacherDashboard extends React.Component {
           </form>
           : null
         }
-        <h2> Cohorts </h2>
-        { this.state.teacherCohorts.length > 0 ?
-        <table className="table table-hover table-responsive">
-          <thead className="thead-inverse">
-            <tr>
-              <th> Name </th>
-              <th> Total Number of Students </th>
-              <th> Number of Students with Past Due Assignments </th>
-              <th> Access Code </th>
-            </tr>
-          </thead>
-          { this.state.teacherCohorts.map((cohort, index) => {
-            var link = "/cohorts/"
-            return (
-              <tr>
-                <td> <a href={link.concat(cohort.id)}> {cohort.name} </a> </td>
-                <td> {cohort.size} </td>
-                <td> {cohort.number_of_students_with_overdue_assignments} </td>
-                <td> {cohort.access_code} </td>
-              </tr>
-            )
-          })}
-        </table>
-      : <p> You do not currently have any cohorts. </p>}
+        {this.state.loadingCohorts ?
+          <LoadingPage />
+        :
+        <div>
+            <h2> Cohorts </h2>
+            { this.state.teacherCohorts.length > 0 ?
+            <table className="table table-hover table-responsive">
+              <thead className="thead-inverse">
+                <tr>
+                  <th> Name </th>
+                  <th> Total Number of Students </th>
+                  <th> Number of Students with Past Due Assignments </th>
+                  <th> Access Code </th>
+                </tr>
+              </thead>
+              { this.state.teacherCohorts.map((cohort, index) => {
+                var link = "/cohorts/"
+                return (
+                  <tr>
+                    <td> <a href={link.concat(cohort.id)}> {cohort.name} </a> </td>
+                    <td> {cohort.size} </td>
+                    <td> {cohort.number_of_students_with_overdue_assignments} </td>
+                    <td> {cohort.access_code} </td>
+                  </tr>
+                )
+              })}
+            </table>
+        : <p> You do not currently have any cohorts. </p>}
+        </div>
+      }
       </div>
     </div>
-    )
+  )
   }
 }

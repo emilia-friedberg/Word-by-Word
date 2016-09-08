@@ -150,6 +150,7 @@ class PracticeOneOne extends React.Component {
             </div>
           </div>
           <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
+          <Glossary />
         </div>
         {this.state.allCorrect ?
           <div id="proceedeMsg"> <a onClick={this.loadNext} href="/next"> go on to the next question! </a></div>
