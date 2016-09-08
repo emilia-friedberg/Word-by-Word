@@ -1,113 +1,140 @@
 class StudentsController < ApplicationController
   def show
     @student = Student.find_by_id(params[:id])
-    redirect_to(root_url, :notice => 'Record not found') unless @student
+    teachers = @student.cohorts.map { |cohort| cohort.teachers }.flatten if @student
+    redirect_to(root_url) unless @student && ((current_user == @student) || teachers.include?(current_user))
   end
 
   def info
     student = Student.find(params[:id])
 
-    if student.cohorts.nil?
-      student_belongs_to_cohort = false
+    if request.xhr?
+
+      if student.cohorts.nil?
+        student_belongs_to_cohort = false
+      else
+        student_belongs_to_cohort = true
+      end
+
+      cohorts = student.cohorts
+
+      student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts}
+      render json: student_hash.to_json
     else
-      student_belongs_to_cohort = true
+      redirect_to "/students/#{student.id}"
     end
 
-    cohorts = student.cohorts
-
-    student_hash = {student: student, studentBelongsToCohort: student_belongs_to_cohort, studentCohorts: cohorts}
-    render json: student_hash.to_json
   end
 
 
   def completed_assignments
     student = Student.find(params[:id])
 
-    completed_assignments = student.completed_assignments.map do |assignment|
+    if request.xhr?
+      completed_assignments = student.completed_assignments.map do |assignment|
 
-      {
-        created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
-        lesson_id:  assignment.lesson_id,
-        lesson_name: assignment.lesson.name,
-        cohort_id:  assignment.cohort_id,
-        unit_id: assignment.lesson.unit.id,
-        due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p'),
-        score: "#{assignment.score(student)}/#{assignment.prompts.length}"
-      }
+        {
+          created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
+          lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
+          cohort_id:  assignment.cohort_id,
+          unit_id: assignment.lesson.unit.id,
+          due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p'),
+          score: "#{assignment.score(student)}/#{assignment.prompts.length}"
+        }
+      end
+
+      student_hash = {completedAssignments: completed_assignments}
+      render json: student_hash.to_json
+    else
+      redirect_to "/students/#{student.id}"
     end
-
-    student_hash = {completedAssignments: completed_assignments}
-    render json: student_hash.to_json
 
   end
 
   def past_due_assignments
     student = Student.find(params[:id])
 
-    past_due_assignments = student.past_due_assignments.map do |assignment|
-      {
-        created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
-        lesson_id:  assignment.lesson_id,
-        lesson_name: assignment.lesson.name,
-        cohort_id:  assignment.cohort_id,
-        unit_id: assignment.lesson.unit.id,
-        due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
-      }
-    end
+    if request.xhr?
+      past_due_assignments = student.past_due_assignments.map do |assignment|
+        {
+          created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
+          lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
+          cohort_id:  assignment.cohort_id,
+          unit_id: assignment.lesson.unit.id,
+          due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
+        }
+      end
 
-    student_hash = {pastDueAssignments: past_due_assignments}
-    render json: student_hash.to_json
+      student_hash = {pastDueAssignments: past_due_assignments}
+      render json: student_hash.to_json
+    else
+      redirect_to "/students/#{student.id}"
+    end
 
   end
 
   def pending_assignments
     student = Student.find(params[:id])
 
-    pending_assignments = student.pending_assignments.map do |assignment|
-      {
-        created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
-        lesson_id:  assignment.lesson_id,
-        lesson_name: assignment.lesson.name,
-        cohort_id:  assignment.cohort_id,
-        unit_id: assignment.lesson.unit.id,
-        due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
-      }
-    end
+    if request.xhr?
+      pending_assignments = student.pending_assignments.map do |assignment|
+        {
+          created_at:  assignment.created_at.strftime('%b %e, %Y at %I:%M %p'),
+          lesson_id:  assignment.lesson_id,
+          lesson_name: assignment.lesson.name,
+          cohort_id:  assignment.cohort_id,
+          unit_id: assignment.lesson.unit.id,
+          due_date: assignment.due_date.strftime('%b %e, %Y at %I:%M %p')
+        }
+      end
 
-    student_hash = {pendingAssignments: pending_assignments}
-    render json: student_hash.to_json
+      student_hash = {pendingAssignments: pending_assignments}
+      render json: student_hash.to_json
+    else
+      redirect_to "/students/#{student.id}"
+    end
   end
 
   def attempted_lessons
     student = Student.find(params[:id])
 
-    attempted_lessons = student.incomplete_practice_lessons.map do |lesson|
-      {
-        lesson_id: lesson.id,
-        lesson_name: lesson.name,
-        unit_id: lesson.unit.id
-      }
-    end
+    if request.xhr?
+      attempted_lessons = student.incomplete_practice_lessons.map do |lesson|
+        {
+          lesson_id: lesson.id,
+          lesson_name: lesson.name,
+          unit_id: lesson.unit.id
+        }
+      end
 
-    student_hash = {attemptedLessons: attempted_lessons}
-    render json: student_hash.to_json
+      student_hash = {attemptedLessons: attempted_lessons}
+      render json: student_hash.to_json
+    else
+      redirect_to "/students/#{student.id}"
+    end
 
   end
 
   def mastered_lessons
     student = Student.find(params[:id])
 
-    mastered_lessons = student.mastered_lessons.map do |lesson|
-      {
-        lesson_id: lesson.id,
-        lesson_name: lesson.name,
-        unit_id: lesson.unit.id,
-        score: "#{lesson.score(student)}/#{lesson.prompts.length}"
-      }
-    end
+    if request.xhr?
+      mastered_lessons = student.mastered_lessons.map do |lesson|
+        {
+          lesson_id: lesson.id,
+          lesson_name: lesson.name,
+          unit_id: lesson.unit.id,
+          score: "#{lesson.score(student)}/#{lesson.prompts.length}"
+        }
+      end
 
-    student_hash = {masteredLessons: mastered_lessons}
-    render json: student_hash.to_json
+      student_hash = {masteredLessons: mastered_lessons}
+      render json: student_hash.to_json
+    else
+      redirect_to "/students/#{student.id}"
+    end
 
   end
 
