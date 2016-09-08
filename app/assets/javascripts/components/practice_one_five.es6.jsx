@@ -167,12 +167,12 @@ class PracticeOneFive extends React.Component {
       <div>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> you got it!!! </div>
-              : <div> So close! View your feedback below  </div>
+              <div id="allRight"> You got it!!! </div>
+              : <div id="notRight"> Incorrect. View your feedback below  </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg"> You got all the subjects correct </div>
-            : <div>
+            <div className="feedbackMsg" id="message1-triple"> You got all the subjects correct </div>
+            : <div className="feedbackMsg" id="message1-triple">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {
                 return <div className="littleFeedbackWord"> {worddiv.innerText} </div>
@@ -184,8 +184,8 @@ class PracticeOneFive extends React.Component {
             </div>
           }
           { this.state.verbsCorrect ?
-            <div className="feedbackMsg"> you got all the verbs correct </div>
-            : <div>
+            <div className="feedbackMsg" id="message2-triple"> you got all the verbs correct </div>
+            : <div className="feedbackMsg" id="message2-triple">
             Your verb box wasn't quite right. { this.refs.verbBox.children.length  ? <div> You included {Array.from(this.refs.verbBox.children).map(function(word) {
               return <div className="littleFeedbackWord"> {word.innerText} </div>
             })} </div> :  <div> </div> }
@@ -196,8 +196,8 @@ class PracticeOneFive extends React.Component {
           </div>
         }
         { this.state.objectsCorrect ?
-          <div className="feedbackMsg"> you got all the objects correct </div>
-          : <div>
+          <div className="feedbackMsg" id="message3-triple"> you got all the objects correct </div>
+          : <div className="feedbackMsg" id="message3-triple">
           Your object box wasn't quite right. { this.refs.objectBox.children.length  ? <div> You included {Array.from(this.refs.objectBox.children).map(function(word) {
             return <div className="littleFeedbackWord"> {word.innerText} </div>
           })} </div> :  <div> </div> }
@@ -212,15 +212,15 @@ class PracticeOneFive extends React.Component {
       : <div id="openingPrompt"> Find the Subjects, Verbs, AND Objects in the sentence below</div>
   }
         <div id="problemContainer">
-          <div id='boxContainer-single'>
-            <div className='boxHeader'>Subjects</div>
-            <div className='boxHeader'>Verbs</div>
-            <div className='boxHeader'>Objects</div>
-            <div ref="subjectBox" id="dropBox1" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+          <div className='boxContainer' id="boxContainer-triple">
+            <div className='boxHeader' id='boxHeader-triple'>Subjects</div>
+            <div className='boxHeader' id='boxHeader-triple'>Verbs</div>
+            <div className='boxHeader' id='boxHeader-triple'>Objects</div>
+            <div ref="subjectBox" id="dropBox1-triple" className="dropBox" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
-            <div ref="verbBox" id="dropBox2" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+            <div ref="verbBox" id="dropBox2-triple" className="dropBox" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
-            <div ref="objectBox" id="dropBox3" className="dropBoxes" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+            <div ref="objectBox" id="dropBox3-triple" className="dropBox" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
             <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />

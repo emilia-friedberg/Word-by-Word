@@ -138,9 +138,9 @@ class PracticeOneFour extends React.Component {
       : <div id="openingPrompt"> Find the Objects in the sentence below</div>
   }
         <div id="problemContainer">
-          <div id='boxContainer-single'>
-            <div className='boxHeader-single'>Objects</div>
-            <div ref="objectBox" className="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+          <div className="boxContainer" id='boxContainer-single'>
+            <div className='boxHeader' id='boxHeader-single'>Objects</div>
+            <div ref="objectBox" className="dropBox" id="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
             <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />

@@ -157,9 +157,9 @@ class PracticeOneTwo extends React.Component {
 
 
         <div id="problemContainer">
-          <div id='boxContainer-single'>
-            <div className='boxHeader-single'>Verbs</div>
-            <div ref="verbBox" className="dropBox-single" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
+          <div className="boxContainer" id='boxContainer-single'>
+            <div className='boxHeader' id='boxHeader-single'>Verbs</div>
+            <div ref="verbBox" className="dropBox" id="dropBox-single" onDrop={this.dropIn2} onDragOver={this.allowDrop}>
             </div>
           </div>
           <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
