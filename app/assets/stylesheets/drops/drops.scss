@@ -1,17 +1,60 @@
-.dropBoxes {
-  height: 325px;
-  width: 40%;
-  // width: 300px;
+.dropBox {
+  height: 350px;
   background: url("/assets/chalkboard1.jpg");
   background-repeat: none;
   border: 3px solid #331a00;
-  margin: 9%;
   border-radius: 10px;
   display: inline-block;
   position: absolute;
   top: 8px;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
+
+
+#dropBox-single {
+  width: 90%;
+  margin: 10%;
+  left: -23px;
+}
+
+
+#dropBox1-double {
+  left: -12px;
+  margin: 6%;
+  width: 43%;
+}
+
+#dropBox2-double {
+  left: 394px;
+  margin: 6%;
+  width: 43%;
+}
+
+#dropBox1-triple {
+  left: -35px;
+  margin: 5%;
+  width: 30%;
+}
+
+#dropBox2-triple {
+  left: 342px;
+  margin: 5%;
+  width: 30%;
+}
+
+#dropBox3-triple {
+  left: 720px;
+  margin: 5%;
+  width: 30%;
+}
+
+
+// .wordMapBox {
+//   display: inline-block;
+//   // width: 200px;
+//   border: 5px solid black;
+//   position: relative;
+// }
 
 #proceedeMsg {
   width: 130px;
@@ -37,38 +80,6 @@
     }
   }
 }
-
-
-.dropBox-single {
-  height: 350px;
-  width: 90%;
-  // width: 300px;
-  background: url("/assets/chalkboard1.jpg");
-  background-repeat: none;
-  border: 3px solid #331a00;
-  margin: 10%;
-  left: -23px;
-  border-radius: 10px;
-  display: inline-block;
-  position: absolute;
-  top: 8px;
-  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
-}
-
-
-#dropBox1 {
-  left: -23px;
-}
-
-#dropBox2 {
-  left: 375px;
-}
-// .wordMapBox {
-//   display: inline-block;
-//   // width: 200px;
-//   border: 5px solid black;
-//   position: relative;
-// }
 
 .inBox {
   background-color: #a78db0;
@@ -152,21 +163,20 @@
   color: white;
   border-radius: 10px;
   text-align: center;
-  width: 50%;
   display: inline-block;
   margin: auto;
 }
 
-.boxHeader-single {
-  background-color: #006600;
-  font-size: 30px;
-  border: 2px solid black;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
+#boxHeader-single {
   width: 100%;
-  display: inline-block;
-  margin: auto;
+}
+
+#boxHeader-double {
+  width: 50%;
+}
+
+#boxHeader-triple {
+  width: 33%;
 }
 
 .feedbackMsg {
@@ -227,9 +237,8 @@
 }
 
 
-#boxContainer {
+.boxContainer {
   background: beige;
-  width: 850px;
   height: 450px;
   margin: 50px auto;
   border-radius: 20px;
@@ -239,16 +248,16 @@
 }
 
 #boxContainer-single {
-  background: beige;
   width: 450px;
-  height: 450px;
-  margin: 50px auto;
-  border-radius: 20px;
-  border: solid 1px #4d2600;
-  position: relative;
-  box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
 }
 
+#boxContainer-double {
+  width: 850px;
+}
+
+#boxContainer-triple {
+  width: 1150px;
+}
 
 #problemContainer {
   margin: auto

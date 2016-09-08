@@ -145,9 +145,9 @@ class PracticeOneOne extends React.Component {
       : <div id="openingPrompt"> Find the Subjects in the sentence below </div>
   }
         <div id="problemContainer">
-          <div id='boxContainer-single'>
-            <div className='boxHeader-single'>Subjects</div>
-            <div ref="subjectBox" className="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
+          <div className="boxContainer" id='boxContainer-single'>
+            <div className='boxHeader' id='boxHeader-single'>Subjects</div>
+            <div ref="subjectBox" className="dropBox" id="dropBox-single" onDrop={this.dropIn1} onDragOver={this.allowDrop}>
             </div>
           </div>
           <StatusBar streak={this.state.streak} totalCorrect={this.state.totalCorrect} totalAttempts={this.state.totalAttempts} />
