@@ -165,6 +165,7 @@ class PracticeOneFive extends React.Component {
   render() {
     return (
       <div>
+      <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
               <div id="allRight"> You got it!!! </div>
