@@ -8,6 +8,22 @@ class TeachersController < ApplicationController
     teacher = Teacher.find(params[:id])
 
     if request.xhr?
+
+      teacher_hash = {
+        teacher: teacher
+      }
+
+      render json: teacher_hash.to_json
+    else
+      redirect_to '/teachers/#{teacher.id}'
+    end
+
+  end
+
+  def cohorts
+    teacher = Teacher.find(params[:id])
+
+    if request.xhr?
       if teacher.cohorts.nil?
         teacher_has_cohorts = false
       else
@@ -25,7 +41,6 @@ class TeachersController < ApplicationController
     end
 
       teacher_hash = {
-        teacher: teacher,
         teacherHasCohorts: teacher_has_cohorts,
         teacherCohorts: cohorts,
       }
