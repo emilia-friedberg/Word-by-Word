@@ -10,7 +10,7 @@ body {
     height: 100%;
     font-family: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: white;
-    background-color: black;
+    background-color: oldlace;
 }
 
 html {
@@ -42,6 +42,44 @@ p {
     }
 }
 
+#sp {
+  background-color: oldlace;
+  display: inline-block;
+  margin: 40px;
+  border-radius: 5px;
+  .field {
+    margin: 10px;
+    // display: inline-block;
+
+  }
+  .homeLoginContainer {
+    display: inline-block;
+    margin: 30px;
+  }
+  input {
+    border-radius: 5px;
+    // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
+    height: 30px;
+    width: 200px;
+  }
+  select {
+    width: 200px;
+    height: 30px;
+  }
+}
+
+#ssss {
+  background-color: black;
+  border-radius: 10px;
+}
+
+#homeAbout, #homeSignUp {
+  background-color: rgba(230,230,230,.6);
+  box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.82);
+  border-radius:  15px;
+}
+
+
 a {
     color: $primary;
     -webkit-transition: all .2s ease-in-out;
@@ -58,7 +96,9 @@ a {
     font-weight: 400;
 }
 
-.navbar-custom {
+
+
+.navbar-custom, #homeNav {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(white, 0.3);
     text-transform: uppercase;
