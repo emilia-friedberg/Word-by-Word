@@ -1,4 +1,15 @@
+<div class="deviseForm">
+  
 <h2>Sign up</h2>
+<% if alert %>
+<div id="notice_wrapper">
+  <p class="alert"><%= alert %></p>
+</div>
+<% elsif notice %>
+<div id="notice_wrapper">
+  <p class="notice"><%= notice %></p>
+</div>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -42,3 +53,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
