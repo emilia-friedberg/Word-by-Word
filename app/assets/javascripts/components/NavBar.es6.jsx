@@ -10,9 +10,6 @@ class NavBar extends React.Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <ul className="nav navbar-nav navbar-left">
-              <a href="/"><img id="brand-logo" src="/assets/test_logo_1.png"/></a>
-            </ul>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
