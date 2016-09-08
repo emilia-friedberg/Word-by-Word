@@ -67,8 +67,13 @@
 }
 
 th {
-  text-align: left;
-  margin-left: 0px;
+  text-align: center;
+  // margin-left: 0px;
+}
+
+td {
+  text-align: center;
+  // padding-left: 15px;
 }
 
 .add-cohort-submit {
