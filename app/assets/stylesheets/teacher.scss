@@ -10,19 +10,29 @@
 
 .add-assignment-submit {
   border-radius: 0px;
+  float: right;
 }
 
 .add-assignment-form {
   margin-top: 5px;
   vertical-align: middle;
+  background: white;
+  padding: 10px;
+  width: 500px;
 }
 
 .add-assignment-input {
-  height: 34px;
+  // height: 34px;
   margin-left: 3px;
   vertical-align: middle;
 }
 
 .add-assignment-label {
+  color: black;
   margin-left: 3px;
+  padding-left: 3px;
+}
+
+select {
+  height: 34px;
 }
