@@ -5,13 +5,19 @@ class CohortShow extends React.Component {
       cohort: {},
       students: [],
       assignments: [],
+      loading: true
     }
     this.getAssignments = this.getAssignments.bind(this);
     this.getCohort = this.getCohort.bind(this);
     this.getStudents = this.getStudents.bind(this);
     this.viewAssignments = this.viewAssignments.bind(this);
     this.viewStudents = this.viewStudents.bind(this);
+    // this.hideLoadingGif = this.hideLoadingGif.bind(this);
   }
+
+  // hideLoadingGif() {
+  //   this.refs.loadingGif.className += "hidden"
+  // }
 
   viewAssignments() {
     this.refs.assignmentTab.className += "active"
@@ -35,6 +41,7 @@ class CohortShow extends React.Component {
       this.setState({
         assignments: response.assignments
       })
+      this.hideLoadingGif();
     }.bind(this));
   }
 
@@ -65,11 +72,18 @@ class CohortShow extends React.Component {
     this.getCohort();
     this.getAssignments();
   }
+
   render () {
     return (
       <div className="show-page-container">
       <TopicList />
         <div className="show-page-body">
+
+          // <div ref="loadingGif" className="loading-container">
+          //   <h2> Accessing your information... </h2>
+          //   <img src='../assets/loading_gif.gif' />
+          // </div>
+
           <h1> {this.state.cohort.name} </h1>
 
           <ul className="tabs">
