@@ -1,8 +1,12 @@
 class GlossaryObjects extends React.Component {
+  constructor() {
+    super()
+    this.state = {displayContent: false}
+  }
   render() {
     return (
-      <div className="inactiveGlossary">
-
+      <div className="activeGlossary">
+{this.state.displayContent ? <div>
         Traditional grammar defines the object in a sentence as the entity that is acted upon by the subject.[1]
          There is thus a primary distinction between subjects and objects that is understood in terms of the
           action expressed by the verb, e.g. Tom studies grammar - Tom is the subject and grammar is the object.
@@ -14,7 +18,8 @@ class GlossaryObjects extends React.Component {
 The main verb in a clause determines whether and what objects are present. Transitive verbs require the presence of
  an object, whereas intransitive verbs block the appearance of an object.[5] The term complement overlaps in
   meaning with object: all objects are complements, but not vice versa. The objects that verbs do and do not take
-   is explored in detail in valency theory
+   is explored in detail in valency theory </div>
+ : <div> </div>}
 
       </div>
     )

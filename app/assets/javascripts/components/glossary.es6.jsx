@@ -20,11 +20,13 @@ class Glossary extends React.Component {
 
   showPage(ev) {
     ev.preventDefault()
-    debugger;
-    this.refs[ev.target.id].className = "activeGlossary"
+    for (ref in this.refs) {
+      if (parseInt(ref)) {
+        this.refs[ref].setState({displayContent: false})
+      }
+    }
+    this.refs[ev.target.id].setState({displayContent: true})
   }
-
-
 
   render() {
     return (

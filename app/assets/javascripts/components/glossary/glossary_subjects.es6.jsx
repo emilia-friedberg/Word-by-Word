@@ -1,25 +1,25 @@
 class GlossarySubjects extends React.Component {
-
+  constructor() {
+    super()
+    this.state = {displayContent: false}
+  }
   render() {
     return (
-      <div className="inactiveGlossary">
-        this is subject
-        The subject in a simple English sentence such as John runs,
-        John is a teacher, or John was hit by a car is the person or thing about
-        whom the statement is made, in this case 'John'. Traditionally the subject is
-        the word or phrase which controls the verb in the clause, that is to say with which
-        the verb agrees (John is but John and Mary are). If there is no verb, as in John - what an idiot!,
-         or if the verb has a different subject, as in John - I can't stand him!, then 'John' is not considered
-          to be the grammatical subject, but can be described as the 'topic' of the sentence.
-
-        These definitions seem clear enough for simple sentences such as the above, but as will be shown in
-        the article below, problems in defining the subject arise when an attempt is made to extend the definitions
-        to more complex sentences and to languages other than English. For example, in the sentence It is difficult
-        to learn French, the grammatical subject seems to be the word 'it', and yet arguably the 'real' subject
-         (the thing that is difficult) is 'to learn French'. (A sentence such as It was John who broke the window
-           is more complex still.) Sentences beginning with a locative phrase, such as There is a problem, isn't
-           there?, in which the tag question 'isn't there?' seems to imply that the subject is the adverb 'there'
-
+      <div className="activeGlossary">
+        {this.state.displayContent ? <div>
+                Traditional grammar defines the object in a sentence as the entity that is acted upon by the subject.[1]
+                 There is thus a primary distinction between subjects and objects that is understood in terms of the
+                  action expressed by the verb, e.g. Tom studies grammar - Tom is the subject and grammar is the object.
+                   Traditional theories of sentence structure divide the simple sentence into a subject and a predicate,[2]
+                    whereby the object is taken to be part of the predicate.[3] Many modern theories of grammar (e.g.
+                       dependency grammars), in contrast, take the object to be a verb argument like the subject, the
+                        difference between them being mainly just their prominence; the subject is ranked higher than the
+                         object and is thus more prominent.[4]
+        The main verb in a clause determines whether and what objects are present. Transitive verbs require the presence of
+         an object, whereas intransitive verbs block the appearance of an object.[5] The term complement overlaps in
+          meaning with object: all objects are complements, but not vice versa. The objects that verbs do and do not take
+           is explored in detail in valency theory </div>
+         : <div> </div>}
       </div>
     )
   }

@@ -38,8 +38,13 @@
   border-radius: 20px;
   padding: 30px;
   border: 3px solid black;
-
-
+  li {
+    font-size: 3em;
+    background-color: blue;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 10px;
+  }
 }
 #glossaryShow {
   width: 67.5%;
@@ -52,6 +57,7 @@
   border-radius: 20px;
   padding: 30px;
   border: 3px solid black;
+  text-align: center;
 
 }
 
@@ -61,4 +67,10 @@
 
 .inactiveGlossary {
   display: none;
+}
+
+.glossaryEmphasis {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 30px;
 }
