@@ -221,7 +221,7 @@ class StudentDashboard extends React.Component {
       <div className="show-page-container">
         <TopicList />
         <div className="show-page-body">
-          <h1> Welcome, {this.state.student.first_name} {this.state.student.last_name}</h1>
+          <h1>{this.state.student.first_name} {this.state.student.last_name}</h1>
           { this.state.errors.length > 0 ?
             <p className="errors"> {this.state.errors} </p>
           : null
@@ -278,7 +278,7 @@ class StudentDashboard extends React.Component {
                           <tr>
                             <td> {assignment.created_at}</td>
                             <td> {assignment.unit_id} </td>
-                            <td> <a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a> </td>
+                            <td> <a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.lesson_id)}>{assignment.lesson_name}</a> </td>
                             <td> {assignment.due_date} </td>
                           </tr>
                         )
@@ -312,7 +312,7 @@ class StudentDashboard extends React.Component {
                         <tr>
                           <td> {assignment.created_at}</td>
                           <td> {assignment.unit_id} </td>
-                          <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>                        <td> {assignment.due_date} </td>
+                          <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.lesson_id)}>{assignment.lesson_name}</a></td>                        <td> {assignment.due_date} </td>
                         </tr>
                       )
                     })}
@@ -344,7 +344,7 @@ class StudentDashboard extends React.Component {
                           <tr>
                             <td> {assignment.created_at}</td>
                             <td> {assignment.unit_id} </td>
-                            <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
+                            <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.lesson_id)}>{assignment.lesson_name}</a></td>
                             <td> {assignment.score} </td>
                             <td> {assignment.streak} </td>
                           </tr>
