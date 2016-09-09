@@ -42,32 +42,54 @@ p {
     }
 }
 
-#sp {
-
+#wineTime {
+  input {
+    border-radius: 5px;
+    // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
+    height: 40px;
+    width: 200px;
+    margin: 10px;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}
+#wine3 {
+  // color: limegreen
+  // width: 110%;
+  // margin: auto;
+  // position: absolute;
+  // left: -10%;
+  // padding-left: 10%;
+  //
+  width: 80%;
+  padding: 40px;
+  // padding-top: 40px;
+  // padding-bottom: 40px;
   ::-webkit-input-placeholder {
- font-size: 14px;
- color: #d0cdfa;
- text-transform: uppercase;
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
-}
+   font-size: 14px;
+   color: #d0cdfa;
+   text-transform: uppercase;
+   text-transform: uppercase;
+   text-align: center;
+   font-weight: bold;
+  }
 
-::-moz-placeholder { /* Firefox 19+ */
- font-size: 14px;
- color: #d0cdfa;
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
-}
-:-ms-input-placeholder {
- font-size: 14px;
- color: #d0cdfa;
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
-}
-  background-color: oldlace;
+  ::-moz-placeholder { /* Firefox 19+ */
+   font-size: 14px;
+   color: #d0cdfa;
+   text-transform: uppercase;
+   text-align: center;
+   font-weight: bold;
+  }
+  :-ms-input-placeholder {
+   font-size: 14px;
+   color: #d0cdfa;
+   text-transform: uppercase;
+   text-align: center;
+   font-weight: bold;
+  }
+  background-color: black;
   display: inline-block;
   margin: 40px;
   border-radius: 5px;
@@ -85,6 +107,9 @@ p {
     // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
     height: 40px;
     width: 200px;
+    font-weight: bold;
+    font-size: 20px;
+    color: limegreen;
   }
   select {
     width: 200px;
@@ -92,8 +117,19 @@ p {
   }
 }
 
+.field {
+  input {
+    border-radius: 5px;
+    // box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.82);
+    height: 40px;
+    width: 200px;
+    margin: 10px;
+  }
 
+}
+#drinkingWine {
 
+}
 
 #ssss {
   background-color: black;
@@ -410,4 +446,14 @@ img::-moz-selection {
 
 body {
     -webkit-tap-highlight-color: rgba(white, 0.2);
+}
+
+#homeSignUp {
+  padding-top: 40px;
+}
+
+#homeAbout {
+  h2 {
+    margin-top: 30px;
+  }
 }
