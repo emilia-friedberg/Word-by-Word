@@ -134,8 +134,8 @@ class PracticeOneTwo extends React.Component {
       <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> you got it!!! </div>
-              : <div id="notRight"> Incorrect. View your feedback below  </div>
+            <div id="allRight"> You got it! </div>
+            : <div id="notRight"> Incorrect. View your feedback below.  </div>
           }
 
           { this.state.verbsCorrect ?

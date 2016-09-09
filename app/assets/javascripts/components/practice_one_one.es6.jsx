@@ -123,11 +123,11 @@ class PracticeOneOne extends React.Component {
       <NavBar/>
         { this.state.displayFeedback ?
           <div id="feedback"> { this.state.allCorrect ?
-              <div id="allRight"> You got it!!! </div>
-              : <div id="notRight"> Incorrect. View your feedback below  </div>
+              <div id="allRight"> You got it! </div>
+              : <div id="notRight"> Incorrect. View your feedback below.  </div>
           }
           { this.state.subjectsCorrect ?
-            <div className="feedbackMsg" id="message-single"> You got all the subjects correct </div>
+            <div className="feedbackMsg" id="message-single"> You got all the subjects correct. </div>
             : <div className="feedbackMsg" id="message-single">
             Your subject box wasn't quite right. { this.refs.subjectBox.children.length > 0 ?
             <div> You included {Array.from(this.refs.subjectBox.children).map(function(worddiv) {

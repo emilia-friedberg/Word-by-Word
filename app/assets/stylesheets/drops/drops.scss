@@ -64,7 +64,7 @@
   text-align: center;
   margin: 20px 75px 40px 20px;
   border-radius: 30px;
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   &:hover {
     background-color: #0099ff;
   }
@@ -80,7 +80,7 @@
 }
 
 .inBox {
-  background-color: #a78db0;
+  background-color: #f5f5dc;
   padding: 10px;
   margin: 10px;
   border: 3px solid black;
@@ -88,7 +88,7 @@
   border-radius: 20px;
   box-shadow: 10px 10px 32px -5px rgba(0,0,0,0.75);
   display: inline-block;
-  color: oldlace;
+  color: black;
   font-family: 'Oswald', sans-serif;
   position: relative;
   font-size: 50px;
@@ -97,7 +97,7 @@
 
 .draggable {
   // font-size: 3em;
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   padding: 10px;
   // margin: 10px;
   border: 3px solid black;
@@ -137,14 +137,14 @@
   font-size: 20px;
   padding: 2px;
   margin: 2px;
-  color: white;
+  color: black;
   border: 5px solid black;
-  background-color: #00802b;
+  background-color: beige;
   border-radius: 10px;
 }
 
 #openingPrompt {
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   border: 2px solid black;
   font-size: 30px;
   color: white;
@@ -155,7 +155,7 @@
   border-radius: 10px;
 }
 .boxHeader {
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   font-size: 30px;
   border: 2px solid black;
   color: white;
@@ -188,9 +188,9 @@
   width: 250px;
   border-radius: 10px;
   border: 5px solid black;
-  color: black;
+  color: white;
   padding: 5px;
-  background: #C0C0C0;
+  background: url("/assets/chalkboard1.jpg");
 }
 
 #message-single {
@@ -223,7 +223,7 @@
 
 
 #submitContainer {
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   width: 100px;
   height: 100px;
   border-radius: 50px;
@@ -309,7 +309,7 @@
 #allRight {
   width: 400px;
   height: 85px;
-  background-color: #006600;
+  background: url("/assets/chalkboard1.jpg");
   margin: auto;
   font-variant: small-caps;
   border: 5px solid black;
@@ -323,7 +323,7 @@
 #notRight {
   width: 550px;
   height: 85px;
-  background: #C0C0C0;
+  background: url("/assets/chalkboard1.jpg");
   margin: auto;
   font-variant: small-caps;
   border: 5px solid black;
