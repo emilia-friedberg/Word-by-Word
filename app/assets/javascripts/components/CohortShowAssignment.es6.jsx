@@ -46,13 +46,15 @@ class CohortShowAssignment extends React.Component {
 
   render() {
     var assignment = this.props.data;
+    var linkPartOne = "/units/";
+    var linkPartTwo = "/lessons/";
     return (
       <tbody>
       { this.state.editable ?
         <tr id={assignment.id}>
           <td> {assignment.created_at} </td>
           <td> {assignment.unit_id} </td>
-          <td> {assignment.lesson_id} - {assignment.lesson_name} </td>
+          <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
           <td> <input type="datetime" ref="dueDate" defaultValue={assignment.due_date} name="assignment[due_date]"/> </td>
           <td> {assignment.number_of_prompts} </td>
           <td> <input type="integer" ref="completionNumber" defaultValue={assignment.completion_number} name="assignment[completion_number]" /> </td>
@@ -64,7 +66,7 @@ class CohortShowAssignment extends React.Component {
       <tr id={assignment.id}>
         <td> {assignment.created_at} </td>
         <td> {assignment.unit_id} </td>
-        <td> {assignment.lesson_id} - {assignment.lesson_name} </td>
+        <td><a href={linkPartOne.concat(assignment.unit_id).concat(linkPartTwo).concat(assignment.id)}>{assignment.lesson_name}</a></td>
         <td ref="dueDate"> {assignment.due_date} </td>
         <td> {assignment.number_of_prompts} </td>
         <td ref="completionNumber"> {assignment.completion_number} </td>

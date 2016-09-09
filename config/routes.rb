@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'cohorts/:id/students_info', to: 'cohorts#students_info'
   get 'cohorts/:id/assignments_info', to: 'cohorts#assignments_info'
   get 'lessons', to: 'lessons#show'
+  get 'dashboard', to: 'application#dashboard'
   resources :cohorts
   resources :assignments
   root to: 'application#index'
