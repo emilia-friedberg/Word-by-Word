@@ -52,7 +52,7 @@ class Glossary extends React.Component {
           </div>
         </div>
       :
-        <div className="glossaryButton" onClick={this.toggleGlossary}>
+        <div id="helpButton" className="glossaryButton" onClick={this.toggleGlossary}>
           Help!
         </div>
       }

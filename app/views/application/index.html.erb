@@ -72,7 +72,7 @@
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div id="homeAbout" class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div id="drinkingWine" class="col-lg-8 col-lg-offset-2">
                 <h2>About Word-by-Word</h2>
                 <p>Word by word by word is an incredibly simple and interactive alterative to the drudgery of sentence diagramming and grammar exercies. Intended as an instructional support or intervention tool for all ages, word-by-word supports teachers and students with a variety of challenges and quantitative data to track skill growth. </p>
                 <p></p>
@@ -85,26 +85,20 @@
     <section id="download" class="content-section text-center">
         <div class="download-section">
             <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div id="wineTime" class="col-lg-8 col-lg-offset-2">
                     <h2>Exisiting User Login</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
+                    <p></p>
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                       <div class="field">
-                        <%= f.label :email %><br />
-                        <%= f.email_field :email, autofocus: true %>
+                        <%= f.email_field :email, placeholder: "Email", autofocus: true %>
                       </div>
 
                       <div class="field">
-                        <%= f.label :password %><br />
-                        <%= f.password_field :password, autocomplete: "off" %>
+
+                        <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
                       </div>
 
-                      <% if devise_mapping.rememberable? -%>
-                        <div class="field">
-                          <%= f.check_box :remember_me %>
-                          <%= f.label :remember_me %>
-                        </div>
-                      <% end -%>
+
 
                       <div class="actions">
                         <%= f.submit "Log in" %>
@@ -117,10 +111,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div id="homeSignUp" class="">
-          <h2>Sign up</h2>
-            <div id="sp">
+    <section id="contact" class="content-section text-center">
+        <!-- <div id="homeSignUp" class=""> -->
+            <div id="wine3">
+              <h2>Sign up</h2>
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                 <%= devise_error_messages! %>
                 <div class="homeLoginContainer">
@@ -163,7 +157,7 @@
               <% end %>
 
               <%= render "devise/shared/links" %>
-            </div>
+            <!-- </div> -->
         </div>
     </section>
 
