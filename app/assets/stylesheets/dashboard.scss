@@ -1,15 +1,16 @@
 .show-page-body {
-  width: 900px;
+  width: 1400px;
   float: left;
   padding-left: 30px;
 }
-//
+
 .show-page-container {
-  width: 1300px;
+  width: 1800px;
+  font-size: 1.5em;
   background: url("/assets/chalkboard_4.jpg") no-repeat bottom center scroll;
   background-color: white;
-
 }
+
 .tab-content {
   display: none;
 }
@@ -110,6 +111,7 @@ td {
 }
 
 .loading-container {
+  margin-top: 20px;
   text-align: center;
   // opacity: 0.1
 }
@@ -122,6 +124,11 @@ td {
   background-color: #42DCA3;
   border: white;
   box-shadow: none;
+}
+
+.loading-gif {
+  border-radius: 20px;
+  border: black 2px solid;
 }
 
 label {
