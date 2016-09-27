@@ -1,21 +1,28 @@
 <div id="homeWrap">
 
-<div id="homeLogin">
-  <%= form_for(:user, :url => session_path(:user)) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.check_box :remember_me %>
-    <%= f.label :remember_me %>
+  <div id="homeBanner">
+    <h1>Word-by-Word </h1>
+    <ul>
+      <li>An easy-to-use gamified educational tool to help students build foundational language skills ... </li>
+      <li>Project is currently undergoing extensive construction and expansion, but feel free to regsiter and give our <em> very </em> release a try while we develop! </li>
+    </ul>
+  </div>
 
-    <br>
-    <%= f.submit 'Sign in' %>
-    <%= link_to "Forgot your password?", new_password_path(:user) %>
-  <% end %>
+  <div id="homeLogin">
+    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <br>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <br>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
 
-</div>
+      <br>
+      <%= f.submit 'Sign in' %>
+      <%= link_to "Forgot your password?", new_password_path(:user) %>
+    <% end %>
+  </div>
 
 </div>
