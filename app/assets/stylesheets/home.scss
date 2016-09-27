@@ -12,8 +12,10 @@
 
 #homeBanner {
   width: 400px;
+  font-size: 20px;
   li {
     margin: 10px;
+    padding: 10px;
   }
 }
 
@@ -25,12 +27,16 @@
   margin: auto;
   padding: 15px;
   background-color: lightblue;
-  border: 2px solid black;
   width: 20%;
   height: 300px;
   color: #222222;
+  box-shadow: 5px 5px 31px 1px rgba(0,0,0,0.75);
+
   label {
     width: 100px;
+  }
+  input[type="text"],   input[type="password"]{
+    width: 200px;
   }
 }
 
@@ -41,9 +47,14 @@
   background-color: lightblue;
   width: 20%;
   height: 100px;
+  text-align: center;
+  text-decoration: underline;
   // border-radius: 10px;
-  border: 2px solid black;
+  box-shadow: 5px 5px 31px 1px rgba(0,0,0,0.75);
   padding: 20px;
+  a:hover {
+    color: limegreen;
+  }
   a {
     color: #222222;
   }
