@@ -1,11 +1,11 @@
 .show-page-body {
-  max-width: 900px;
+  width: 1000px;
   float: left;
   padding-left: 30px;
 }
 
 .show-page-container {
-  max-width: 1300px;
+  max-width: 1400px;
   // font-size: 1.5em;
   background: url("/assets/chalkboard_4.jpg") no-repeat bottom center scroll;
   background-color: white;
@@ -121,8 +121,8 @@ td {
 }
 
 .btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus {
-  background-color: oldlace;
-  border: oldlace;
+  background-color: white;
+  border: white;
   box-shadow: none;
   color: dodgerblue;
 }

@@ -23,7 +23,9 @@ class TeacherDashboard extends React.Component {
     this.toggleAddAssignmentForm = this.toggleAddAssignmentForm.bind(this);
     this.toggleAddCohortOption = this.toggleAddCohortOption.bind(this);
     this.toggleAddExistingCohortForm = this.toggleAddExistingCohortForm.bind(this);
+    this.hideAddExistingCohortForm = this.hideAddExistingCohortForm.bind(this);
     this.toggleAddNewCohortForm = this.toggleAddNewCohortForm.bind(this);
+    this.hideAddNewCohortForm = this.hideAddNewCohortForm.bind(this);
     this.handleExistingCohortFormSubmit = this.handleExistingCohortFormSubmit.bind(this);
     this.handleNewCohortFormSubmit = this.handleNewCohortFormSubmit.bind(this);
     this.handleAssignmentFormSubmit = this.handleAssignmentFormSubmit.bind(this);
@@ -58,28 +60,43 @@ class TeacherDashboard extends React.Component {
 
 
   toggleAddCohortOption() {
-    this.hideAddCohortButton()
+    this.hideAddCohortButton();
+    this.hideAddExistingCohortForm();
+    this.hideAddNewCohortForm();
     this.setState({
       addCohortOptionVisible: !this.state.addCohortOptionVisible
     })
   }
 
   toggleAddExistingCohortForm() {
-    this.toggleAddCohortOption()
+    this.hideAddNewCohortForm();
     this.setState({
       addExistingCohortFormVisible: !this.state.addExistingCohortFormVisible
     })
   }
 
+  hideAddExistingCohortForm() {
+    this.setState({
+      addExistingCohortFormVisible: false
+    })
+  }
+
+
   toggleAddNewCohortForm() {
-    this.toggleAddCohortOption()
+    this.hideAddExistingCohortForm();
     this.setState({
       addNewCohortFormVisible: !this.state.addNewCohortFormVisible
     })
   }
 
+  hideAddNewCohortForm() {
+    this.setState({
+      addNewCohortFormVisible: false
+    })
+  }
+
   toggleAddAssignmentForm() {
-    this.hideAddAssignmentButton()
+    this.hideAddAssignmentButton();
     this.setState({
       addAssignmentFormVisible: !this.state.addAssignmentFormVisible
     })
