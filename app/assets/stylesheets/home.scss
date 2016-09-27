@@ -10,7 +10,12 @@
 
 }
 
-
+#homeBanner {
+  width: 400px;
+  li {
+    margin: 10px;
+  }
+}
 
 
 #homeLogin {
@@ -24,13 +29,8 @@
   width: 20%;
   height: 150px;
   color: #222222;
-  .txtIn {
-    float: right;
-    margin: 5px;
-  }
-  .txtLbl {
-    float: left;
-    margin: 5px;
+  label {
+    width: 100px;
   }
 }
 
