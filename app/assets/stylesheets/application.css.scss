@@ -1,28 +1,14 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
  //= require_self
-  //= require_tree .
+ //= require_tree .
+*/
 
- */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-#cohortSmoke {
-  background-color: rgba(0,0,0,.5);
-}
-h1, h2, h3, h4, h5, h6 {
-  // font-family: 'Unica One', cursive;
-  // font-family: 'Ovo', serif;
-  font-family: 'Montserrat', sans-serif;
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  // font-family: 'Open Sans', sans-serif;
 }
 
 h3.sentence {
@@ -34,10 +20,9 @@ em {
 }
 
 body {
-   padding-bottom: 15px;
-  //  font-family: 'Vollkorn', serif;
+  padding-bottom: 15px;
   font-family: 'Muli', sans-serif;
-  // background: url("/assets/desk2.jpg");
+  background: url("/assets/chalkboard_4.jpg");
   background-repeat: none;
 }
 
@@ -46,82 +31,14 @@ body {
   background-color: rgba(0, 0, 0, 0.22);
 }
 
-#home {
-  // background-color: gray;
-  // box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
-  border-radius: 10px;
-}
-
-#homeFilter {
-  background-color: rgba(0, 0, 0, 0.22);
-  box-shadow: 10px 10px 30px -10px rgba(0,0,0,0.75);
-  border-radius: 10px;
-  // margin/
-  text-align: center;
-  padding: 50px;
-  color: oldlace;
-}
-
-
-
-h1, h2, h3, h4, h5, h6 {
-  // font-family: 'Unica One', cursive;
-  // font-family: 'Ovo', serif;
-  font-family: 'Open Sans', sans-serif;
-
-}
-
-h3.sentence {
-  font-family: 'Muli', sans-serif;
-}
-
-em {
-  font-family: 'Muli', sans-serif;
-}
-
-body {
-   padding-bottom: 15px;
-  //  font-family: 'Vollkorn', serif;
-  font-family: 'Muli', sans-serif;
-  background: url("/assets/chalkboard_4.jpg");
-  background-repeat: none;
-}
-
 .nav {
   font-size: 0.875em;
-  // background-color: #f2f2f2;
 }
 
 .collapse {
   background-color: #f2f2f2;
 }
 
-#body-info {
-   border: 1px solid #021a40;
-   margin-left: 7%;
-   margin-bottom: 20px;
-
-}
-
-#body-content {
-  font-size: 1.0em;
-  margin-left: 7%;
-  margin-right: 20%;
-  text-align: justify;
-}
-
-#home-header {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-left: 7%;
-}
-
-#brand-logo {
-   height: 53px;
-   width: 70px;
-   margin: 0;
-   padding: 0;
-}
 
 #navbar-buttons {
    display: block;
@@ -137,19 +54,7 @@ body {
    }
 }
 
-#signin-form {
-   font-size: 1.5em;
-   text-decoration: none;
-   padding-right: 10px;
-   padding-left: 14px;
-   padding-top: 15px;
-   padding-bottom: 0px;
-   margin: 0px;
-   height: 64px;
-   &:hover {
-   background-color: #D0D0D0;
-   }
-}
+d
 
 #navbar-links {
    font-size: 1.0em;
@@ -175,45 +80,4 @@ body {
   margin-top: 100px;
   float: right;
   width: 20%;
-}
-
-
-.summary-blurb {
-  font-size: 1.875em;
-  min-width: 70%;
-  margin-left: 100px;
-  float: left;
-}
-
-.footer {
-     position: 0;
-     display: table;
-     text-align: center;
-     margin-left: auto;
-     margin-right: auto;
-     width: 100%;
-     height: 30px;
-     padding-top: 10px;
-     border-top-width: 5px;
-     border-top-style: solid;
-     border-top-color: #FFF;
-}
-
-.footer-bar {
-   list-style-type: none;
-   margin: 20px 0 0 0;
-   padding: 0;
-   color: #D3D3D3;
-   text-decoration: none;
-}
-
-.footer-bar li {
-   display: inline-block;
-   font-size: 1.5em;
-   padding-left: 15px;
-   margin-left: 15px;
-}
-
-.footer-bar li a {
-   color: #D3D3D3;
 }
