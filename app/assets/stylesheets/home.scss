@@ -7,7 +7,7 @@
   margin: 5%;
   padding: 2%;
   color: oldlace;
-
+  box-shadow: 10px 10px 31px 1px rgba(0,0,0,0.75);
 }
 
 #homeBanner {
@@ -27,7 +27,7 @@
   background-color: lightblue;
   border: 2px solid black;
   width: 20%;
-  height: 150px;
+  height: 300px;
   color: #222222;
   label {
     width: 100px;
@@ -37,11 +37,11 @@
 #homeReg {
   position: absolute;
   right: 30px;
-  top: 200px;
+  bottom: 30px;
   background-color: lightblue;
   width: 20%;
   height: 100px;
-  border-radius: 10px;
+  // border-radius: 10px;
   border: 2px solid black;
   padding: 20px;
   a {
