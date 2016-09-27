@@ -22,4 +22,29 @@
   background-color: lightblue;
   border: 2px solid black;
   width: 20%;
+  height: 150px;
+  color: #222222;
+  .txtIn {
+    float: right;
+    margin: 5px;
+  }
+  .txtLbl {
+    float: left;
+    margin: 5px;
+  }
+}
+
+#homeReg {
+  position: absolute;
+  right: 30px;
+  top: 200px;
+  background-color: lightblue;
+  width: 20%;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 20px;
+  a {
+    color: #222222;
+  }
 }

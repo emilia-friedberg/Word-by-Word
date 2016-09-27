@@ -10,11 +10,11 @@
 
   <div id="homeLogin">
     <%= form_for(:user, :url => session_path(:user)) do |f| %>
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.label :email, html: {class: 'txtLbl'} %>
+      <%= f.text_field :email, html: {class: 'txtIn'} %>
       <br>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.label :password, html: {class: 'txtLbl'} %>
+      <%= f.password_field :password, html: {class: 'txtIn'} %>
       <br>
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
@@ -23,6 +23,10 @@
       <%= f.submit 'Sign in' %>
       <%= link_to "Forgot your password?", new_password_path(:user) %>
     <% end %>
+  </div>
+
+  <div id="homeReg">
+    <a href='/users/sign_up'> <h3>Sign up</h3> </a>
   </div>
 
 </div>
