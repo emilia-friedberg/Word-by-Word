@@ -1,12 +1,12 @@
 .show-page-body {
-  width: 1400px;
+  max-width: 900px;
   float: left;
   padding-left: 30px;
 }
 
 .show-page-container {
-  width: 1800px;
-  font-size: 1.5em;
+  max-width: 1300px;
+  // font-size: 1.5em;
   background: url("/assets/chalkboard_4.jpg") no-repeat bottom center scroll;
   background-color: white;
 }
