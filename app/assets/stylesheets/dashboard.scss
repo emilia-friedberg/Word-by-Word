@@ -1,12 +1,12 @@
 .show-page-body {
-  width: 1400px;
+  max-width: 900px;
   float: left;
   padding-left: 30px;
 }
 
 .show-page-container {
-  width: 1800px;
-  font-size: 1.5em;
+  max-width: 1300px;
+  // font-size: 1.5em;
   background: url("/assets/chalkboard_4.jpg") no-repeat bottom center scroll;
   background-color: white;
 }
@@ -76,7 +76,7 @@
 }
 
 .tabs li.active a {
-    color: #42DCA3;
+    color: dodgerblue;
     text-decoration: none;
     border-bottom: none;
 }
@@ -121,9 +121,10 @@ td {
 }
 
 .btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus {
-  background-color: #42DCA3;
-  border: white;
+  background-color: oldlace;
+  border: oldlace;
   box-shadow: none;
+  color: dodgerblue;
 }
 
 .loading-gif {
