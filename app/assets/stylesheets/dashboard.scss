@@ -76,7 +76,7 @@
 }
 
 .tabs li.active a {
-    color: #42DCA3;
+    color: dodgerblue;
     text-decoration: none;
     border-bottom: none;
 }
@@ -121,9 +121,10 @@ td {
 }
 
 .btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus {
-  background-color: #42DCA3;
-  border: white;
+  background-color: oldlace;
+  border: oldlace;
   box-shadow: none;
+  color: dodgerblue;
 }
 
 .loading-gif {

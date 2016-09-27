@@ -126,7 +126,7 @@ class CohortShow extends React.Component {
               <h2> Assignments </h2>
               {this.state.assignments.length < 1 ?
               <p> There are no assignments for this cohort. </p>
-              :  <table className="table table-hover table-responsive">
+              :  <table className="table table-responsive">
                 <thead className="thead-inverse">
                   <tr>
                     <th> Date Assigned </th>
