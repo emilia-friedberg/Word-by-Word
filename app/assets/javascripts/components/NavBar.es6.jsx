@@ -12,11 +12,12 @@ class NavBar extends React.Component{
             </button>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <h1 className="navbar-title"> Word by Word </h1>
             <ul className="nav navbar-nav navbar-right">
-              <li className="navbar-buttons"><a className="navbar-links" href="/dashboard">My Dashboard</a></li>
+              <li className="navbar-buttons"><a className="navbar-links" id="dashboard-link" href="/dashboard">My Dashboard</a></li>
               <li className="navbar-buttons">
                   <form method="post" action="/users/sign_out">
-                    <input className="navbar-links" type="Submit" value="Log Out"/>
+                    <input className="navbar-links logout-button" type="Submit" value="Log Out"/>
                     <input type="hidden" name="_method" value="Delete"/>
                   </form>
                 </li>

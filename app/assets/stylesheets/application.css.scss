@@ -59,11 +59,10 @@ a {
    }
 }
 
-d
 
 .navbar-links {
    font-size: 1.0em;
-   line-height: 32px;
+   vertical-align: center;
    display: block;
    color: #808080;
    padding: 16px;
@@ -76,4 +75,26 @@ d
 
 .header {
   font-size: 250%;
+}
+
+.logout-button {
+  font-size: 1.0em;
+  line-height: 32px;
+  vertical-align: center;
+  display: block;
+  color: #808080;
+  padding: 16px;
+  background: none;
+  border: none;
+  &:hover{
+    color: white;
+  }
+}
+
+#dashboard-link {
+  padding-top: 22.5px;
+}
+
+.navbar-title {
+  display: inline-block;
 }
