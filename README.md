@@ -1,22 +1,14 @@
-# README
+# Word-by-Word
 
-Example of using linkparser gem:
 
-```dict = LinkParser::Dictionary.new
-=> #<LinkParser::Dictionary:0x007f9a5b117220>
+## Vision 
+Word-by-word is a educational Rails web app built to help students acquire foundational language skills.
 
-sent = dict.parse( "People use Ruby for all kinds of nifty things." )
-=> #<LinkParser::Sentence:0x1fe69761a146 "LEFT-WALL people.p use.v Ruby.f
-    for.p all.a kinds.n of   nifty.a things.n . RIGHT-WALL"/15
-    linkages/0 nulls>
+In this early stage, we are developing basic subject-verb-object identification, as well a robust data-tracking platform, all built on a ReactJS font-end and a Rails backend. 
 
-sent.subject
-=> "people"
+Early units use a simple drag-and-drop interface made snappy by ReactJS ternarys utilizing asynchronous fetch calls to make for a seamless user experience. 
 
-sent.verb
-=> "use"
+## Updates
+* Word-by-word is undergoing extensive remodeling-
+* Styling is still inconsistent, but expect frequent changes. 
 
-sent.object
-=> "Ruby.f"```
-
-(from https://github.com/ged/linkparser)
